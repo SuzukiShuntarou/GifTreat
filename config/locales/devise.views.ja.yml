@@ -18,7 +18,7 @@ ja:
         password: パスワード
         password_confirmation: パスワード（確認用）
         remember_created_at: ログイン記憶時刻
-        remember_me: ログインを記憶する
+        remember_me: 次回から自動ログイン
         reset_password_sent_at: パスワードリセット送信時刻
         reset_password_token: パスワードリセット用トークン
         sign_in_count: ログイン回数
@@ -77,13 +77,13 @@ ja:
       success: "%{kind} アカウントによる認証に成功しました。"
     passwords:
       edit:
-        change_my_password: パスワードを変更する
-        change_your_password: パスワードを変更
-        confirm_new_password: 確認用新しいパスワード
+        change_my_password: パスワード再設定
+        change_your_password: パスワード再設定
+        confirm_new_password: 新しいパスワード（確認用）
         new_password: 新しいパスワード
       new:
-        forgot_your_password: パスワードを忘れましたか？
-        send_me_reset_password_instructions: パスワードの再設定方法を送信する
+        forgot_your_password: パスワード再設定
+        send_me_reset_password_instructions: 送信
       no_token: このページにはアクセスできません。パスワード再設定メールのリンクからアクセスされた場合には、URL をご確認ください。
       send_instructions: パスワードの再設定について数分以内にメールでご連絡いたします。
       send_paranoid_instructions: メールアドレスが登録済みの場合、パスワード再設定用のメールが数分以内に送信されます。
@@ -92,14 +92,16 @@ ja:
     registrations:
       destroyed: アカウントを削除しました。またのご利用をお待ちしております。
       edit:
-        are_you_sure: 本当によろしいですか？
+        are_you_sure: 本当にアカウントを削除してもよろしいでしょうか？
         cancel_my_account: アカウント削除
         currently_waiting_confirmation_for_email: "%{email} の確認待ち"
-        leave_blank_if_you_don_t_want_to_change_it: 空欄のままなら変更しません
-        title: "%{resource}編集"
+        leave_blank_if_you_don_t_want_to_change_it: パスワードを変更する場合に入力
+        title: "登録情報変更"
         unhappy: 気に入りません
         update: 更新
-        we_need_your_current_password_to_confirm_your_changes: 変更を反映するには現在のパスワードを入力してください
+        we_need_your_current_password_to_confirm_your_changes: 登録情報を変更する場合は現在のパスワードを入力
+        confirm_new_password: 新しいパスワード（確認用）
+        new_password: 新しいパスワード
       new:
         sign_up: アカウント登録
       signed_up: アカウント登録が完了しました。
@@ -120,11 +122,11 @@ ja:
         back: 戻る
         didn_t_receive_confirmation_instructions: アカウント確認のメールを受け取っていませんか？
         didn_t_receive_unlock_instructions: アカウントのロック解除方法のメールを受け取っていませんか？
-        forgot_your_password: パスワードを忘れましたか？
+        forgot_your_password: パスワードをお忘れですか？
         sign_in: ログイン
         sign_in_with_provider: "%{provider}でログイン"
-        sign_up: アカウント登録
-      minimum_password_length: "（%{count}字以上）"
+        sign_up: 無料でアカウント登録
+      minimum_password_length: "（%{count}文字以上）"
     unlocks:
       new:
         resend_unlock_instructions: アカウントのロック解除方法を再送する
