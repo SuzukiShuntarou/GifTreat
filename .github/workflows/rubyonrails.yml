@@ -38,9 +38,9 @@ jobs:
         run: |
           npm install
           bundle install
-# migrationまでコメントアウト
-      # - name: Set up database schema
-      #   run: bin/rails db:schema:load
+
+      - name: Set up database schema
+        run: bin/rails db:schema:load
 
       - name: Precompile assets
         run: |
