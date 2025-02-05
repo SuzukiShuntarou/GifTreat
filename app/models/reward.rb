@@ -3,6 +3,7 @@
 class Reward < ApplicationRecord
   has_many :users, through: :rewardparticipants
   has_many :rewardparticipants, dependent: :destroy
+  has_many :goals, dependent: :destroy
 
   validates :invitation_token, presence: true, uniqueness: true
   with_options presence: true do
