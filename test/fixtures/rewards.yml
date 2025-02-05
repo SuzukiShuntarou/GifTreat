@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  location: MyString
+  completion_date: 2025-02-05
+  invitation_token: MyString
+
+two:
+  description: MyString
+  location: MyString
+  completion_date: 2025-02-05
+  invitation_token: MyString
