@@ -1,13 +1,13 @@
 ja:
   activerecord:
     models:
-      user: ユーザー  #g
+      user: ユーザー #g
 
     attributes:
       user:
-        email: Eメール  #g
-        encrypted_password: 暗号化パスワード  #g
-        name: 名前  #g
-        remember_created_at: ログイン記憶時刻  #g
-        reset_password_sent_at: パスワードリセット送信時刻  #g
-        reset_password_token: パスワードリセット用トークン  #g
+        email: メールアドレス
+        encrypted_password: 暗号化パスワード #g
+        name: ユーザ名
+        remember_created_at: ログイン記憶時刻 #g
+        reset_password_sent_at: パスワードリセット送信時刻 #g
+        reset_password_token: パスワードリセット用トークン #g

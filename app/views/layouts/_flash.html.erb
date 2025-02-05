@@ -1,0 +1,9 @@
+<div>
+  <% flash.each do |flash_type, message| %>
+    <% if flash_type == "notice" %>
+      <p style="color: green"><%= message %>
+    <% elsif flash_type == "alert" %>
+      <p style="color: red"><%= message %>
+    <% end %>
+  <% end %>
+</div>
