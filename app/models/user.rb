@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :rewards, through: :rewardparticipant
   has_many :rewardparticipants, dependent: :destroy
+  has_many :goals, dependent: :destroy
 
   validates :name, presence: true
 end
