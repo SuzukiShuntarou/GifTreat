@@ -1,17 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+alice_goal_in_progress:
+  user: alice
+  reward: alice_reward_in_progress
+  description: 早寝早起きをする
+  progress: 50
 
-one:
-  description: MyString
-  progress: 1
-  likings_count: 1
-  cheerings_count: 1
-  user: one
-  reward: one
-
-two:
-  description: MyString
-  progress: 1
-  likings_count: 1
-  cheerings_count: 1
-  user: two
-  reward: two
+alice_goal_completed:
+  user: alice
+  reward: alice_reward_completed
+  description: 資格試験勉強をする
+  progress: 100

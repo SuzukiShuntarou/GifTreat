@@ -13,5 +13,6 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    Capybara.default_max_wait_time = 5
   end
 end
