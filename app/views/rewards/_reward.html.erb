@@ -1,0 +1,10 @@
+<%= turbo_frame_tag reward do %>
+  <p style="color: green"><%= flash[:updated_reward_notice] %></p>
+  <%= reward.completion_date %>に
+  <%= reward.location %>で
+  <%= reward.description %>する
+<% end %>
+<% if reward.in_progress? %>
+  <%= link_to "編集", edit_reward_path(reward), class: "btn btn-sm btn-outline-primary me-2", data: { turbo_frame: "modal"} %>
+  <%= button_to "削除", reward, method: :delete, class: "btn btn-sm btn-outline-danger", data: { turbo_confirm: "削除しますか？" } %>
+<% end %>
