@@ -2,7 +2,8 @@
 
 class GoalsController < ApplicationController
   def index
-    @goals = Goal.search_rewards_completed_or_in_progress(params[:display], current_user)
+    @selected_display = params[:display]
+    @goals = Goal.search_rewards_completed_or_in_progress(@selected_display, current_user)
   end
 
   def edit; end

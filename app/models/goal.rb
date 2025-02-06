@@ -11,12 +11,12 @@ class Goal < ApplicationRecord
 
   def self.search_rewards_completed_or_in_progress(display, current_user)
     goals = Goal.includes(:reward)
-                .where(user_id: current_user.id)
-                .order('rewards.completiondate ASC, rewards.id ASC')
+                .where(user: current_user)
+                .order('rewards.completion_date ASC, rewards.id ASC')
     if display == 'completed'
-      goals.where(rewards: { completiondate: ...Date.current }).reverse
+      goals.where(rewards: { completion_date: ...Date.current }).reverse
     else
-      goals.where(rewards: { completiondate: Date.current.. })
+      goals.where(rewards: { completion_date: Date.current.. })
     end
   end
 end
