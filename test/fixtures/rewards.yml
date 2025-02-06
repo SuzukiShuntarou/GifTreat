@@ -1,13 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+alice_reward_in_progress:
+  completion_date: <%= Date.current %>
+  location: 叙々苑
+  description: 食事
+  invitation_token: <%= SecureRandom.urlsafe_base64 %>
 
-one:
-  description: MyString
-  location: MyString
-  completion_date: 2025-02-05
-  invitation_token: MyString
-
-two:
-  description: MyString
-  location: MyString
-  completion_date: 2025-02-05
-  invitation_token: MyString
+alice_reward_completed:
+  completion_date: <%= Date.current.yesterday %>
+  location: 草津
+  description: 温泉旅行
+  invitation_token: <%= SecureRandom.urlsafe_base64 %>

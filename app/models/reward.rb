@@ -15,6 +15,6 @@ class Reward < ApplicationRecord
   end
 
   def in_progress?
-    completiondate.after? Date.current.yesterday
+    completion_date.after? Date.current.yesterday
   end
 end
