@@ -1,0 +1,15 @@
+<%= turbo_frame_tag goal do %>
+  <p style="color: green"><%= flash[:updated_goal_notice] %></p>
+  <div>
+    <%= goal.user.name %>
+  </div>
+  <div>
+    <%= goal.description %>
+  </div>
+  <div>
+    <%= goal.progress %>%
+  </div>
+  <% if goal.owned_by?(current_user) && goal.reward.in_progress? %>
+    <%= link_to "編集", edit_goal_path(goal), class: "btn btn-sm btn-outline-primary me-2", data: { turbo_frame: "modal"} %>
+  <% end %>
+<% end %>

@@ -3,3 +3,10 @@
 <div id='reward'>
   <%= render @reward %>
 </div>
+<div>
+  <% @goals.each do |goal| %>
+    <div id="<%= dom_id(goal) %>">
+      <%= render 'goals/goal', goal: goal %>
+    </div>
+  <% end %>
+</div>

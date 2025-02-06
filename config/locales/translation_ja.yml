@@ -15,3 +15,6 @@ ja:
         description: 内容
         location: 場所
         completion_date: 期日
+      goal:
+        description: 目標
+        progress: 進捗率

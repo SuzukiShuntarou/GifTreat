@@ -19,4 +19,8 @@ class Goal < ApplicationRecord
       goals.where(rewards: { completion_date: Date.current.. })
     end
   end
+
+  def owned_by?(current_user)
+    user == current_user
+  end
 end
