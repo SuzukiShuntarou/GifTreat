@@ -5,8 +5,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :rewards, through: :rewardparticipant
-  has_many :rewardparticipants, dependent: :destroy
+
+  has_many :reward_participants, dependent: :destroy
+  has_many :rewards, through: :reward_participants
   has_many :goals, dependent: :destroy
 
   validates :name, presence: true

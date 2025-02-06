@@ -1,0 +1,23 @@
+<h1>Rewards#new</h1>
+<%= form_with(model: @reward) do |form| %>
+  <%= render 'layouts/error_messages', model: @reward %>
+
+  <%= form.label :completion_date, '期日', style: "display: block" %>
+  <%= form.date_field :completion_date %>
+
+  <%= form.label :location, '場所', style: "display: block" %>
+  <%= form.text_area :location %>
+
+  <%= form.label :description, 'ご褒美', style: "display: block" %>
+  <%= form.text_area :description %>
+
+  <%= form.fields_for :goals do |goal_form| %>
+    <%= goal_form.label :description, '目標', style: "display: block" %>
+    <%= goal_form.text_area :description %>
+
+    <%= goal_form.label :progress, '進捗率', style: "display: block" %>
+    <%= goal_form.number_field :progress %>
+  <% end %>
+
+  <%= form.submit %>
+<% end %>

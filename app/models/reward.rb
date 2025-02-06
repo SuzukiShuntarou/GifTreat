@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 class Reward < ApplicationRecord
-  has_many :users, through: :rewardparticipants
-  has_many :rewardparticipants, dependent: :destroy
+  has_many :reward_participants, dependent: :destroy
+  has_many :users, through: :reward_participants
   has_many :goals, dependent: :destroy
+
+  accepts_nested_attributes_for :goals, allow_destroy: true
 
   validates :invitation_token, presence: true, uniqueness: true
   with_options presence: true do
