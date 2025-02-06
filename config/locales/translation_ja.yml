@@ -12,9 +12,12 @@ ja:
         reset_password_sent_at: パスワードリセット送信時刻 #g
         reset_password_token: パスワードリセット用トークン #g
       reward:
-        description: 内容
+        description: ご褒美
         location: 場所
         completion_date: 期日
+      reward/goals:
+        description: 目標
+        progress: 進捗率
       goal:
         description: 目標
         progress: 進捗率
