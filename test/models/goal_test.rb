@@ -31,4 +31,12 @@ class GoalTest < ActiveSupport::TestCase
     assert_not_includes goals_completed, @goal_in_progress
     assert_not_includes goals_completed, @goal_completed
   end
+
+  test 'should be owner' do
+    assert @goal_in_progress.owned_by?(@current_user)
+  end
+
+  test 'should not be owner' do
+    assert_not @goal_in_progress.owned_by?(@other_user)
+  end
 end
