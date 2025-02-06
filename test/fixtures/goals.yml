@@ -1,0 +1,11 @@
+alice_goal_in_progress:
+  user: alice
+  reward: alice_reward_in_progress
+  description: 早寝早起きをする
+  progress: 50
+
+alice_goal_completed:
+  user: alice
+  reward: alice_reward_completed
+  description: 資格試験勉強をする
+  progress: 100
