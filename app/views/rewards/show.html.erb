@@ -1,2 +1,12 @@
 <h1>Rewards#show</h1>
-<p>Find me in app/views/rewards/show.html.erb</p>
+
+<div id='reward'>
+  <%= render @reward %>
+</div>
+<div>
+  <% @goals.each do |goal| %>
+    <div id="<%= dom_id(goal) %>">
+      <%= render 'goals/goal', goal: goal %>
+    </div>
+  <% end %>
+</div>

@@ -21,5 +21,6 @@
     <%= render 'layouts/header' %>
     <%= render 'layouts/flash' %>
     <%= yield %>
+    <%= turbo_frame_tag "modal" %>
   </body>
 </html>
