@@ -13,4 +13,8 @@ class Reward < ApplicationRecord
     validates :location
     validates :completion_date
   end
+
+  def in_progress?
+    completiondate.after? Date.current.yesterday
+  end
 end
