@@ -11,3 +11,7 @@ ja:
         remember_created_at: ログイン記憶時刻 #g
         reset_password_sent_at: パスワードリセット送信時刻 #g
         reset_password_token: パスワードリセット用トークン #g
+      reward:
+        description: 内容
+        location: 場所
+        completion_date: 期日
