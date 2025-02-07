@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :rewards, only: [:show, :new, :create, :edit, :update, :destroy]
-  resources :goals, only: [:index, :edit, :update]
+  resources :goals, only: [:index, :edit, :update] do
+    resources :likings, only: [:create]
+    resources :cheerings, only: [:create]
+  end
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener" 
