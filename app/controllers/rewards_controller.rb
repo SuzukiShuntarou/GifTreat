@@ -13,7 +13,7 @@ class RewardsController < ApplicationController
       groups = RewardParticipant.includes(reward: { goals: :user }).where(user: current_user)
       @reward = groups.find_by!(reward_id:).reward
     end
-    @goals = @reward.goals
+    @goals = @reward.goals.order(:id)
   end
 
   def new
