@@ -10,13 +10,11 @@ class Goal < ApplicationRecord
   validates :progress, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100, only_integer: true }
 
   def self.search_rewards_completed_or_in_progress(display, current_user)
-    goals = Goal.includes(:reward)
-                .where(user: current_user)
-                .order('rewards.completion_date ASC, rewards.id ASC')
+    goals = Goal.includes(:reward).where(user: current_user)
     if display == 'completed'
-      goals.where(rewards: { completion_date: ...Date.current }).reverse
+      goals.where(rewards: { completion_date: ...Date.current }).order(rewards: { completion_date: :desc, id: :asc })
     else
-      goals.where(rewards: { completion_date: Date.current.. })
+      goals.where(rewards: { completion_date: Date.current.. }).order(rewards: { completion_date: :asc, id: :asc })
     end
   end
 
