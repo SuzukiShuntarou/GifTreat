@@ -17,4 +17,16 @@ class Reward < ApplicationRecord
   def in_progress?
     completion_date.after? Date.current.yesterday
   end
+
+  def create_reward_participants(current_user)
+    reward_participants.create!(user: current_user)
+  end
+
+  def create_initial_goal_by_invited(current_user)
+    goals.create!(
+      user: current_user,
+      description: "招待されました！#{current_user.name}さんの目標を登録しましょう！",
+      progress: 0
+    )
+  end
 end
