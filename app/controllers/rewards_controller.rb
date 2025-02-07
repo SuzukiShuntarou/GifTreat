@@ -5,8 +5,14 @@ class RewardsController < ApplicationController
 
   def show
     reward_id = params[:id]
-    groups = RewardParticipant.includes(reward: { goals: :user }).where(user: current_user)
-    @reward = groups.find_by!(reward_id:).reward
+    invitation_token = params[:invitation_token]
+    if invitation_token
+      @reward = Reward.includes(goals: :user).find_by!(id: reward_id, invitation_token:)
+      invite_reward(current_user)
+    else
+      groups = RewardParticipant.includes(reward: { goals: :user }).where(user: current_user)
+      @reward = groups.find_by!(reward_id:).reward
+    end
     @goals = @reward.goals
   end
 
@@ -24,7 +30,7 @@ class RewardsController < ApplicationController
 
     ActiveRecord::Base.transaction do
       @reward.save!
-      @reward.users << current_user
+      @reward.create_reward_participants(current_user)
       redirect_to @reward, notice: 'ご褒美と目標の登録に成功！'
     rescue ActiveRecord::RecordInvalid
       render :new, status: :unprocessable_entity
@@ -56,5 +62,16 @@ class RewardsController < ApplicationController
 
   def set_reward
     @reward = current_user.reward_participants.find_by!(reward_id: params[:id]).reward
+  end
+
+  def invite_reward(current_user)
+    return unless @reward.in_progress? && @reward.users.exclude?(current_user)
+
+    ActiveRecord::Base.transaction do
+      @reward.create_reward_participants(current_user)
+      @reward.create_initial_goal_by_invited(current_user)
+    rescue ActiveRecord::RecordInvalid
+      redirect_to root_path, alert: '無効な招待URLです。'
+    end
   end
 end
