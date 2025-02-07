@@ -1,0 +1,3 @@
+<%= turbo_stream.update "likings_goal_#{@goal.id}" do %>
+  <%= render 'likings/liking', goal: @goal %>
+<% end %>

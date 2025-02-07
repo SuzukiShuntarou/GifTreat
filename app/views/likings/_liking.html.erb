@@ -1,0 +1,8 @@
+<%= turbo_frame_tag "likings_goal_#{goal.id}" do %>
+  <%= button_to goal_likings_path(goal_id: goal.id), class: "btn btn-link" do %>
+    <span style="display: inline-flex;">
+      <%= image_tag("liking-icon.png", onmouseover: "this.title='#{generate_likings_message(goal.likings)}'", size: '20x20') %>
+      <%= goal.likings_count %>
+    </span>
+  <% end %>
+<% end %>

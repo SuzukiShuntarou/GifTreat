@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :reward_participants, dependent: :destroy
   has_many :rewards, through: :reward_participants
   has_many :goals, dependent: :destroy
+  has_many :likings, dependent: :destroy
+  has_many :cheerings, dependent: :destroy
 
   validates :name, presence: true
 end
