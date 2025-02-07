@@ -65,11 +65,12 @@ class RewardsController < ApplicationController
   end
 
   def invite_reward(current_user)
-    return unless @reward.in_progress? && @reward.users.exclude?(current_user)
+    return redirect_to @reward, alert: '招待済のURLです。' unless @reward.in_progress? && @reward.users.exclude?(current_user)
 
     ActiveRecord::Base.transaction do
       @reward.create_reward_participants(current_user)
       @reward.create_initial_goal_by_invited(current_user)
+      redirect_to @reward, notice: 'ご褒美に招待されました！'
     rescue ActiveRecord::RecordInvalid
       redirect_to root_path, alert: '無効な招待URLです。'
     end
