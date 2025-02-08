@@ -1,8 +1,9 @@
 <%= turbo_frame_tag "cheerings_goal_#{goal.id}" do %>
-  <%= button_to goal_cheerings_path(goal_id: goal.id), class: "btn btn-link" do %>
-    <span style="display: inline-flex;">
-      <%= image_tag("cheering-icon.png", onmouseover: "this.title='#{generate_cheerings_message(goal.cheerings)}'", size: '20x20') %>
-      <%= goal.cheerings_count %>
-    </span>
+  <% if goal.cheerings_count < 100 %>
+    <%= button_to goal_cheerings_path(goal_id: goal.id), class: "btn btn-link" do %>
+      <%= render 'cheerings/image', goal: goal %>
+    <% end %>
+  <% else %>
+    <%= render 'cheerings/image', goal: goal %>
   <% end %>
 <% end %>
