@@ -28,7 +28,7 @@ class Goal < ApplicationRecord
   private
 
   def validate_reward_related_goals_limit
-    errors.add(:reward) if reward.goals.count >= MAX_REWARD_RELATED_GOALS
+    errors.add(:goal, 'は1つのご褒美に4つまでしか関連付けできません') if reward.goals.count >= MAX_REWARD_RELATED_GOALS
   end
 
   def validate_in_progress
