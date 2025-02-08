@@ -31,15 +31,16 @@ class Reward < ApplicationRecord
     all_valid
   end
 
-  def bulk_create_by_invited(current_user)
+  def self.bulk_create_by_invited(reward, current_user)
     all_valid = true
     Reward.transaction do
-      reward_participant = reward_participants.build(user: current_user)
-      initial_goal = goals.build(
+      reward_participant = reward.reward_participants.build(user: current_user)
+      initial_goal = reward.goals.build(
         user: current_user,
         description: "招待されました！#{current_user.name}さんの目標を登録しましょう！",
         progress: 0
       )
+
       all_valid &= reward_participant.save && initial_goal.save
       raise ActiveRecord::Rollback unless all_valid
     end

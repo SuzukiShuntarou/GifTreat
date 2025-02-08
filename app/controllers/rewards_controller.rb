@@ -62,7 +62,7 @@ class RewardsController < ApplicationController
   def invite_reward(current_user)
     return redirect_to @reward, alert: '招待済のURLです。' if @reward.users.include?(current_user)
 
-    if @reward.bulk_create_by_invited(current_user)
+    if Reward.bulk_create_by_invited(@reward, current_user)
       redirect_to @reward, notice: 'ご褒美に招待されました！'
     else
       redirect_to root_path, alert: '無効な招待URLです。'
