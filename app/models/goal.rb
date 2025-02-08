@@ -8,6 +8,7 @@ class Goal < ApplicationRecord
 
   validates :description, presence: true
   validates :progress, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100, only_integer: true }
+  validate :validate_reward_related_goals_limit
 
   def self.search_rewards_completed_or_in_progress(display, current_user)
     goals = Goal.includes(:reward).where(user: current_user)
@@ -20,5 +21,9 @@ class Goal < ApplicationRecord
 
   def owned_by?(current_user)
     user == current_user
+  end
+
+  def validate_reward_related_goals_limit
+    errors.add(:reward) if reward.goals.count >= 4
   end
 end
