@@ -13,6 +13,7 @@ class Reward < ApplicationRecord
     validates :location
     validates :completion_date
   end
+  validate :validate_in_progress
 
   def in_progress?
     completion_date.after? Date.current.yesterday
@@ -45,5 +46,11 @@ class Reward < ApplicationRecord
       raise ActiveRecord::Rollback unless all_valid
     end
     all_valid
+  end
+
+  private
+
+  def validate_in_progress
+    errors.add(:reward) unless in_progress?
   end
 end
