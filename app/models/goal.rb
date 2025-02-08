@@ -32,6 +32,9 @@ class Goal < ApplicationRecord
   end
 
   def validate_in_progress
-    errors.add(:reward) unless reward.in_progress?
+    return if reward.in_progress?
+
+    errors.add(:description, 'は終了後の変更はできません')
+    errors.add(:progress, 'は終了後の変更はできません')
   end
 end
