@@ -25,7 +25,7 @@ class RewardsController < ApplicationController
 
   def create
     @reward = Reward.new(reward_and_goal_params)
-    if Reward.bulk_create(@reward, current_user)
+    if Reward.bulk_create_new(@reward, current_user)
       redirect_to @reward, notice: 'ご褒美と目標の登録に成功！'
     else
       render :new, status: :unprocessable_entity

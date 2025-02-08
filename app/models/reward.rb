@@ -18,7 +18,7 @@ class Reward < ApplicationRecord
     completion_date.after? Date.current.yesterday
   end
 
-  def self.bulk_create_(reward, current_user)
+  def self.bulk_create_new(reward, current_user)
     all_valid = true
     Reward.transaction do
       reward.invitation_token = SecureRandom.urlsafe_base64
