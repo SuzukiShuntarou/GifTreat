@@ -8,7 +8,7 @@ class RewardsController < ApplicationController
     invitation_token = params[:invitation_token]
     if invitation_token
       @reward = Reward.find_by!(id: reward_id, invitation_token:)
-      invite_reward(@reward, current_user)
+      invite_to_reward(@reward, current_user)
     else
       groups = RewardParticipant.includes(:reward).where(user: current_user)
       @reward = groups.find_by!(reward_id:).reward
@@ -59,7 +59,7 @@ class RewardsController < ApplicationController
     @reward = current_user.reward_participants.find_by!(reward_id: params[:id]).reward
   end
 
-  def invite_reward(reward, current_user)
+  def invite_to_reward(reward, current_user)
     return redirect_to reward, alert: '招待済のURLです。' if reward.users.include?(current_user)
 
     if Reward.bulk_create_by_invited(reward, current_user)
