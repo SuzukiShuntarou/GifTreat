@@ -8,7 +8,7 @@ class RewardsController < ApplicationController
     invitation_token = params[:invitation_token]
     if invitation_token
       @reward = Reward.find_by!(id: reward_id, invitation_token:)
-      invite_reward(current_user)
+      invite_to_reward(@reward, current_user)
     else
       groups = RewardParticipant.includes(:reward).where(user: current_user)
       @reward = groups.find_by!(reward_id:).reward
@@ -25,14 +25,9 @@ class RewardsController < ApplicationController
 
   def create
     @reward = Reward.new(reward_and_goal_params)
-    @reward.invitation_token = SecureRandom.urlsafe_base64
-    @reward.goals.each { |goal| goal.user = current_user }
-
-    ActiveRecord::Base.transaction do
-      @reward.save!
-      @reward.create_reward_participants(current_user)
+    if Reward.bulk_create(@reward, current_user)
       redirect_to @reward, notice: 'ご褒美と目標の登録に成功！'
-    rescue ActiveRecord::RecordInvalid
+    else
       render :new, status: :unprocessable_entity
     end
   end
@@ -64,11 +59,11 @@ class RewardsController < ApplicationController
     @reward = current_user.reward_participants.find_by!(reward_id: params[:id]).reward
   end
 
-  def invite_reward(current_user)
-    return redirect_to @reward, alert: '招待済のURLです。' if @reward.users.include?(current_user)
+  def invite_to_reward(reward, current_user)
+    return redirect_to reward, alert: '招待済のURLです。' if reward.users.include?(current_user)
 
-    if @reward.bulk_create_by_invited(current_user)
-      redirect_to @reward, notice: 'ご褒美に招待されました！'
+    if Reward.bulk_create_by_invited(reward, current_user)
+      redirect_to reward, notice: 'ご褒美に招待されました！'
     else
       redirect_to root_path, alert: '無効な招待URLです。'
     end

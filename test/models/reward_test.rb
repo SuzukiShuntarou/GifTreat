@@ -19,26 +19,31 @@ class RewardTest < ActiveSupport::TestCase
   end
 
   test 'should be created associated with User and Reward, RewardParticipant' do
-    reward = Reward.create(
-      completion_date: Date.current.to_s,
+    reward = Reward.new(
+      completion_date: Date.current,
       location: '北海道',
       description: '旅行',
-      invitation_token: SecureRandom.urlsafe_base64
+      goals_attributes: [
+        {
+          description: '早起きする',
+          progress: 0
+        }
+      ]
     )
     assert_not RewardParticipant.find_by(user: @current_user, reward: reward).present?
-    reward.create_reward_participants(@current_user)
+    Reward.bulk_create(reward, @current_user)
     assert_predicate RewardParticipant.find_by(user: @current_user, reward: reward), :present?
   end
 
   test 'should be created associated with other_user and reward when invited, RewardParticipant' do
     assert_not RewardParticipant.find_by(user: @other_user, reward: @reward_in_progress).present?
-    @reward_in_progress.create_reward_participants(@other_user)
+    Reward.bulk_create_by_invited(@reward_in_progress, @other_user)
     assert_predicate RewardParticipant.find_by(user: @other_user, reward: @reward_in_progress), :present?
   end
 
   test 'should have initial Goal created associated with other_user and reward when invited' do
     assert_not Goal.find_by(user: @other_user, reward: @reward_in_progress).present?
-    @reward_in_progress.bulk_create_by_invited(@other_user)
+    Reward.bulk_create_by_invited(@reward_in_progress, @other_user)
     assert_predicate(Goal.find_by(user: @other_user, reward: @reward_in_progress), :present?)
   end
 end
