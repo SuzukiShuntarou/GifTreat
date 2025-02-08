@@ -20,7 +20,7 @@ class Reward < ApplicationRecord
 
   def bulk_create_by_invited(current_user)
     all_valid = true
-    Reward.transaction(joinable: false, requires_new: true) do
+    Reward.transaction do
       reward_participant = reward_participants.build(user: current_user)
       initial_goal = goals.build(
         user: current_user,
