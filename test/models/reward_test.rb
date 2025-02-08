@@ -38,7 +38,7 @@ class RewardTest < ActiveSupport::TestCase
 
   test 'should have initial Goal created associated with other_user and reward when invited' do
     assert_not Goal.find_by(user: @other_user, reward: @reward_in_progress).present?
-    @reward_in_progress.create_initial_goal_by_invited(@other_user)
+    @reward_in_progress.bulk_create_by_invited(@other_user)
     assert_predicate(Goal.find_by(user: @other_user, reward: @reward_in_progress), :present?)
   end
 end
