@@ -18,6 +18,19 @@ class Reward < ApplicationRecord
     completion_date.after? Date.current.yesterday
   end
 
+  def self.bulk_create_(reward, current_user)
+    all_valid = true
+    Reward.transaction do
+      reward.invitation_token = SecureRandom.urlsafe_base64
+      reward.goals.first.user = current_user
+      reward_participant = reward.reward_participants.build(user: current_user)
+
+      all_valid &= reward.save && reward_participant.save
+      raise ActiveRecord::Rollback unless all_valid
+    end
+    all_valid
+  end
+
   def bulk_create_by_invited(current_user)
     all_valid = true
     Reward.transaction do
@@ -31,9 +44,5 @@ class Reward < ApplicationRecord
       raise ActiveRecord::Rollback unless all_valid
     end
     all_valid
-  end
-
-  def create_reward_participants(current_user)
-    reward_participants.create!(user: current_user)
   end
 end

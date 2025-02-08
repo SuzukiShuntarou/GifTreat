@@ -25,14 +25,9 @@ class RewardsController < ApplicationController
 
   def create
     @reward = Reward.new(reward_and_goal_params)
-    @reward.invitation_token = SecureRandom.urlsafe_base64
-    @reward.goals.each { |goal| goal.user = current_user }
-
-    ActiveRecord::Base.transaction do
-      @reward.save!
-      @reward.create_reward_participants(current_user)
+    if Reward.bulk_create(@reward, current_user)
       redirect_to @reward, notice: 'ご褒美と目標の登録に成功！'
-    rescue ActiveRecord::RecordInvalid
+    else
       render :new, status: :unprocessable_entity
     end
   end
