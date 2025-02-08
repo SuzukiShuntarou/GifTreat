@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Goal < ApplicationRecord
+  MAX_REWARD_RELATED_GOALS = 4
   belongs_to :user
   belongs_to :reward
   has_many :likings, dependent: :destroy
@@ -24,6 +25,6 @@ class Goal < ApplicationRecord
   end
 
   def validate_reward_related_goals_limit
-    errors.add(:reward) if reward.goals.count >= 4
+    errors.add(:reward) if reward.goals.count >= MAX_REWARD_RELATED_GOALS
   end
 end
