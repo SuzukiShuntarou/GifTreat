@@ -11,7 +11,7 @@ class GoalsController < ApplicationController
   def edit; end
 
   def update
-    if @goal.reward.in_progress? && @goal.update(goal_params)
+    if @goal.update(goal_params)
       flash.now[:updated_goal_notice] = '目標の編集に成功！'
     else
       render :edit, status: :unprocessable_entity
