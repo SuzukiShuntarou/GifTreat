@@ -25,6 +25,8 @@ class Goal < ApplicationRecord
     user == current_user
   end
 
+  private
+
   def validate_reward_related_goals_limit
     errors.add(:reward) if reward.goals.count >= MAX_REWARD_RELATED_GOALS
   end
