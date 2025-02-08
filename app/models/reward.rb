@@ -14,6 +14,7 @@ class Reward < ApplicationRecord
     validates :completion_date
   end
   validate :validate_in_progress
+  before_destroy { throw :abort unless in_progress? }
 
   def in_progress?
     completion_date&.after? Date.current.yesterday
