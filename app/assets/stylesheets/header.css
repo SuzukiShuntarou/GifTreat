@@ -1,0 +1,13 @@
+.nav-container {
+  display: flex;
+  align-items: center;
+}
+
+.nav-item {
+  margin: 5px;
+}
+
+.nav-logo {
+  width: 25%;
+  height: auto;
+}
