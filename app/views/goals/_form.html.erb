@@ -1,5 +1,5 @@
 <%= turbo_frame_tag goal do %>
-  <%= bootstrap_form_with(model: goal, data: { action: "turbo:submit-end->modal#close" }) do |form| %>
+  <%= bootstrap_form_with(model: goal, label_errors: true, data: { action: "turbo:submit-end->modal#close" }) do |form| %>
     <%= form.text_area :description %>
     <%= form.number_field :progress %>
     <%= form.primary "保存" %>

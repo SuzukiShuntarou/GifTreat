@@ -13,9 +13,11 @@ class Reward < ApplicationRecord
     validates :location
     validates :completion_date
   end
+  validate :validate_in_progress
+  before_destroy { throw :abort unless in_progress? }
 
   def in_progress?
-    completion_date.after? Date.current.yesterday
+    completion_date&.after? Date.current.yesterday
   end
 
   def self.bulk_create(reward, current_user)
@@ -45,5 +47,11 @@ class Reward < ApplicationRecord
       raise ActiveRecord::Rollback unless all_valid
     end
     all_valid
+  end
+
+  private
+
+  def validate_in_progress
+    errors.add(:completion_date, 'は今日以降の日付を選択してください') unless in_progress?
   end
 end
