@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :goals, dependent: :destroy
   has_many :likings, dependent: :destroy
   has_many :cheerings, dependent: :destroy
-
+  has_one_attached :avatar do |attachable|
+    attachable.variant :profile_icon, resize_to_limit: [100, 100]
+  end
   validates :name, presence: true
 end
