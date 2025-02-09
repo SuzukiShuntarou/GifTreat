@@ -11,6 +11,7 @@ ja:
         remember_created_at: ログイン記憶時刻 #g
         reset_password_sent_at: パスワードリセット送信時刻 #g
         reset_password_token: パスワードリセット用トークン #g
+        avatar: アイコン
       reward:
         description: ご褒美
         location: 場所
