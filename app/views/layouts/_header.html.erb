@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg">
+  <nav class="d-flex flex-row  justify-content-around navbar navbar-expand-lg border-bottom border-light">
     <% if user_signed_in? %>
       <div class="nav-item">
         <%= link_to goals_path, class: 'nav-link' do %>
@@ -7,7 +7,7 @@
         <% end %>
       </div>
       <div class="nav-item">
-        <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-outline-secondary' %>
+        <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-outline-secondary btn-lg' %>
       </div>
       <div class="nav-item">
         <%= link_to edit_user_registration_path, class: 'nav-link' do %>
