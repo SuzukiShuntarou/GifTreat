@@ -2,7 +2,7 @@
   <p style="color: green"><%= flash[:updated_goal_notice] %></p>
   <div>
     <% if goal.user.avatar.attached? %>
-      <%= image_tag goal.user.avatar.variant(:profile_icon) %>
+      <%= image_tag goal.user.avatar.variant(:profile_icon), class: "rounded-circle bg-secondary bg-gradient" %>
     <% end %>
     <%= goal.user.name %>
   </div>
