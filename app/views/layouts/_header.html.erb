@@ -1,11 +1,14 @@
 <header>
   <% if user_signed_in? %>
+    <%= link_to goals_path do %>
+      <%= image_tag('logo-header.png') %>
+    <% end %>
     <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
     <%= link_to edit_user_registration_path do %>
       <% if current_user.avatar.attached? %>
-        <%= image_tag current_user.avatar.variant(:profile_icon), class: "rounded-circle bg-info-subtle" %>
+        <%= image_tag current_user.avatar.variant(:profile_icon), class: 'rounded-circle bg-info-subtle' %>
       <% else %>
-        <%= image_tag("default-avatar.png", class: "rounded-circle bg-info-subtle", size: '75x75') %>
+        <%= image_tag('default-avatar.png', class: 'rounded-circle bg-info-subtle', size: '75x75') %>
       <% end %>
     <% end %>
   <% end %>
