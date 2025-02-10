@@ -1,8 +1,8 @@
 <header>
   <% if user_signed_in? %>
     <nav class="d-flex flex-row justify-content-around navbar navbar-expand-lg border-bottom border-light" style="height: 10vh;">
-      <%= link_to goals_path, class: 'nav-link' do %>
-        <%= image_tag('logo-header.png', class: 'nav-logo') %>
+      <%= link_to goals_path, class: 'nav-link h-100' do %>
+        <%= image_tag('logo-header.png', class: 'h-100') %>
       <% end %>
       <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-outline-secondary btn-lg' %>
       <%= link_to edit_user_registration_path, class: 'nav-link' do %>
