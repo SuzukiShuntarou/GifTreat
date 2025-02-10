@@ -12,7 +12,7 @@
     <% end %>
     <% if invited?(@reward) %>
       <div>
-        <%= button_tag '招待用URLをコピー', 
+        <%= button_tag '招待用URL：最大4人', 
             data: { controller: "clipboard",
                     action: "click->clipboard#copy",
                     clipboard_content_value: reward_url(@reward.id, invitation_token: @reward.invitation_token) },
