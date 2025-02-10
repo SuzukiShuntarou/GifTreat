@@ -10,5 +10,14 @@
       <div><%= link_to "編集", edit_reward_path(reward), class: "btn btn-sm btn-outline-primary btn-lg", data: { turbo_frame: "modal"} %></div>
       <div><%= button_to "削除", reward, method: :delete, class: "btn btn-sm btn-outline-danger btn-lg", data: { turbo_confirm: "削除しますか？" } %></div>
     <% end %>
+    <% if invited?(@reward) %>
+      <div>
+        <%= button_tag '招待用URLをコピー', 
+            data: { controller: "clipboard",
+                    action: "click->clipboard#copy",
+                    clipboard_content_value: reward_url(@reward.id, invitation_token: @reward.invitation_token) },
+            class: 'btn btn-outline-secondary btn-sm' %>
+      </div>
+    <% end %>
   </div>
 <% end %>
