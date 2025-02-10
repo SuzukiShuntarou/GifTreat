@@ -7,20 +7,20 @@
   </div>
 
   <% if @goals.empty? %>
-    <div class="p-2">
+    <div class="m-2 fs-1">
       <%= render 'no_goals_message', selected_display: @selected_display %>
     </div>
   <% else %>
-    <div class="border rounded w-75 m-2 fs-5">
+    <div class="border rounded w-75 m-2">
       <table class="table table-striped table-borderless" style="table-layout: fixed;">
-        <thead>
+        <thead class="fs-3">
           <tr>
             <th scope="col">期日</th>
             <th scope="col">目標</th>
             <th scope="col">進捗率</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="fs-4">
           <% @goals.each do |goal| %>
             <tr>
               <td><%= goal.reward.completion_date %></td>
@@ -38,7 +38,7 @@
   <div class="m-2">
     <%= paginate @goals,theme: 'bootstrap-5' %>
   </div>
-  <div>
+  <div class="m-2">
     <%= link_to 'ご褒美を追加する', new_reward_path, class: 'btn btn-outline-primary btn-lg' %>
   </div>
 </div>
