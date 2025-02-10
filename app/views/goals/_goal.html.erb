@@ -1,20 +1,24 @@
 <%= turbo_frame_tag goal do %>
-  <p style="color: green"><%= flash[:updated_goal_notice] %></p>
-  <div>
-    <% if goal.user.avatar.attached? %>
-      <%= image_tag goal.user.avatar.variant(:profile_icon), class: "rounded-circle bg-info-subtle" %>
-    <% else %>
-      <%= image_tag("default-avatar.png", class: "rounded-circle bg-info-subtle", size: '75x75') %>
-    <% end %>
-    <%= goal.user.name %>
+  <div class="d-flex flex-column gap-2 h-100">
+    <div style="color: green"><%= flash[:updated_goal_notice] %></div>
+    <div class="fs-4">
+      <% if goal.user.avatar.attached? %>
+        <%= image_tag goal.user.avatar.variant(:profile_icon), class: "rounded-circle bg-info-subtle" %>
+      <% else %>
+        <%= image_tag("default-avatar.png", class: "rounded-circle bg-info-subtle", size: '75x75') %>
+      <% end %>
+      <%= goal.user.name %>
+    </div>
+    <div class="flex-grow-1 bg-body-secondary fs-2">
+      <%= goal.description %>
+    </div>
+    <div class="d-flex align-items-center fs-4 gap-2">
+      進捗率：<div class="flex-grow-1 text-center bg-body-secondary"><%= goal.progress %></div>%
+      <div>
+        <% if goal.owned_by?(current_user) && goal.reward.in_progress? %>
+          <%= link_to "編集", edit_goal_path(goal), class: "btn btn-sm btn-outline-primary me-2", data: { turbo_frame: "modal"} %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div>
-    <%= goal.description %>
-  </div>
-  <div>
-    <%= goal.progress %>%
-  </div>
-  <% if goal.owned_by?(current_user) && goal.reward.in_progress? %>
-    <%= link_to "編集", edit_goal_path(goal), class: "btn btn-sm btn-outline-primary me-2", data: { turbo_frame: "modal"} %>
-  <% end %>
 <% end %>
