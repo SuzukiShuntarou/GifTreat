@@ -1,17 +1,23 @@
-<header>
+<header class="border-bottom border-light">
   <% if user_signed_in? %>
-    <nav class="d-flex flex-row justify-content-around navbar navbar-expand-lg border-bottom border-light" style="height: 10vh;">
-      <%= link_to goals_path, class: 'nav-link h-100' do %>
-        <%= image_tag('logo-header.png', class: 'h-100') %>
-      <% end %>
-      <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-outline-secondary btn-lg' %>
-      <%= link_to edit_user_registration_path, class: 'nav-link' do %>
-        <% if current_user.avatar.attached? %>
-          <%= image_tag current_user.avatar.variant(:profile_icon), class: 'rounded-circle bg-info-subtle' %>
-        <% else %>
-          <%= image_tag('default-avatar.png', class: 'rounded-circle bg-info-subtle', size: '75x75') %>
+    <nav class="d-flex justify-content-around navbar mx-5 gap-5" style="height: 10vh;">
+      <div class="flex-grow-1 h-100">
+        <%= link_to goals_path do %>
+          <%= image_tag('logo-header.png', class: 'h-100') %>
         <% end %>
-      <% end %>
+      </div>
+      <div>
+        <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-outline-secondary btn-lg' %>
+      </div>
+      <div class="h-100">
+        <%= link_to edit_user_registration_path do %>
+          <% if current_user.avatar.attached? %>
+            <%= image_tag current_user.avatar.variant(:profile_icon), class: 'rounded-circle bg-info-subtle h-100' %>
+          <% else %>
+            <%= image_tag('default-avatar.png', class: 'rounded-circle bg-info-subtle h-100') %>
+          <% end %>
+        <% end %>
+      </div>
     </nav>
   <% end %>
 </header>
