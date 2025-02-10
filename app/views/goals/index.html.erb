@@ -24,8 +24,8 @@
           <% @goals.each do |goal| %>
             <tr>
               <td><%= goal.reward.completion_date %></td>
-              <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis;">
-                <%= link_to goal.description, reward_path(goal.reward.id), class: 'text-truncate' %>
+              <td style="overflow: hidden; text-overflow: ellipsis;">
+                <%= link_to goal.description, reward_path(goal.reward.id), class: 'text-truncate', style: 'display: block;' %>
               </td>
               <td><%= goal.progress %>%</td>
             </tr>
