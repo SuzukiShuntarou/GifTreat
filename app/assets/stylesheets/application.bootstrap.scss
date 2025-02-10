@@ -1,8 +1,6 @@
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons";
 
-@import "header";
-
 label.required:after {
   content: " *";
   color: red;

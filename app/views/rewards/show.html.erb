@@ -1,27 +1,16 @@
 <% content_for(:title, 'ご褒美・目標詳細') %>
+
 <div class="d-flex flex-column justify-content-center align-items-center" style="height: 80vh;">
   <div class="border rounded m-3 w-75 h-25">
-    <div id='reward'>
+    <div id='reward' class="h-100" style="overflow-x: auto; white-space: nowrap;">
       <%= render @reward %>
     </div>
   </div>
   <div class="d-flex flex-column border rounded w-75 h-75">
-    <div class="d-flex align-items-center fs-5 mt-2 ms-3 gap-3">
-      <% if invited?(@reward) %>
-        <div>
-          <%= button_tag '招待用URLをコピー', 
-              data: { controller: "clipboard",
-                      action: "click->clipboard#copy",
-                      clipboard_content_value: reward_url(@reward.id, invitation_token: @reward.invitation_token) },
-              class: 'btn btn-outline-primary btn-sm' %>
-        </div>
-        <div>最大4人まで招待可能です。</div>
-      <% end %>
-    </div>
-    <div class="d-flex flex-grow-1 justify-content-start mx-3 gap-3">
+    <div class="row mx-1 gap-1 w-100 h-100">
       <% @goals.each do |goal| %>
-        <div class="d-flex flex-column col">
-          <div id="<%= dom_id(goal) %>" class="flex-grow-1">
+        <div class="col d-flex flex-column w-25 h-100">
+          <div id="<%= dom_id(goal) %>" class="flex-grow-1 h-75">
             <%= render 'goals/goal', goal: goal %>
           </div>
           <div class="d-flex justify-content-end align-items-center">
