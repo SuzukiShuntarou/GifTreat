@@ -9,11 +9,11 @@
       <% end %>
       <%= goal.user.name %>
     </div>
-    <div class="flex-grow-1 bg-body-secondary fs-2">
+    <div class="flex-grow-1 bg-body-secondary rounded fs-2">
       <%= goal.description %>
     </div>
     <div class="d-flex align-items-center fs-4 gap-2">
-      進捗率：<div class="flex-grow-1 text-center bg-body-secondary"><%= goal.progress %></div>%
+      進捗率：<div class="flex-grow-1 text-center bg-body-secondary rounded"><%= goal.progress %></div>%
       <div>
         <% if goal.owned_by?(current_user) && goal.reward.in_progress? %>
           <%= link_to "編集", edit_goal_path(goal), class: "btn btn-sm btn-outline-primary me-2", data: { turbo_frame: "modal"} %>
