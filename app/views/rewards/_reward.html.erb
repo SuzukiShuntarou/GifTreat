@@ -1,16 +1,14 @@
 <%= turbo_frame_tag reward do %>
   <p style="color: green"><%= flash[:updated_reward_notice] %></p>
-  <div class="m-1">
-    <div class="d-flex">
-      <%= reward.completion_date %>に
-      <%= reward.location %>で
-    </div>
-    <div class="d-flex">
-      <%= reward.description %>する
-      <% if reward.in_progress? %>
-        <%= link_to "編集", edit_reward_path(reward), class: "btn btn-sm btn-outline-primary btn-lg", data: { turbo_frame: "modal"} %>
-        <%= button_to "削除", reward, method: :delete, class: "btn btn-sm btn-outline-danger btn-lg", data: { turbo_confirm: "削除しますか？" } %>
-      <% end %>
-    </div>
+  <div class="d-flex text-center fs-1 m-3 gap-3">
+    <div class="flex-grow-1 bg-body-tertiary"><%= reward.completion_date %></div>に
+    <div class="flex-grow-1 bg-body-tertiary"><%= reward.location %></div>で
+  </div>
+  <div class="d-flex align-items-center fs-1 m-3 gap-3">
+    <div class="flex-grow-1 text-center bg-body-tertiary"><%= reward.description %></div>する
+    <% if reward.in_progress? %>
+      <div><%= link_to "編集", edit_reward_path(reward), class: "btn btn-sm btn-outline-primary btn-lg", data: { turbo_frame: "modal"} %></div>
+      <div><%= button_to "削除", reward, method: :delete, class: "btn btn-sm btn-outline-danger btn-lg", data: { turbo_confirm: "削除しますか？" } %></div>
+    <% end %>
   </div>
 <% end %>
