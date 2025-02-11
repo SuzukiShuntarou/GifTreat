@@ -1,32 +1,32 @@
-<%= turbo_frame_tag reward do %>
+<%= turbo_frame_tag reward, class: 'd-flex text-center fs-1 m-3 gap-2' do %>
   <p style="color: green"><%= flash[:updated_reward_notice] %></p>
-  <div class="d-flex text-center fs-1 m-3 gap-3">
-    <div class="flex-grow-1 bg-body-secondary rounded">
-      <%= reward.completion_date %>
-    </div>
-    <span>に</span>
-    <div class="flex-grow-1 bg-body-secondary rounded">
-      <%= reward.location %>
-    </div>
-    <span>で</span>
+  <div class="flex-grow-1 bg-body-secondary rounded">
+    <%= reward.completion_date %>
   </div>
-  <div class="d-flex align-items-center fs-1 m-3 gap-3">
-    <div class="flex-grow-1 text-center bg-body-secondary rounded">
-      <%= reward.description %>
-    </div>
-    <span>する</span>
+  <div>に</div>
+  <div class="flex-grow-1 bg-body-secondary rounded">
+    <%= reward.location %>
+  </div>
+  <div>で</div>
+<% end %>
+
+<div class="d-flex text-center fs-1 m-3 gap-2">
+  <%= turbo_frame_tag reward, class: 'flex-grow-1 text-center bg-body-secondary rounded' do %>
+    <%= reward.description %>
+  <% end %>
+  <div>する</div>
+  <div class="d-flex align-items-center gap-2 ">
     <% if reward.in_progress? %>
-      <div><%= link_to "編集", edit_reward_path(reward), class: "btn btn-sm btn-outline-primary btn-lg", data: { turbo_frame: "modal"} %></div>
-      <div><%= button_to "削除", reward, method: :delete, class: "btn btn-sm btn-outline-danger btn-lg", data: { turbo_confirm: "削除しますか？" } %></div>
+      <%= link_to "編集", edit_reward_path(reward), class: 'btn btn-sm btn-outline-primary', data: { turbo_frame: "modal"} %>
+      <%= link_to "削除", reward, class: 'btn btn-sm btn-outline-danger', data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
     <% end %>
     <% if invited?(@reward) %>
-      <div>
-        <%= button_tag '招待用URL：最大4人', 
-          data: { controller: "clipboard",
-                  action: "click->clipboard#copy",
-                  clipboard_content_value: reward_url(@reward.id, invitation_token: @reward.invitation_token) },
-          class: 'btn btn-outline-secondary btn-sm' %>
-      </div>
+      <%= button_tag '招待用URL：最大4人', 
+        data: { controller: "clipboard",
+                action: "click->clipboard#copy",
+                clipboard_content_value: reward_url(@reward.id, invitation_token: @reward.invitation_token) },
+        class: 'btn btn-outline-secondary btn-sm'
+      %>
     <% end %>
   </div>
-<% end %>
+</div>
