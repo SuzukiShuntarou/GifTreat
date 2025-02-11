@@ -1,7 +1,7 @@
 <% flash.each do |flash_type, message| %>
   <% if flash_type == "notice" %>
     <div class="toast-container top-0 end-0 p-3" data-controller="toast">
-      <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast" data-bs-delay="3000" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
           <%= image_tag('favicon.png', class: 'me-2', size: '20x20') %>
           <strong class="me-auto">GifTreat</strong>
