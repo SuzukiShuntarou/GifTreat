@@ -1,5 +1,6 @@
 <%= turbo_frame_tag reward, class: 'd-flex text-center fs-1 m-3 gap-2' do %>
-  <p style="color: green"><%= flash[:updated_reward_notice] %></p>
+  <%= render "layouts/flash" %>
+
   <div class="flex-grow-1 bg-body-secondary rounded">
     <%= reward.completion_date %>
   </div>
