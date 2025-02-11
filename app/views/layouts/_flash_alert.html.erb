@@ -1,0 +1,5 @@
+<% flash.each do |flash_type, message| %>
+  <% if flash_type == "alert" %>
+    <p style="color: red"><%= message %>
+  <% end %>
+<% end %>

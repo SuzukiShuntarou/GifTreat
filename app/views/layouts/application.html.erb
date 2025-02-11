@@ -19,7 +19,8 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <%= render 'layouts/flash' %>
+    <%= render 'layouts/flash_notice' %>
+    <%= render 'layouts/flash_alert' %>
     <%= yield %>
     <%= turbo_frame_tag "modal" %>
   </body>
