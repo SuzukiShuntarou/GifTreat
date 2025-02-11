@@ -1,25 +1,57 @@
 <% content_for(:title, 'ご褒美・目標新規登録') %>
 
-<h1>Rewards#new</h1>
-<%= form_with(model: @reward) do |form| %>
-  <%= render 'layouts/error_messages', model: @reward %>
+<div class="d-flex flex-column justify-content-center align-items-center fw-bold m-2" style="height: 80vh;">
+  <%= bootstrap_form_with(model: @reward, label_errors: true, class: 'w-75 h-100') do |form| %>
 
-  <%= form.label :completion_date, '期日', style: "display: block" %>
-  <%= form.date_field :completion_date %>
+    <div class="d-flex flex-column border rounded m-3 p-3 w-100 h-50">
+      <div class="d-flex h-50">
+        <div class="d-flex align-items-center ms-3">
+          <%= form.date_field :completion_date, class: 'form-control text-center fs-3' %>
+          <span class="ms-3 fs-3">に</span>
+        </div>
+        <div class="d-flex flex-grow-1 align-items-center">
+          <div class="flex-grow-1 mx-3">
+            <%= form.text_area :location,
+                class: 'form-control form-control-lg text-center fs-3',
+                style: 'resize: none;',
+                placeholder: 'ご褒美をどこ'
+            %>
+          </div>
+          <span class="me-3 fs-3">で</span>
+        </div>
+      </div>
+      <div class="d-flex flex-grow-1 align-items-center h-50">
+        <div class="flex-grow-1 mx-3">
+          <%= form.text_area :description,
+              class: 'form-control form-control-lg text-center fs-3',
+              style: 'resize: none;',
+              placeholder: '自分にあげたいご褒美を登録'
+          %>
+        </div>
+        <span class="me-3 fs-3">する</span>
+      </div>
+    </div>
 
-  <%= form.label :location, '場所', style: "display: block" %>
-  <%= form.text_area :location %>
+    <div class="d-flex flex-column border rounded gap-2 m-3 p-3 w-100">
+      <div class="d-flex flex-column flex-grow-1">
+        <%= form.fields_for :goals do |goal_form| %>
+          <div class="flex-grow-1 mx-3">
+            <%= goal_form.text_area :description,
+                  class: 'form-control form-control-lg text-center fs-3',
+                  style: 'resize: none;',
+                  placeholder: '自分にご褒美をあげたい日までに達成したい目標を書いてください。どんな些細なことでも構いません！'
+            %>
+          </div>
+          <div class="form-group col-md-4 mx-3">
+            <%= goal_form.number_field :progress, class: 'text-center fs-4' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
-  <%= form.label :description, 'ご褒美', style: "display: block" %>
-  <%= form.text_area :description %>
+    <div class="d-flex justify-content-center m-3">
+      <%= form.submit "ご褒美と目標を登録する", class: "btn btn-outline-primary btn-lg" %>
+    </div>
 
-  <%= form.fields_for :goals do |goal_form| %>
-    <%= goal_form.label :description, '目標', style: "display: block" %>
-    <%= goal_form.text_area :description %>
-
-    <%= goal_form.label :progress, '進捗率', style: "display: block" %>
-    <%= goal_form.number_field :progress %>
   <% end %>
-
-  <%= form.submit %>
-<% end %>
+</div>

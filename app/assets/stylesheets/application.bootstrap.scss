@@ -5,3 +5,7 @@ label.required:after {
   content: " *";
   color: red;
 }
+
+.field_with_errors {
+  display: contents;
+}
