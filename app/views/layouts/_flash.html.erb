@@ -1,9 +1,14 @@
-<div>
+<div id="toast-container" data-controller="toast">
   <% flash.each do |flash_type, message| %>
-    <% if flash_type == "notice" %>
-      <p style="color: green"><%= message %>
-    <% elsif flash_type == "alert" %>
-      <p style="color: red"><%= message %>
-    <% end %>
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-body">
+        <% if flash_type == "notice" %>
+          <p style="color: green"><%= message %>
+        <% elsif flash_type == "alert" %>
+          <p style="color: red"><%= message %>
+        <% end %>
+      </div>
+      <button class="btn-close" data-bs-dismiss="toast"></button>
+    </div>
   <% end %>
 </div>
