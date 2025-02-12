@@ -1,16 +1,17 @@
 <% content_for(:title, '登録情報変更') %>
-<div class="d-flex flex-column justify-content-center align-items-center gap-3 m-3" style="height: 80vh;">
+<div class="d-flex flex-column justify-content-center align-items-center gap-3 m-3">
   <h2>
     <%= t('.title', resource: devise_i18n_fix_model_name_case(resource.model_name.human, i18n_key: 'registrations.edit.title')) %>
   </h2>
 
-  <div>
+  <div class="fs-5 w-50">
     <%= bootstrap_form_with(model: @user, label_errors: true, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-
       <div class="field">
         <% if resource.avatar.attached? && resource.avatar.variable? %>
-          <%= image_tag resource.avatar.variant(:profile_icon) %>
+          <%= f.label :avatar do %>
+            現在のアイコン
+            <%= image_tag(resource.avatar.variant(:profile_icon), class: 'rounded-circle bg-info-subtle m-3', style: 'cursor:pointer;') %>
+          <% end %>
         <% end %>
         <%= f.file_field :avatar %>
       </div>
@@ -45,13 +46,15 @@
         <%= f.password_field :current_password, autocomplete: "current-password" %>
       </div>
 
-      <div class="actions">
-        <%= f.submit t('.update'), class: "btn btn-outline-primary" %>
+      <div class="actions d-flex justify-content-center">
+        <%= f.submit t('.update'), class: "btn btn-outline-primary btn-lg" %>
       </div>
     <% end %>
   </div>
 
-  <div>
-    <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure'), turbo_confirm: t('.are_you_sure') }, method: :delete %>
-  </div>
+    <%= button_to t('.cancel_my_account'), registration_path(resource_name), 
+      data: { confirm: t('.are_you_sure'), turbo_confirm: t('.are_you_sure') },
+      method: :delete,
+      class: 'btn btn-outline-danger btn-lg'
+    %>
 </div>
