@@ -28,16 +28,17 @@
       <% end %>
 
       <div class="field">
-        <% if @minimum_password_length %>
-          <%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %>
-        <% end %>
-        (<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)<br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <% help_text_password = '' %>
+          <% if @minimum_password_length %>
+            <% help_text_password += t('devise.shared.minimum_password_length', count: @minimum_password_length) %>
+          <% end %>
+        <% help_text_password += t('.leave_blank_if_you_don_t_want_to_change_it') %>
+        <%= f.password_field :password, autocomplete: "new-password", help: help_text_password %>
       </div>
 
       <div class="field">
-        (<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)<br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <% help_text_password_confirm = t('.leave_blank_if_you_don_t_want_to_change_it') %>        
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", help: help_text_password_confirm %>
       </div>
 
       <div class="field">
