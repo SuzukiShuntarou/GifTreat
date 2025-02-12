@@ -4,7 +4,7 @@ require 'application_system_test_case'
 
 class RewardsTest < ApplicationSystemTestCase
   setup do
-    @reward = rewards(:alice_reward_in_progress)
+    @reward_in_progress = rewards(:alice_reward_in_progress)
     visit new_user_session_path
     fill_in 'メールアドレス', with: 'alice@example.com'
     fill_in 'パスワード', with: 'password'
@@ -15,12 +15,12 @@ class RewardsTest < ApplicationSystemTestCase
   test 'visiting rewards show in progress' do
     goal = goals(:alice_goal_in_progress)
 
-    visit reward_path(@reward)
+    visit reward_path(@reward_in_progress)
 
     within('#reward') do
-      assert_text @reward.completion_date
-      assert_text @reward.location
-      assert_text @reward.description
+      assert_text @reward_in_progress.completion_date
+      assert_text @reward_in_progress.location
+      assert_text @reward_in_progress.description
 
       assert_selector 'a', text: '編集'
       assert_selector 'a', text: '削除'
