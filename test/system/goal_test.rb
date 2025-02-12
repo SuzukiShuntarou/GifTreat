@@ -63,4 +63,20 @@ class GoalsTest < ApplicationSystemTestCase
     click_link_or_button 'ご褒美を追加する'
     assert_current_path new_reward_path
   end
+
+  test 'should display message on goals screen when no rewards and goals registered' do
+    click_link_or_button 'ログアウト'
+    assert_text 'ログアウトしました。'
+
+    fill_in 'メールアドレス', with: 'charlie@example.com'
+    fill_in 'パスワード', with: 'password'
+    click_link_or_button 'ログイン'
+    assert_text 'ログインしました。'
+
+    click_link_or_button '実施中'
+    assert_text 'まだ自分へのご褒美と目標が１つも登録されていません。'
+
+    click_link_or_button '終了'
+    assert_text '終了したご褒美と目標がありません。'
+  end
 end
