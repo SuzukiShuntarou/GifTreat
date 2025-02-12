@@ -63,4 +63,38 @@ class RewardsTest < ApplicationSystemTestCase
       assert_no_selector 'a', text: '編集'
     end
   end
+
+  test 'should be able to create both Reward and Goal from common form' do
+    visit goals_path
+    click_link_or_button 'ご褒美を追加する'
+
+    within("form[action='/rewards']") do
+      fill_in 'reward[completion_date]', with: Date.current.tomorrow
+      fill_in 'reward[location]', with: '叙々苑'
+      fill_in 'reward[description]', with: '焼肉'
+      fill_in 'reward[goals_attributes][0][description]', with: '毎日早寝早起きする'
+      fill_in 'reward[goals_attributes][0][progress]', with: 20
+      click_link_or_button 'ご褒美と目標を登録する'
+    end
+
+    assert_text 'ご褒美と目標の登録に成功！'
+
+    reward = Reward.last
+    goal = Goal.last
+    assert_current_path "/rewards/#{reward.id}"
+
+    within('#reward') do
+      assert_text Date.current.tomorrow
+      assert_text '叙々苑'
+      assert_text '焼肉'
+    end
+
+    within("div##{dom_id(goal)}") do
+      assert_text '毎日早寝早起きする'
+      assert_text '20'
+    end
+
+    within("div#likings_#{dom_id(goal)}") { assert_text 0 }
+    within("div#cheerings_#{dom_id(goal)}") { assert_text 0 }
+  end
 end
