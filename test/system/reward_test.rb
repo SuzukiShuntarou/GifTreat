@@ -24,7 +24,7 @@ class RewardsTest < ApplicationSystemTestCase
 
       assert_selector 'a', text: '編集'
       assert_selector 'a', text: '削除'
-      assert_selector 'button', text: '招待用URL！'
+      assert_selector 'button', text: '招待用URL：最大4人'
     end
 
     within("div##{dom_id(goal)}") do
