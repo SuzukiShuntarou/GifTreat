@@ -46,4 +46,16 @@ class GoalsTest < ApplicationSystemTestCase
     assert_text @alice_goal_completed.description
     assert_text @alice_goal_completed.progress
   end
+
+  test 'should redirect to Reward screen related to the goal when the goal clicked' do
+    click_link_or_button '実施中'
+    click_link_or_button @alice_goal_in_progress.description
+    assert_current_path "/rewards/#{@alice_reward_in_progress.id}"
+
+    click_link_or_button 'nav-logo'
+
+    click_link_or_button '終了'
+    click_link_or_button @alice_goal_completed.description
+    assert_current_path "/rewards/#{@alice_reward_completed.id}"
+  end
 end
