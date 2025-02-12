@@ -58,4 +58,9 @@ class GoalsTest < ApplicationSystemTestCase
     click_link_or_button @alice_goal_completed.description
     assert_current_path "/rewards/#{@alice_reward_completed.id}"
   end
+
+  test 'should be able to redirect to new form from goals screen' do
+    click_link_or_button 'ご褒美を追加する'
+    assert_current_path new_reward_path
+  end
 end
