@@ -14,7 +14,7 @@ class RewardsTest < ApplicationSystemTestCase
     assert_text 'ログインしました。'
   end
 
-  test 'should show details of Reward and Goal, with edit and delete buttons, in progress' do
+  test 'should show details of Reward and Goal, with edit and delete and invite buttons, in progress' do
     visit reward_path(@reward_in_progress)
 
     within('#reward') do
@@ -39,7 +39,7 @@ class RewardsTest < ApplicationSystemTestCase
     within("div#cheerings_#{dom_id(@goal_in_progress)}") { assert_text @goal_in_progress.cheerings_count }
   end
 
-  test 'should show details of Reward and Goal, without edit and delete buttons, on completed' do
+  test 'should show details of Reward and Goal, without edit and delete and invite buttons, on completed' do
     reward_completed = rewards(:alice_reward_completed)
     goal_completed = goals(:alice_goal_completed)
 
