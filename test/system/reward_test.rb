@@ -38,4 +38,29 @@ class RewardsTest < ApplicationSystemTestCase
     within("div#likings_#{dom_id(goal)}") { assert_text goal.likings_count }
     within("div#cheerings_#{dom_id(goal)}") { assert_text goal.cheerings_count }
   end
+
+  test 'should show details of Reward and Goal, without edit and delete buttons, on Reward completed' do
+    reward_completed = rewards(:alice_reward_completed)
+    goal_completed = goals(:alice_goal_completed)
+
+    visit reward_path(reward_completed)
+
+    within('#reward') do
+      assert_text reward_completed.completion_date
+      assert_text reward_completed.location
+      assert_text reward_completed.description
+
+      assert_no_selector 'a', text: '編集'
+      assert_no_selector 'a', text: '削除'
+      assert_no_selector 'button', text: '招待用URL：最大4人'
+    end
+
+    within("div##{dom_id(goal_completed)}") do
+      assert_text goal_completed.user.name
+      assert_text goal_completed.description
+      assert_text goal_completed.progress
+
+      assert_no_selector 'a', text: '編集'
+    end
+  end
 end
