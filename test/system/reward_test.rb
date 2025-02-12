@@ -12,8 +12,8 @@ class RewardsTest < ApplicationSystemTestCase
     assert_text 'ログインしました。'
   end
 
-  test 'visiting rewards show in progress' do
-    goal = goals(:alice_goal_in_progress)
+  test 'should show details of Reward and Goal, with edit and delete buttons, in progress' do
+    goal_in_progress = goals(:alice_goal_in_progress)
 
     visit reward_path(@reward_in_progress)
 
@@ -27,19 +27,19 @@ class RewardsTest < ApplicationSystemTestCase
       assert_selector 'button', text: '招待用URL：最大4人'
     end
 
-    within("div##{dom_id(goal)}") do
-      assert_text goal.user.name
-      assert_text goal.description
-      assert_text goal.progress
+    within("div##{dom_id(goal_in_progress)}") do
+      assert_text goal_in_progress.user.name
+      assert_text goal_in_progress.description
+      assert_text goal_in_progress.progress
 
       assert_selector 'a', text: '編集'
     end
 
-    within("div#likings_#{dom_id(goal)}") { assert_text goal.likings_count }
-    within("div#cheerings_#{dom_id(goal)}") { assert_text goal.cheerings_count }
+    within("div#likings_#{dom_id(goal_in_progress)}") { assert_text goal_in_progress.likings_count }
+    within("div#cheerings_#{dom_id(goal_in_progress)}") { assert_text goal_in_progress.cheerings_count }
   end
 
-  test 'should show details of Reward and Goal, without edit and delete buttons, on Reward completed' do
+  test 'should show details of Reward and Goal, without edit and delete buttons, on completed' do
     reward_completed = rewards(:alice_reward_completed)
     goal_completed = goals(:alice_goal_completed)
 
