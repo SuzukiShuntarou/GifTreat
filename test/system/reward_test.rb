@@ -157,4 +157,53 @@ class RewardsTest < ApplicationSystemTestCase
     assert_no_text @goal_in_progress.description
     assert_no_text @goal_in_progress.progress
   end
+
+  test 'should add goal for user who access the invitation URL for the reward' do
+    visit reward_path(@reward_in_progress)
+
+    within('#reward') do
+      assert_selector 'button', text: '招待用URL'
+      click_link_or_button '招待用URL'
+    end
+
+    cdp_permission = {
+      origin: page.server_url,
+      permission: { name: 'clipboard-read' },
+      setting: 'granted'
+    }
+    page.driver.browser.execute_cdp('Browser.setPermission', **cdp_permission)
+    invited_url = page.evaluate_async_script('navigator.clipboard.readText().then(arguments[0])')
+
+    within('#reward') do
+      assert_selector 'button', text: 'コピーしました！'
+    end
+
+    click_link_or_button 'ログアウト'
+    assert_text 'ログアウトしました。'
+    fill_in 'メールアドレス', with: 'bob@example.com'
+    fill_in 'パスワード', with: 'password'
+    click_link_or_button 'ログイン'
+    assert_text 'ログインしました。'
+
+    visit(invited_url)
+
+    assert_text 'ご褒美に招待されました！'
+    within('#reward') do
+      assert_text @reward_in_progress.completion_date
+      assert_text @reward_in_progress.location
+      assert_text @reward_in_progress.description
+    end
+
+    initial_goal_by_invited = Goal.last
+
+    within("div##{dom_id(initial_goal_by_invited)}") do
+      assert_text 'Bob'
+      assert_text '招待されました！Bobさんの目標を登録しましょう！'
+      assert_text 0
+      assert_selector 'a', text: '編集'
+    end
+
+    within("div#likings_#{dom_id(initial_goal_by_invited)}") { assert_text 0 }
+    within("div#cheerings_#{dom_id(initial_goal_by_invited)}") { assert_text 0 }
+  end
 end
