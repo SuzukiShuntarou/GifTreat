@@ -141,4 +141,20 @@ class RewardsTest < ApplicationSystemTestCase
       assert_text '99'
     end
   end
+
+  test 'should delete reward and goal in progress' do
+    visit reward_path(@reward_in_progress)
+
+    within('#reward') do
+      assert_selector 'a', text: '削除'
+      click_link_or_button '削除'
+      page.accept_alert
+    end
+
+    assert_current_path goals_path
+    assert_text 'ご褒美の削除に成功！'
+    assert_no_text @reward_in_progress.completion_date
+    assert_no_text @goal_in_progress.description
+    assert_no_text @goal_in_progress.progress
+  end
 end
