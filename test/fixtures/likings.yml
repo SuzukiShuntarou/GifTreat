@@ -1,0 +1,7 @@
+alice_liking_in_progress:
+  user: alice
+  goal: alice_goal_in_progress
+
+alice_liking_completed:
+  user: alice
+  goal: alice_goal_completed
