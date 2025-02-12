@@ -3,7 +3,7 @@
     <nav class="d-flex justify-content-around navbar mx-5 gap-5" style="height: 10vh;">
       <div class="flex-grow-1 h-100">
         <%= link_to goals_path do %>
-          <%= image_tag('logo-header.png', class: 'h-100') %>
+          <%= image_tag('logo-header.png', class: 'h-100', alt: 'nav-logo') %>
         <% end %>
       </div>
       <div>
@@ -12,9 +12,9 @@
       <div class="h-100">
         <%= link_to edit_user_registration_path do %>
           <% if current_user.avatar.attached? %>
-            <%= image_tag current_user.avatar.variant(:profile_icon), class: 'rounded-circle bg-info-subtle h-100' %>
+            <%= image_tag current_user.avatar.variant(:profile_icon), class: 'rounded-circle bg-info-subtle h-100', alt: 'user-avatar' %>
           <% else %>
-            <%= image_tag('default-avatar.png', class: 'rounded-circle bg-info-subtle h-100') %>
+            <%= image_tag('default-avatar.png', class: 'rounded-circle bg-info-subtle h-100', alt: 'default-avatar') %>
           <% end %>
         <% end %>
       </div>

@@ -1,0 +1,7 @@
+alice_only_in_progress:
+  user: alice
+  reward: alice_reward_in_progress
+
+alice_only_completed:
+  user: alice
+  reward: alice_reward_completed
