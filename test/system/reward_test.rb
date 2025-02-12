@@ -5,6 +5,8 @@ require 'application_system_test_case'
 class RewardsTest < ApplicationSystemTestCase
   setup do
     @reward_in_progress = rewards(:alice_reward_in_progress)
+    @goal_in_progress = goals(:alice_goal_in_progress)
+
     visit new_user_session_path
     fill_in 'メールアドレス', with: 'alice@example.com'
     fill_in 'パスワード', with: 'password'
@@ -13,8 +15,6 @@ class RewardsTest < ApplicationSystemTestCase
   end
 
   test 'should show details of Reward and Goal, with edit and delete buttons, in progress' do
-    goal_in_progress = goals(:alice_goal_in_progress)
-
     visit reward_path(@reward_in_progress)
 
     within('#reward') do
@@ -27,16 +27,16 @@ class RewardsTest < ApplicationSystemTestCase
       assert_selector 'button', text: '招待用URL：最大4人'
     end
 
-    within("div##{dom_id(goal_in_progress)}") do
-      assert_text goal_in_progress.user.name
-      assert_text goal_in_progress.description
-      assert_text goal_in_progress.progress
+    within("div##{dom_id(@goal_in_progress)}") do
+      assert_text @goal_in_progress.user.name
+      assert_text @goal_in_progress.description
+      assert_text @goal_in_progress.progress
 
       assert_selector 'a', text: '編集'
     end
 
-    within("div#likings_#{dom_id(goal_in_progress)}") { assert_text goal_in_progress.likings_count }
-    within("div#cheerings_#{dom_id(goal_in_progress)}") { assert_text goal_in_progress.cheerings_count }
+    within("div#likings_#{dom_id(@goal_in_progress)}") { assert_text @goal_in_progress.likings_count }
+    within("div#cheerings_#{dom_id(@goal_in_progress)}") { assert_text @goal_in_progress.cheerings_count }
   end
 
   test 'should show details of Reward and Goal, without edit and delete buttons, on completed' do
@@ -96,5 +96,49 @@ class RewardsTest < ApplicationSystemTestCase
 
     within("div#likings_#{dom_id(goal)}") { assert_text 0 }
     within("div#cheerings_#{dom_id(goal)}") { assert_text 0 }
+  end
+
+  test 'should be editable reward in progress' do
+    visit reward_path(@reward_in_progress)
+
+    within('#reward') do
+      assert_selector 'a', text: '編集'
+      click_link_or_button '編集'
+    end
+
+    within('.modal-body') do
+      fill_in '場所', with: '北海道'
+      fill_in 'ご褒美', with: '旅行'
+      click_link_or_button '更新'
+    end
+
+    assert_text 'ご褒美の更新に成功！'
+
+    within('#reward') do
+      assert_text '北海道'
+      assert_text '旅行'
+    end
+  end
+
+  test 'should be editable goal in progress' do
+    visit reward_path(@reward_in_progress)
+
+    within("div##{dom_id(@goal_in_progress)}") do
+      assert_selector 'a', text: '編集'
+      click_link_or_button '編集'
+    end
+
+    within('.modal-body') do
+      fill_in '目標', with: 'ランニングする'
+      fill_in '進捗率', with: '99'
+      click_link_or_button '更新'
+    end
+
+    assert_text '目標の更新に成功！'
+
+    within("div##{dom_id(@goal_in_progress)}") do
+      assert_text 'ランニングする'
+      assert_text '99'
+    end
   end
 end
