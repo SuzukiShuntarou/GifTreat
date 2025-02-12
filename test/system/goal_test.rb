@@ -50,13 +50,13 @@ class GoalsTest < ApplicationSystemTestCase
   test 'should redirect to Reward screen related to the goal when the goal clicked' do
     click_link_or_button '実施中'
     click_link_or_button @alice_goal_in_progress.description
-    assert_current_path "/rewards/#{@alice_reward_in_progress.id}"
+    assert_current_path reward_path(@alice_reward_in_progress.id)
 
     click_link_or_button 'nav-logo'
 
     click_link_or_button '終了'
     click_link_or_button @alice_goal_completed.description
-    assert_current_path "/rewards/#{@alice_reward_completed.id}"
+    assert_current_path reward_path(@alice_reward_completed.id)
   end
 
   test 'should be able to redirect to new form from goals screen' do
