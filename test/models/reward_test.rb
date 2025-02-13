@@ -46,4 +46,28 @@ class RewardTest < ActiveSupport::TestCase
     Reward.bulk_create_by_invited(@reward_in_progress, @other_user)
     assert_predicate(Goal.find_by(user: @other_user, reward: @reward_in_progress), :present?)
   end
+
+  test 'should not be able to create after completion date' do
+    reward = Reward.new(
+      completion_date: Date.current.yesterday,
+      location: '北海道',
+      description: '旅行',
+      goals_attributes: [
+        {
+          description: '早起きする',
+          progress: 0
+        }
+      ]
+    )
+    Reward.bulk_create(reward, @current_user)
+    assert_predicate reward, :invalid?
+  end
+
+  test 'should not be editable after completion date' do
+    @reward_completed.update(
+      location: '北海道',
+      description: '旅行'
+    )
+    assert_predicate @reward_completed, :invalid?
+  end
 end
