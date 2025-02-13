@@ -4,11 +4,9 @@ require 'application_system_test_case'
 
 class LikingsTest < ApplicationSystemTestCase
   setup do
-    visit new_user_session_path
-    fill_in 'メールアドレス', with: 'alice@example.com'
-    fill_in 'パスワード', with: 'password'
-    click_link_or_button 'ログイン'
-    assert_text 'ログインしました。'
+    current_user = users(:alice)
+    sign_in current_user
+    visit root_path
   end
 
   test 'should increase count when liking button clicked' do
