@@ -39,4 +39,14 @@ class GoalTest < ActiveSupport::TestCase
   test 'should not be owner' do
     assert_not @goal_in_progress.owned_by?(@other_user)
   end
+
+  test 'should not be able to add more goals than the maximum count for reward' do
+    reward_related_max_count_goals = rewards(:reward_with_alice_bob_charlie_david)
+    another_user = users(:eve)
+    assert_not RewardParticipant.find_by(user: another_user, reward: reward_related_max_count_goals).present?
+
+    Reward.bulk_create_by_invited(reward_related_max_count_goals, another_user)
+    assert_not RewardParticipant.find_by(user: another_user, reward: reward_related_max_count_goals).present?
+    assert_predicate reward_related_max_count_goals, :invalid?
+  end
 end
