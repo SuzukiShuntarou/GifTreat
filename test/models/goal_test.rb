@@ -49,4 +49,12 @@ class GoalTest < ActiveSupport::TestCase
     assert_not RewardParticipant.find_by(user: another_user, reward: reward_related_max_count_goals).present?
     assert_predicate reward_related_max_count_goals, :invalid?
   end
+
+  test 'should not be editable after completion date' do
+    @goal_completed.update(
+      description: '早寝早起きする',
+      progress: '100'
+    )
+    assert_predicate @goal_completed, :invalid?
+  end
 end
