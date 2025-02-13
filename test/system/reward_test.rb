@@ -7,11 +7,9 @@ class RewardsTest < ApplicationSystemTestCase
     @reward_in_progress = rewards(:alice_reward_in_progress)
     @goal_in_progress = goals(:alice_goal_in_progress)
 
-    visit new_user_session_path
-    fill_in 'メールアドレス', with: 'alice@example.com'
-    fill_in 'パスワード', with: 'password'
-    click_link_or_button 'ログイン'
-    assert_text 'ログインしました。'
+    current_user = users(:alice)
+    sign_in current_user
+    visit root_path
   end
 
   test 'should show details of Reward and Goal, with edit and delete and invite buttons, in progress' do
@@ -178,13 +176,8 @@ class RewardsTest < ApplicationSystemTestCase
       assert_selector 'button', text: 'コピーしました！'
     end
 
-    click_link_or_button 'ログアウト'
-    assert_text 'ログアウトしました。'
-    fill_in 'メールアドレス', with: 'bob@example.com'
-    fill_in 'パスワード', with: 'password'
-    click_link_or_button 'ログイン'
-    assert_text 'ログインしました。'
-
+    other_user = users(:bob)
+    sign_in other_user
     visit(invited_url)
 
     assert_text 'ご褒美に招待されました！'
