@@ -10,11 +10,9 @@ class GoalsTest < ApplicationSystemTestCase
     @alice_reward_in_progress = rewards(:alice_reward_in_progress)
     @alice_reward_completed = rewards(:alice_reward_completed)
 
-    visit new_user_session_path
-    fill_in 'メールアドレス', with: 'alice@example.com'
-    fill_in 'パスワード', with: 'password'
-    click_link_or_button 'ログイン'
-    assert_text 'ログインしました。'
+    current_user = users(:alice)
+    sign_in current_user
+    visit root_path
   end
 
   test 'should display goals list screen when nav-logo clicked' do
@@ -68,10 +66,9 @@ class GoalsTest < ApplicationSystemTestCase
     click_link_or_button 'ログアウト'
     assert_text 'ログアウトしました。'
 
-    fill_in 'メールアドレス', with: 'charlie@example.com'
-    fill_in 'パスワード', with: 'password'
-    click_link_or_button 'ログイン'
-    assert_text 'ログインしました。'
+    other_user = users(:charlie)
+    sign_in other_user
+    visit root_path
 
     click_link_or_button '実施中'
     assert_text 'まだ自分へのご褒美と目標が１つも登録されていません。'
