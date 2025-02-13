@@ -34,4 +34,16 @@ class UsersTest < ApplicationSystemTestCase
     assert_equal 'new-alice', find('input[name="user[name]"]').value
     assert_equal 'new-alice@example.com', find('input[name="user[email]"]').value
   end
+
+  test '' do
+    sign_in @current_user
+    visit root_path
+    click_link_or_button 'default-avatar'
+
+    click_link_or_button 'アカウント削除'
+    page.accept_alert
+
+    assert_current_path new_user_session_path
+    assert_text 'アカウントを削除しました。またのご利用をお待ちしております。'
+  end
 end
