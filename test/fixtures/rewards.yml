@@ -11,7 +11,7 @@ alice_reward_completed:
   invitation_token: <%= SecureRandom.urlsafe_base64 %>
 
 reward_with_alice_bob_charlie_david:
-  completion_date: <%= Date.current %>
+  completion_date: <%= Date.current.tomorrow %>
   location: 北海道
   description: 旅行
   invitation_token: <%= SecureRandom.urlsafe_base64 %>
