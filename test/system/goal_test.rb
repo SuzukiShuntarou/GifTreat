@@ -66,8 +66,8 @@ class GoalsTest < ApplicationSystemTestCase
     click_link_or_button 'ログアウト'
     assert_text 'ログアウトしました。'
 
-    other_user = users(:charlie)
-    sign_in other_user
+    user_without_rewards_and_goals = users(:charlie)
+    sign_in user_without_rewards_and_goals
     visit root_path
 
     click_link_or_button '実施中'
