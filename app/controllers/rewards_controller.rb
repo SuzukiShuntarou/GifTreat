@@ -34,7 +34,7 @@ class RewardsController < ApplicationController
 
   def update
     if @reward.update(reward_params)
-      flash.now.notice = 'ご褒美の編集に成功！'
+      flash.now.notice = 'ご褒美の更新に成功！'
     else
       render :edit, status: :unprocessable_entity
     end
