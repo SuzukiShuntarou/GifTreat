@@ -35,7 +35,7 @@ class UsersTest < ApplicationSystemTestCase
     assert_equal 'new-alice@example.com', find('input[name="user[email]"]').value
   end
 
-  test '' do
+  test 'should be able to delete own account from user edit page' do
     sign_in @current_user
     visit root_path
     click_link_or_button 'default-avatar'
