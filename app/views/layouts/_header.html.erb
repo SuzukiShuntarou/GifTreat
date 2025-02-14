@@ -1,9 +1,9 @@
-<header class="border-bottom border-light">
+<header>
   <% if user_signed_in? %>
     <nav class="d-flex justify-content-around navbar mx-5 gap-5" style="height: 10vh;">
       <div class="flex-grow-1 h-100">
         <%= link_to goals_path do %>
-          <%= image_tag('logo-header.png', class: 'h-100', alt: 'nav-logo') %>
+          <%= image_tag('logo-header.png', class: 'h-100', alt: 'ヘッダーのGifTreatのロゴ') %>
         <% end %>
       </div>
       <div>
@@ -12,12 +12,13 @@
       <div class="h-100">
         <%= link_to edit_user_registration_path do %>
           <% if current_user.avatar.attached? %>
-            <%= image_tag current_user.avatar.variant(:profile_icon), class: 'rounded-circle bg-info-subtle h-100', alt: 'user-avatar' %>
+            <%= image_tag current_user.avatar.variant(:profile_icon), class: 'rounded-circle bg-info-subtle h-100', alt: 'ユーザのアイコン' %>
           <% else %>
-            <%= image_tag('default-avatar.png', class: 'rounded-circle bg-info-subtle h-100', alt: 'default-avatar') %>
+            <%= image_tag('default-avatar.png', class: 'rounded-circle bg-info-subtle h-100', alt: 'デフォルトのユーザアイコン') %>
           <% end %>
         <% end %>
       </div>
     </nav>
+    <hr class="a-border mt-1">
   <% end %>
 </header>

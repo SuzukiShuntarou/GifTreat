@@ -10,7 +10,7 @@
         <% if resource.avatar.attached? && resource.avatar.variable? %>
           <%= f.label :avatar do %>
             現在のアイコン
-            <%= image_tag(resource.avatar.variant(:profile_icon), class: 'rounded-circle bg-info-subtle m-3', style: 'cursor:pointer;') %>
+            <%= image_tag(resource.avatar.variant(:profile_icon), class: 'rounded-circle bg-info-subtle m-3', style: 'cursor:pointer;', alt: 'ユーザのアイコン') %>
           <% end %>
         <% end %>
         <%= f.file_field :avatar %>
