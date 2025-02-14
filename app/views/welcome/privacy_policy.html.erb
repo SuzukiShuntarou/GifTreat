@@ -1,1 +1,11 @@
-<h2>プライバシーポリシー</h2>
+<% content_for(:title, 'プライバシーポリシー') %>
+
+<div class="d-flex flex-column justify-content-center align-items-center gap-3 m-3">
+  <h1 class="text-center">
+    <% path = user_signed_in? ? goals_path : user_session_path %>
+    <%= link_to path do %>
+      <%= image_tag('logo-top-page', class: 'w-50 h-25', alt: 'GifTreatのロゴ') %>
+    <% end %>
+  </h1>
+  <h2 class="border-bottom border-5 border-primary-subtle">プライバシーポリシー</h2>
+</div>
