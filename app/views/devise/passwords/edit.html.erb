@@ -1,24 +1,31 @@
 <% content_for(:title, 'パスワード再設定') %>
-<h2><%= t('.change_your_password') %></h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <div class="field">
-    <%= f.label :password, t('.new_password') %>
-    <% if @minimum_password_length %>
-      <%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %><br />
+<div class="d-flex flex-column justify-content-center align-items-center gap-3 m-3">
+  <h1 class="text-center">
+    <%= link_to user_session_path do %>
+      <%= image_tag('logo-top-page', class: 'w-50 h-25', alt: 'GifTreatのロゴ') %>
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
+  </h1>
+  <h2><%= t('.change_your_password') %></h2>
 
-  <div class="field">
-    <%= f.label :password_confirmation, t('.confirm_new_password') %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  <div class="fs-4 w-50">
+    <%= bootstrap_form_with(model: @user, label_errors: true, url: password_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.hidden_field :reset_password_token %>
 
-  <div class="actions">
-    <%= f.submit t('.change_my_password') %>
+      <div class="field">
+        <% help_text_password = '' %>
+        <% if @minimum_password_length %>
+          <% help_text_password += t('devise.shared.minimum_password_length', count: @minimum_password_length) %>
+        <% end %>
+        <%= f.password_field :password, autofocus: true, autocomplete: "new-password", help: help_text_password %>
+      </div>
+
+      <div class="field">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <div class="actions d-flex justify-content-center">
+        <%= f.submit t('.change_my_password'), class: 'btn btn-outline-primary btn-lg' %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
