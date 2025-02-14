@@ -13,3 +13,43 @@ alice_goal_completed:
   progress: 100
   cheerings_count: 1
   likings_count: 11
+
+alice_goal_max_reward_participants:
+  user: alice
+  reward: reward_with_alice_bob_charlie_david
+  description: ランニングする
+  progress: 85
+  cheerings_count: 12
+  likings_count: 9
+
+bob_goal_max_reward_participants:
+  user: bob
+  reward: reward_with_alice_bob_charlie_david
+  description: 貯金する
+  progress: 30
+  cheerings_count: 20
+  likings_count: 10
+
+charlie_goal_max_reward_participants:
+  user: charlie
+  reward: reward_with_alice_bob_charlie_david
+  description: 掃除する
+  progress: 92
+  cheerings_count: 21
+  likings_count: 0
+
+david_goal_max_reward_participants:
+  user: david
+  reward: reward_with_alice_bob_charlie_david
+  description: 起きる
+  progress: 54
+  cheerings_count: 20
+  likings_count: 10
+
+goal_with_max_count_likings_cheerings:
+  user: alice
+  reward: reward_with_max_count_likings_cherrings
+  description: 寝る
+  progress: 35
+  cheerings_count: 100
+  likings_count: 100

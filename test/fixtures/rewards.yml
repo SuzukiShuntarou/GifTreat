@@ -9,3 +9,15 @@ alice_reward_completed:
   location: 草津
   description: 温泉旅行
   invitation_token: <%= SecureRandom.urlsafe_base64 %>
+
+reward_with_alice_bob_charlie_david:
+  completion_date: <%= Date.current.tomorrow %>
+  location: 北海道
+  description: 旅行
+  invitation_token: <%= SecureRandom.urlsafe_base64 %>
+
+reward_with_max_count_likings_cherrings:
+  completion_date: <%= Date.current.next_month %>
+  location: 遊園地
+  description: 満喫
+  invitation_token: <%= SecureRandom.urlsafe_base64 %>
