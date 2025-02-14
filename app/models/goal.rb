@@ -2,6 +2,7 @@
 
 class Goal < ApplicationRecord
   MAX_REWARD_RELATED_GOALS = 4
+  MAX_PROGRESS = 100
   belongs_to :user
   belongs_to :reward
   has_many :likings, dependent: :destroy
@@ -23,6 +24,10 @@ class Goal < ApplicationRecord
 
   def owned_by?(current_user)
     user == current_user
+  end
+
+  def achieved?
+    progress == MAX_PROGRESS
   end
 
   private
