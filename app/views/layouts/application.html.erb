@@ -20,7 +20,7 @@
   <body>
     <%= render 'layouts/header' %>
     <%= render 'layouts/flash' %>
-    <%= yield %>
+    <main><%= yield %></main>
     <%= render 'layouts/footer' %>
     <%= turbo_frame_tag "modal" %>
   </body>
