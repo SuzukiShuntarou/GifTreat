@@ -1,4 +1,4 @@
 <span style="display: inline-flex;">
-  <%= image_tag("cheering-icon.png", onmouseover: "this.title='#{generate_cheerings_message(goal.cheerings)}'", size: '20x20') %>
+  <%= image_tag("cheering-icon.png", onmouseover: "this.title='#{generate_cheerings_message(goal.cheerings)}'", size: '20x20', alt: '応援のマーク') %>
   <%= goal.cheerings_count %>
 </span>

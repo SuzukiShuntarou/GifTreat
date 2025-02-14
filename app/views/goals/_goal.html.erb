@@ -4,9 +4,9 @@
   <div class="d-flex flex-column gap-2 h-100">
     <div class="fs-4">
       <% if goal.user.avatar.attached? %>
-        <%= image_tag goal.user.avatar.variant(:profile_icon), class: "rounded-circle bg-info-subtle" %>
+        <%= image_tag goal.user.avatar.variant(:profile_icon), class: "rounded-circle bg-info-subtle", alt: 'ユーザのアイコン' %>
       <% else %>
-        <%= image_tag("default-avatar.png", class: "rounded-circle bg-info-subtle", size: '75x75') %>
+        <%= image_tag("default-avatar.png", class: "rounded-circle bg-info-subtle", size: '75x75', alt: 'デフォルトのユーザアイコン') %>
       <% end %>
       <%= goal.user.name %>
     </div>
