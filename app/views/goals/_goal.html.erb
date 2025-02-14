@@ -10,8 +10,12 @@
       <% end %>
       <%= goal.user.name %>
     </div>
-    <div class="flex-grow-1 bg-body-secondary rounded fs-2 overflow-auto p-3">
+    <div class="flex-grow-1 bg-body-secondary rounded fs-2 overflow-auto p-3 position-relative">
       <%= goal.description %>
+      <% unless goal.reward.in_progress? %>
+        <% image = goal.achieved? ? "grade-very-good" : "grade-good" %>
+        <%= image_tag(image, class: "position-absolute bottom-0 end-0 h-25") %>
+      <% end %>
     </div>
     <div class="d-flex align-items-center fs-4 gap-2">
       進捗率<div class="flex-grow-1 text-center bg-body-secondary rounded p-1"><%= goal.progress %></div>%
