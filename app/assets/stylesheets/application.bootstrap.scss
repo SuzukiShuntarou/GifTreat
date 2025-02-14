@@ -26,3 +26,7 @@ main {
   bottom: 0;
   width: 100%;
 }
+
+a > img:hover {
+  opacity: 0.5;
+}
