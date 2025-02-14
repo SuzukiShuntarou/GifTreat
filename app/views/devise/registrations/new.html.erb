@@ -7,35 +7,30 @@
   </h1>
   <h2><%= t('.sign_up') %></h2>
 
-  <div class="fs-5 w-50">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-
+  <div class="fs-4 w-50">
+    <%= bootstrap_form_with(model: @user, label_errors: true, url: registration_path(resource_name), html: { method: :post }) do |f| %>
       <div class="field">
-        <%= f.label :name %><br />
         <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
       </div>
 
       <div class="field">
-        <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
 
       <div class="field">
-        <%= f.label :password %>
+        <% help_text_password = '' %>
         <% if @minimum_password_length %>
-          <%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
+          <% help_text_password += t('devise.shared.minimum_password_length', count: @minimum_password_length) %>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password", help: help_text_password %>
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
-      <div class="actions">
-        <%= f.submit t('.sign_up') %>
+      <div class="actions d-flex justify-content-center">
+        <%= f.submit t('.sign_up'), class: 'btn btn-outline-primary btn-lg' %>
       </div>
     <% end %>
   </div>
