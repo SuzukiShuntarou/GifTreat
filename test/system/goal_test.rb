@@ -16,7 +16,7 @@ class GoalsTest < ApplicationSystemTestCase
   end
 
   test 'should display goals list screen when nav-logo clicked' do
-    click_link_or_button 'nav-logo'
+    click_link_or_button 'ヘッダーのGifTreatのロゴ'
 
     assert_selector 'a', text: '実施中'
     assert_selector 'a', text: '終了'
@@ -28,7 +28,7 @@ class GoalsTest < ApplicationSystemTestCase
   end
 
   test 'should display in-progress goals on list screen of in-progress goals' do
-    click_link_or_button 'nav-logo'
+    click_link_or_button 'ヘッダーのGifTreatのロゴ'
     click_link_or_button '実施中'
 
     assert_text @alice_reward_in_progress.completion_date
@@ -37,7 +37,7 @@ class GoalsTest < ApplicationSystemTestCase
   end
 
   test 'should display completed goals on list screen of completed goals' do
-    click_link_or_button 'nav-logo'
+    click_link_or_button 'ヘッダーのGifTreatのロゴ'
     click_link_or_button '終了'
 
     assert_text @alice_reward_completed.completion_date
@@ -50,7 +50,7 @@ class GoalsTest < ApplicationSystemTestCase
     click_link_or_button @alice_goal_in_progress.description
     assert_current_path reward_path(@alice_reward_in_progress.id)
 
-    click_link_or_button 'nav-logo'
+    click_link_or_button 'ヘッダーのGifTreatのロゴ'
 
     click_link_or_button '終了'
     click_link_or_button @alice_goal_completed.description

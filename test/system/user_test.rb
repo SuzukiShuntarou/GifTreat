@@ -10,7 +10,7 @@ class UsersTest < ApplicationSystemTestCase
   test 'should show own user edit page' do
     sign_in @current_user
     visit root_path
-    click_link_or_button 'default-avatar'
+    click_link_or_button 'デフォルトのユーザアイコン'
 
     assert_text '登録情報変更'
     assert_equal @current_user.name, find('input[name="user[name]"]').value
@@ -20,7 +20,7 @@ class UsersTest < ApplicationSystemTestCase
   test 'should editable registration' do
     sign_in @current_user
     visit root_path
-    click_link_or_button 'default-avatar'
+    click_link_or_button 'デフォルトのユーザアイコン'
 
     fill_in 'ユーザ名', with: 'new-alice'
     fill_in 'メールアドレス', with: 'new-alice@example.com'
@@ -38,7 +38,7 @@ class UsersTest < ApplicationSystemTestCase
   test 'should be able to delete own account from user edit page' do
     sign_in @current_user
     visit root_path
-    click_link_or_button 'default-avatar'
+    click_link_or_button 'デフォルトのユーザアイコン'
 
     click_link_or_button 'アカウント削除'
     page.accept_alert
