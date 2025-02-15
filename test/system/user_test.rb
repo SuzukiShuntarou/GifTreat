@@ -7,6 +7,21 @@ class UsersTest < ApplicationSystemTestCase
     @current_user = users(:alice)
   end
 
+  test 'should login' do
+    visit new_user_session_path
+    fill_in 'メールアドレス', with: 'alice@example.com'
+    fill_in 'パスワード', with: 'password'
+    click_link_or_button 'ログイン'
+    assert_text 'ログインしました。'
+  end
+
+  test 'should logout' do
+    sign_in @current_user
+    visit root_path
+    click_link_or_button 'ログアウト'
+    assert_text 'ログアウトしました。'
+  end
+
   test 'should show own user edit page' do
     sign_in @current_user
     visit root_path
