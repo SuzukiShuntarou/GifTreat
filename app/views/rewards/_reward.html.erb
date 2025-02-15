@@ -26,6 +26,7 @@
         data: { controller: "clipboard",
                 action: "click->clipboard#copy",
                 clipboard_content_value: reward_url(@reward.id, invitation_token: @reward.invitation_token) },
+        title: "この招待URLでアクセスしたユーザのみが、このご褒美を共有できます。",
         class: 'btn btn-outline-secondary btn-sm'
       %>
     <% end %>
