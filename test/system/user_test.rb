@@ -61,4 +61,25 @@ class UsersTest < ApplicationSystemTestCase
     assert_current_path new_user_session_path
     assert_text 'アカウントを削除しました。またのご利用をお待ちしております。'
   end
+
+  test 'should create new user' do
+    visit new_user_session_path
+    assert_selector 'a', text: '無料でアカウント登録'
+    click_link_or_button '無料でアカウント登録'
+
+    assert_selector 'h2', text: 'アカウント登録'
+    fill_in 'ユーザ名', with: '東京 太郎'
+    fill_in 'メールアドレス', with: 'tokyotaro@example.com'
+    fill_in 'パスワード', with: 'password'
+    fill_in 'パスワード（確認用）', with: 'password'
+    click_link_or_button 'アカウント登録'
+
+    assert_text 'アカウント登録が完了しました。'
+    assert_text 'まだ自分へのご褒美と目標が１つも登録されていません。'
+    click_link_or_button 'デフォルトのユーザアイコン'
+
+    assert_text '登録情報変更'
+    assert_equal '東京 太郎', find('input[name="user[name]"]').value
+    assert_equal 'tokyotaro@example.com', find('input[name="user[email]"]').value
+  end
 end
