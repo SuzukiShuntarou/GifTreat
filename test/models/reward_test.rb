@@ -70,4 +70,14 @@ class RewardTest < ActiveSupport::TestCase
     )
     assert_predicate @reward_completed, :invalid?
   end
+
+  test 'should be valid invitation_token' do
+    correct_invitation_token = @reward_in_progress.invitation_token
+    assert @reward_in_progress.valid_invitation_token?(correct_invitation_token)
+  end
+
+  test 'should be invalid invitation_token' do
+    incorrect_invitation_token = @reward_completed.invitation_token
+    assert_not @reward_in_progress.valid_invitation_token?(incorrect_invitation_token)
+  end
 end

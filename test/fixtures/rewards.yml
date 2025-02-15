@@ -21,3 +21,9 @@ reward_with_max_count_likings_cherrings:
   location: 遊園地
   description: 満喫
   invitation_token: <%= SecureRandom.urlsafe_base64 %>
+
+reward_with_alice_bob:
+  completion_date: <%= Date.current %>
+  location: 沖縄
+  description: スキューバダイビング
+  invitation_token: <%= SecureRandom.urlsafe_base64 %>
