@@ -2,14 +2,15 @@
 
 class Goal < ApplicationRecord
   MAX_REWARD_RELATED_GOALS = 4
+  MIN_PROGRESS = 0
   MAX_PROGRESS = 100
   belongs_to :user
   belongs_to :reward
   has_many :likings, dependent: :destroy
   has_many :cheerings, dependent: :destroy
 
-  validates :description, presence: true
-  validates :progress, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100, only_integer: true }
+  validates :description, presence: true, length: { maximum: 140 }
+  validates :progress, presence: true, numericality: { greater_than_or_equal_to: MIN_PROGRESS, less_than_or_equal_to: MAX_PROGRESS, only_integer: true }
   validate :validate_reward_related_goals_limit, on: :create
   validate :validate_in_progress, on: :update
 

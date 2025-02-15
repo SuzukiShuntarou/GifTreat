@@ -1,19 +1,21 @@
-<%= turbo_frame_tag reward, class: 'd-flex text-center fs-1 m-2 gap-2' do %>
+<%= turbo_frame_tag reward, class: 'd-flex text-center fs-2 m-2 gap-2' do %>
   <%= render "layouts/flash" %>
 
   <div class="flex-grow-1 bg-body-secondary rounded p-1">
     <%= reward.completion_date %>
   </div>
   <div>に</div>
-  <div class="flex-grow-1 bg-body-secondary rounded p-1">
+  <div class="flex-grow-1 bg-body-secondary rounded p-1 text-wrap" style="width: w-75;">
     <%= reward.location %>
   </div>
   <div>で</div>
 <% end %>
 
-<div class="d-flex text-center fs-1 m-2 gap-2">
+<div class="d-flex text-center fs-2 m-2 gap-2">
   <%= turbo_frame_tag reward, class: 'flex-grow-1 text-center bg-body-secondary rounded' do %>
-    <div class="p-1"><%= reward.description %></div>
+    <div class="p-1 text-wrap" style="width: w-75;">
+      <%= reward.description %>
+    </div>
   <% end %>
   <div>する</div>
   <div class="d-flex align-items-center gap-2 ">

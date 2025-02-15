@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Reward < ApplicationRecord
+  MIN_PROGRESS = 0
   has_many :reward_participants, dependent: :destroy
   has_many :users, through: :reward_participants
   has_many :goals, dependent: :destroy
@@ -9,8 +10,8 @@ class Reward < ApplicationRecord
 
   validates :invitation_token, presence: true, uniqueness: true
   with_options presence: true do
-    validates :description
-    validates :location
+    validates :description, length: { maximum: 40 }
+    validates :location, length: { maximum: 40 }
     validates :completion_date
   end
   validate :validate_in_progress
@@ -40,7 +41,7 @@ class Reward < ApplicationRecord
       initial_goal = reward.goals.build(
         user: current_user,
         description: "招待されました！#{current_user.name}さんの目標を登録しましょう！",
-        progress: 0
+        progress: MIN_PROGRESS
       )
 
       all_valid &= reward_participant.save && initial_goal.save
