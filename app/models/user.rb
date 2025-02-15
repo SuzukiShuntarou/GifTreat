@@ -5,7 +5,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   ACCEPTED_CONTENT_TYPES = ['image/png', 'image/jpeg', 'image/gif'].freeze
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :confirmable
 
   has_many :reward_participants, dependent: :destroy
   has_many :rewards, through: :reward_participants
