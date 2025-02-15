@@ -15,6 +15,14 @@ class UsersTest < ApplicationSystemTestCase
     assert_text 'ログインしました。'
   end
 
+  test 'should not login' do
+    visit new_user_session_path
+    fill_in 'メールアドレス', with: 'alice@example.com'
+    fill_in 'パスワード', with: 'incorrectpassword'
+    click_link_or_button 'ログイン'
+    assert_text 'メールアドレスまたはパスワードが違います。'
+  end
+
   test 'should logout' do
     sign_in @current_user
     visit root_path
