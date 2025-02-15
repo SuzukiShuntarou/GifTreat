@@ -7,9 +7,12 @@ class RewardsController < ApplicationController
     reward_id = params[:id]
     invitation_token = params[:invitation_token]
     if invitation_token
-      @reward = Reward.find_by!(id: reward_id, invitation_token:)
+      @reward = Reward.find(reward_id)
+      return redirect_to goals_path, alert: '無効な招待URLです。' unless @reward.valid_invitation_token?(invitation_token)
+
       invite_to_reward(@reward, current_user)
     else
+      # 有効なinvitation_tokenがparamsにない場合、他人のRewardにアクセスできない
       groups = RewardParticipant.includes(:reward).where(user: current_user)
       @reward = groups.find_by!(reward_id:).reward
     end
@@ -62,10 +65,6 @@ class RewardsController < ApplicationController
   def invite_to_reward(reward, current_user)
     return redirect_to reward, alert: '招待済のURLです。' if reward.users.include?(current_user)
 
-    if Reward.bulk_create_by_invited(reward, current_user)
-      redirect_to reward, notice: 'ご褒美に招待されました！'
-    else
-      redirect_to root_path, alert: '無効な招待URLです。'
-    end
+    redirect_to reward, notice: 'ご褒美に招待されました！' if Reward.bulk_create_by_invited(reward, current_user)
   end
 end

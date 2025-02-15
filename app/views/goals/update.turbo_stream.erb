@@ -1,1 +1,2 @@
 <%= turbo_stream.update dom_id(@goal), @goal %>
+<%= turbo_stream.update 'flash_messages', partial: "layouts/flash" %>
