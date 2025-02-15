@@ -50,6 +50,10 @@ class Reward < ApplicationRecord
     all_valid
   end
 
+  def valid_invitation_token?(token)
+    invitation_token == token
+  end
+
   private
 
   def validate_in_progress
