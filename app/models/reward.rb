@@ -9,8 +9,8 @@ class Reward < ApplicationRecord
 
   validates :invitation_token, presence: true, uniqueness: true
   with_options presence: true do
-    validates :description
-    validates :location
+    validates :description, length: { maximum: 40 }
+    validates :location, length: { maximum: 40 }
     validates :completion_date
   end
   validate :validate_in_progress
