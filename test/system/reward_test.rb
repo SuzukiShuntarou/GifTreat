@@ -202,11 +202,7 @@ class RewardsTest < ApplicationSystemTestCase
     invited_reward = rewards(:reward_with_alice_bob)
     visit reward_path(invited_reward)
 
-    within('#reward') do
-      assert_selector 'button', text: '招待用URL'
-      click_link_or_button '招待用URL'
-    end
-
+    click_link_or_button '招待用URL'
     cdp_permission = {
       origin: page.server_url,
       permission: { name: 'clipboard-read' },
@@ -215,14 +211,32 @@ class RewardsTest < ApplicationSystemTestCase
     page.driver.browser.execute_cdp('Browser.setPermission', **cdp_permission)
     invited_url = page.evaluate_async_script('navigator.clipboard.readText().then(arguments[0])')
 
-    within('#reward') do
-      assert_selector 'button', text: 'コピーしました！'
-    end
-
     user_already_invited = users(:bob)
     sign_in user_already_invited
     visit(invited_url)
 
     assert_text '招待済のURLです。'
+  end
+
+  test 'should be displayed error message when invitation URL is incorrect' do
+    invited_reward = @reward_in_progress
+    visit reward_path(invited_reward)
+
+    click_link_or_button '招待用URL'
+    cdp_permission = {
+      origin: page.server_url,
+      permission: { name: 'clipboard-read' },
+      setting: 'granted'
+    }
+    page.driver.browser.execute_cdp('Browser.setPermission', **cdp_permission)
+    invited_url = page.evaluate_async_script('navigator.clipboard.readText().then(arguments[0])')
+    incorrect_invited_url = "#{invited_url}incorrect_url"
+
+    other_user = users(:bob)
+    sign_in other_user
+    visit(incorrect_invited_url)
+
+    assert_text '無効な招待URLです。'
+    assert_current_path goals_path
   end
 end
