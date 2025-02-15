@@ -1,21 +1,23 @@
-<% flash.each do |flash_type, message| %>
-  <% if flash_type == "notice" %>
-    <div class="toast-container top-0 end-0 p-3" data-controller="toast">
-      <div class="toast" data-bs-delay="3000" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-          <%= image_tag('favicon.png', class: 'me-2', size: '20x20', alt: 'GifTreatのロゴ') %>
-          <strong class="me-auto">GifTreat</strong>
-          <button class="btn-close" data-bs-dismiss="toast"></button>
-        </div>
-        <div class="toast-body text-center">
-          <p class="fs-4", style="color: green"><%= message %>
+<div id="flash_messages">
+  <% flash.each do |flash_type, message| %>
+    <% if flash_type == "notice" %>
+      <div class="toast-container top-0 end-0 p-3" data-controller="toast">
+        <div class="toast" data-bs-delay="3000" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <%= image_tag('favicon.png', class: 'me-2', size: '20x20', alt: 'GifTreatのロゴ') %>
+            <strong class="me-auto">GifTreat</strong>
+            <button class="btn-close" data-bs-dismiss="toast"></button>
+          </div>
+          <div class="toast-body text-center">
+            <p class="fs-4", style="color: green"><%= message %>
+          </div>
         </div>
       </div>
-    </div>
-  <% elsif flash_type == "alert" %>
-    <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
-      <strong><%= message %></strong>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+    <% elsif flash_type == "alert" %>
+      <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+        <strong><%= message %></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
