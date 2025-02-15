@@ -53,3 +53,19 @@ goal_with_max_count_likings_cheerings:
   progress: 35
   cheerings_count: 100
   likings_count: 100
+
+alice_bob_goal_1:
+  user: alice
+  reward: reward_with_alice_bob
+  description: 歩く
+  progress: 0
+  cheerings_count: 55
+  likings_count: 45
+
+alice_bob_goal_2:
+  user: bob
+  reward: reward_with_alice_bob
+  description: 走る
+  progress: 1
+  cheerings_count: 2
+  likings_count: 3

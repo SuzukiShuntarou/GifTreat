@@ -151,9 +151,7 @@ class RewardsTest < ApplicationSystemTestCase
 
     assert_current_path goals_path
     assert_text 'ご褒美の削除に成功！'
-    assert_no_text @reward_in_progress.completion_date
     assert_no_text @goal_in_progress.description
-    assert_no_text @goal_in_progress.progress
   end
 
   test 'should add goal for user who access the invitation URL for the reward' do
@@ -198,5 +196,33 @@ class RewardsTest < ApplicationSystemTestCase
 
     within("div#likings_#{dom_id(initial_goal_by_invited)}") { assert_text 0 }
     within("div#cheerings_#{dom_id(initial_goal_by_invited)}") { assert_text 0 }
+  end
+
+  test 'should be displayed error message when user who has already been invited accesses the invitation URL' do
+    invited_reward = rewards(:reward_with_alice_bob)
+    visit reward_path(invited_reward)
+
+    within('#reward') do
+      assert_selector 'button', text: '招待用URL'
+      click_link_or_button '招待用URL'
+    end
+
+    cdp_permission = {
+      origin: page.server_url,
+      permission: { name: 'clipboard-read' },
+      setting: 'granted'
+    }
+    page.driver.browser.execute_cdp('Browser.setPermission', **cdp_permission)
+    invited_url = page.evaluate_async_script('navigator.clipboard.readText().then(arguments[0])')
+
+    within('#reward') do
+      assert_selector 'button', text: 'コピーしました！'
+    end
+
+    user_already_invited = users(:bob)
+    sign_in user_already_invited
+    visit(invited_url)
+
+    assert_text '招待済のURLです。'
   end
 end

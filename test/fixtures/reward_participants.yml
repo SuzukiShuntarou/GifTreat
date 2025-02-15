@@ -21,3 +21,11 @@ alice_bob_charlie_david_in_progress_3:
 alice_bob_charlie_david_in_progress_4:
   user: david
   reward: reward_with_alice_bob_charlie_david
+
+alice_bob_in_progress_1:
+  user: alice
+  reward: reward_with_alice_bob
+
+alice_bob_in_progress_2:
+  user: bob
+  reward: reward_with_alice_bob
