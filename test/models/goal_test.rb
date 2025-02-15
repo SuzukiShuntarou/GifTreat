@@ -57,4 +57,14 @@ class GoalTest < ActiveSupport::TestCase
     )
     assert_predicate @goal_completed, :invalid?
   end
+
+  test 'should be achieved' do
+    goal = Goal.new(description: '達成済', progress: 100)
+    assert_predicate goal, :achieved?
+  end
+
+  test 'should not be achieved' do
+    goal = Goal.new(description: '未達成', progress: 99)
+    assert_not goal.achieved?
+  end
 end
