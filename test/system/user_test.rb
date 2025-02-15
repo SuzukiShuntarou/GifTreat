@@ -90,4 +90,46 @@ class UsersTest < ApplicationSystemTestCase
     assert_equal '東京 太郎', find('input[name="user[name]"]').value
     assert_equal 'tokyotaro@example.com', find('input[name="user[email]"]').value
   end
+
+  test 'should be able to reset password from change password view' do
+    visit new_user_session_path
+    assert_selector 'a', text: 'パスワードをお忘れですか？'
+    click_link_or_button 'パスワードをお忘れですか？'
+
+    assert_selector 'h2', text: 'パスワード再設定'
+    fill_in 'メールアドレス', with: 'alice@example.com'
+    click_link_or_button '送信'
+
+    assert_text 'パスワードの再設定について数分以内にメールでご連絡いたします。'
+    assert_current_path new_user_session_path
+
+    assert_equal 1, ActionMailer::Base.deliveries.size
+    mail = ActionMailer::Base.deliveries.last
+    assert_equal @current_user.email, mail.to[0]
+    assert_equal 'パスワードの再設定について', mail.subject
+
+    user = User.find_by(email: @current_user.email)
+    token = user.send(:set_reset_password_token)
+    visit edit_user_password_path(reset_password_token: token)
+    assert_selector 'h2', text: 'パスワード再設定'
+    fill_in 'パスワード', with: 'newpassword'
+    fill_in 'パスワード（確認用）', with: 'newpassword'
+    click_link_or_button 'パスワード再設定'
+
+    assert_text 'パスワードが正しく変更されました。'
+    click_link_or_button 'ログアウト'
+    assert_text 'ログアウトしました。'
+
+    visit new_user_session_path
+    fill_in 'メールアドレス', with: 'alice@example.com'
+    fill_in 'パスワード', with: 'password'
+    click_link_or_button 'ログイン'
+    assert_text 'メールアドレスまたはパスワードが違います。'
+
+    visit new_user_session_path
+    fill_in 'メールアドレス', with: 'alice@example.com'
+    fill_in 'パスワード', with: 'newpassword'
+    click_link_or_button 'ログイン'
+    assert_text 'ログインしました。'
+  end
 end
