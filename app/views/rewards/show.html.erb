@@ -1,28 +1,27 @@
 <% content_for(:title, 'ご褒美・目標詳細') %>
 
-<div class="d-flex flex-column justify-content-center align-items-center m-3" style="height: 75vh;">
-  <div class="border border-secondary-subtle rounded shadow-sm m-2 p-2 w-75 h-25">
-    <div id='reward' class="h-100" style="overflow-x: auto; white-space: nowrap;">
+<div class="d-flex flex-column justify-content-center align-items-center m-3">
+  <div class="border border-secondary-subtle rounded shadow-sm m-2 p-2 w-75">
+    <div id='reward'>
       <%= render @reward %>
     </div>
   </div>
-  <div class="d-flex flex-column border border-secondary-subtle rounded shadow-sm m-2 p-2 w-75 h-75">
-    <div class="row mx-1 gap-1 w-100 h-100">
-      <% @goals.each do |goal| %>
-        <div class="col d-flex flex-column w-25 h-100">
-          <div id="<%= dom_id(goal) %>" class="flex-grow-1 h-75">
-            <%= render 'goals/goal', goal: goal %>
+
+  <div class="row gap-3 m-2 w-75" style="min-height: 40rem">
+    <% @goals.each do |goal| %>
+      <div class="col d-flex flex-column border border-secondary-subtle rounded shadow-sm w-75">
+        <div id="<%= dom_id(goal) %>" class="flex-grow-1">
+          <%= render 'goals/goal', goal: goal %>
+        </div>
+        <div class="d-flex justify-content-end align-items-center">
+          <div id="likings_goal_<%= goal.id %>">
+            <%= render 'likings/liking', goal: goal %>
           </div>
-          <div class="d-flex justify-content-end align-items-center">
-            <div id="likings_goal_<%= goal.id %>">
-              <%= render 'likings/liking', goal: goal %>
-            </div>
-            <div id="cheerings_goal_<%= goal.id %>">
-              <%= render 'cheerings/cheering', goal: goal %>
-            </div>
+          <div id="cheerings_goal_<%= goal.id %>">
+            <%= render 'cheerings/cheering', goal: goal %>
           </div>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

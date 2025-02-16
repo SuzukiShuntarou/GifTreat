@@ -1,5 +1,5 @@
 <%= turbo_frame_tag goal do %>
-  <div class="d-flex flex-column gap-2 h-100">
+  <div class="d-flex flex-column gap-2 h-100 p-2">
     <div class="fs-4">
       <% if goal.user.avatar.attached? %>
         <%= image_tag goal.user.avatar.variant(:profile_icon), class: "border border-primary-secondary rounded-circle bg-white", alt: 'ユーザのアイコン' %>
@@ -8,7 +8,7 @@
       <% end %>
       <%= goal.user.name %>
     </div>
-    <div class="flex-grow-1 border border-primary-secondary bg-white rounded fs-2 overflow-auto p-3 position-relative">
+    <div class="flex-grow-1 border border-primary-secondary bg-white rounded fs-2 p-3 position-relative">
       <%= goal.description %>
       <% unless goal.reward.in_progress? %>
         <% image = goal.achieved? ? "grade-very-good" : "grade-good" %>
