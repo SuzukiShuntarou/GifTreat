@@ -1,15 +1,15 @@
 <% content_for(:title, 'ご褒美・目標詳細') %>
 
-<div class="d-flex flex-column justify-content-center align-items-center m-3">
-  <div class="border border-secondary-subtle rounded shadow-sm m-2 p-2 w-75">
+<div class="d-flex flex-column justify-content-center align-items-center m-5 gap-2">
+  <div class="border border-secondary-subtle rounded shadow-sm m-2 p-2" style="min-width: 75%;">
     <div id='reward'>
       <%= render @reward %>
     </div>
   </div>
 
-  <div class="row gap-3 m-2 w-75" style="min-height: 40rem">
+  <div class="row gap-3 m-2" style="min-height: 30rem; min-width: 75%;">
     <% @goals.each do |goal| %>
-      <div class="col d-flex flex-column border border-secondary-subtle rounded shadow-sm w-75">
+      <div class="col d-flex flex-column border border-secondary-subtle rounded shadow-sm">
         <div id="<%= dom_id(goal) %>" class="flex-grow-1">
           <%= render 'goals/goal', goal: goal %>
         </div>

@@ -1,4 +1,4 @@
-<%= turbo_frame_tag reward, class: 'd-flex text-center fs-2 m-2 gap-2' do %>
+<%= turbo_frame_tag reward, class: 'd-flex text-center fs-4 m-2 gap-2' do %>
   <div class="flex-grow-1 border border-primary-secondary bg-white rounded p-1">
     <%= reward.completion_date %>
   </div>
@@ -9,7 +9,7 @@
   <div>で</div>
 <% end %>
 
-<div class="d-flex text-center fs-2 m-2 gap-2">
+<div class="d-flex text-center fs-4 m-2 gap-2">
   <%= turbo_frame_tag reward, class: 'flex-grow-1 text-center border border-primary-secondary bg-white rounded' do %>
     <div class="p-1 text-wrap" style="width: w-75;">
       <%= reward.description %>
