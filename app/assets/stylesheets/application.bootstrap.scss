@@ -36,13 +36,16 @@ header {
   width: 100%;
 }
 
-a > img:hover {
+a:hover {
   opacity: 0.5;
 }
 
 .btn-primary {
   background-color: $action-color !important;
   border-color: $action-color !important;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .btn-outline-primary {
@@ -53,6 +56,7 @@ a > img:hover {
     color: $base-color !important;
     background-color: $action-color !important;
     border-color: $action-color !important;
+    opacity: 1;
   }
 }
 
@@ -63,5 +67,6 @@ a > img:hover {
     color: $base-color !important;
     background-color: $warning-color !important;
     border-color: $warning-color !important;
+    opacity: 1;
   }
 }

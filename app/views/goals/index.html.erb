@@ -25,7 +25,7 @@
             <tr>
               <td><%= goal.reward.completion_date %></td>
               <td style="overflow: hidden; text-overflow: ellipsis;">
-                <%= link_to goal.description, reward_path(goal.reward.id), class: 'text-truncate link-opacity-50-hover', style: 'display: block;' %>
+                <%= link_to goal.description, reward_path(goal.reward.id), class: 'text-truncate', style: 'display: block;' %>
               </td>
               <td><%= goal.progress %>%</td>
             </tr>
