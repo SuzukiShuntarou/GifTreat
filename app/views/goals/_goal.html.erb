@@ -2,13 +2,13 @@
   <div class="d-flex flex-column gap-2 h-100">
     <div class="fs-4">
       <% if goal.user.avatar.attached? %>
-        <%= image_tag goal.user.avatar.variant(:profile_icon), class: "rounded-circle bg-info-subtle", alt: 'ユーザのアイコン' %>
+        <%= image_tag goal.user.avatar.variant(:profile_icon), class: "border border-primary-secondary rounded-circle bg-white", alt: 'ユーザのアイコン' %>
       <% else %>
-        <%= image_tag("default-avatar.png", class: "rounded-circle bg-info-subtle", size: '75x75', alt: 'デフォルトのユーザアイコン') %>
+        <%= image_tag("default-avatar.png", class: "border border-primary-secondary rounded-circle bg-white", size: '75x75', alt: 'デフォルトのユーザアイコン') %>
       <% end %>
       <%= goal.user.name %>
     </div>
-    <div class="flex-grow-1 bg-body-secondary rounded fs-2 overflow-auto p-3 position-relative">
+    <div class="flex-grow-1 border border-primary-secondary bg-white rounded fs-2 overflow-auto p-3 position-relative">
       <%= goal.description %>
       <% unless goal.reward.in_progress? %>
         <% image = goal.achieved? ? "grade-very-good" : "grade-good" %>
@@ -16,7 +16,10 @@
       <% end %>
     </div>
     <div class="d-flex align-items-center fs-4 gap-2">
-      進捗率<div class="flex-grow-1 text-center bg-body-secondary rounded p-1"><%= goal.progress %></div>%
+      進捗率
+      <div class="flex-grow-1 text-center border border-primary-secondary bg-white  rounded p-1">
+        <%= goal.progress %>
+      </div>%
       <div>
         <% if goal.owned_by?(current_user) && goal.reward.in_progress? %>
           <%= link_to "編集", edit_goal_path(goal), class: "btn btn-sm btn-outline-primary me-2", data: { turbo_frame: "modal"} %>

@@ -1,9 +1,10 @@
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons";
+@import "color_palette";
 
 label.required:after {
   content: " *";
-  color: red;
+  color: $warning-character-color;
 }
 
 .field_with_errors {
@@ -15,10 +16,18 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: $base-color;
 }
 
 main {
   flex: 1;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .footer {
@@ -29,4 +38,30 @@ main {
 
 a > img:hover {
   opacity: 0.5;
+}
+
+.btn-primary {
+  background-color: $action-color !important;
+  border-color: $action-color !important;
+}
+
+.btn-outline-primary {
+  color: $action-character-color;
+  border-color: $action-color;
+  &:active,
+  &:hover {
+    color: $base-color !important;
+    background-color: $action-color !important;
+    border-color: $action-color !important;
+  }
+}
+
+.btn-outline-danger {
+  color: $warning-character-color;
+  border-color: $warning-color;
+  &:hover {
+    color: $base-color !important;
+    background-color: $warning-color !important;
+    border-color: $warning-color !important;
+  }
 }

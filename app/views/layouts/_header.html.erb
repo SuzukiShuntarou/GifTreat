@@ -1,4 +1,4 @@
-<header>
+<header class="shadow-sm">
   <% if user_signed_in? %>
     <nav class="d-flex justify-content-around navbar mx-5 gap-5" style="height: 10vh;">
       <div class="flex-grow-1 h-100">
@@ -12,13 +12,12 @@
       <div class="h-100">
         <%= link_to edit_user_registration_path do %>
           <% if current_user.avatar.attached? %>
-            <%= image_tag current_user.avatar.variant(:profile_icon), class: 'rounded-circle bg-info-subtle h-100', alt: 'ユーザのアイコン' %>
+            <%= image_tag current_user.avatar.variant(:profile_icon), class: 'border border-primary-secondary rounded-circle bg-white h-100', alt: 'ユーザのアイコン' %>
           <% else %>
-            <%= image_tag('default-avatar.png', class: 'rounded-circle bg-info-subtle h-100', alt: 'デフォルトのユーザアイコン') %>
+            <%= image_tag('default-avatar.png', class: 'border border-primary-secondary bg-white rounded-circle h-100', alt: 'デフォルトのユーザアイコン') %>
           <% end %>
         <% end %>
       </div>
     </nav>
-    <hr class="a-border mt-1">
   <% end %>
 </header>
