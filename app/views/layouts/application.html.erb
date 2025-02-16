@@ -19,8 +19,8 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <%= render 'layouts/flash' %>
     <main style="height: 100vh; <%= 'padding-top: 10vh;' if user_signed_in? %>">
+      <%= render 'layouts/flash' %>
       <%= yield %>
     </main>
     <%= render 'layouts/footer' %>
