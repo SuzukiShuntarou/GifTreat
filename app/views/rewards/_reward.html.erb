@@ -18,8 +18,7 @@
   <div>する</div>
   <div class="d-flex align-items-center gap-2 ">
     <% if reward.in_progress? %>
-      <%= link_to "編集", edit_reward_path(reward), class: 'btn btn-sm btn-outline-primary', data: { turbo_frame: "modal"} %>
-      <%= link_to "削除", reward, class: 'btn btn-sm btn-outline-danger', data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
+      <%= link_to "編集", edit_reward_path(reward), class: 'btn btn-sm btn-outline-secondary', data: { turbo_frame: "modal"} %>
     <% end %>
     <% if invited?(@reward) %>
       <%= button_tag '招待用URL：最大4人', 

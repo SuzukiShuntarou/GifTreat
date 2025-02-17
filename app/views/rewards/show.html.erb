@@ -24,4 +24,7 @@
       </div>
     <% end %>
   </div>
+  <div class="m-3">
+    <%= link_to "削除", @reward, data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
+  </div>
 </div>
