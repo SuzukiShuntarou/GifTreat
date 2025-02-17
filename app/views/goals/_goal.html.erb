@@ -9,7 +9,7 @@
       <%= goal.user.name %>
     </div>
     <div class="flex-grow-1 border border-primary-secondary bg-white rounded fs-4 p-3 position-relative">
-      <%= goal.description %>
+      <div class="goal-description"><%= goal.description %></div>
       <% unless goal.reward.in_progress? %>
         <% image = goal.achieved? ? "grade-very-good" : "grade-good" %>
         <%= image_tag(image, class: "position-absolute bottom-0 end-0 h-25") %>
