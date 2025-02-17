@@ -28,7 +28,7 @@ class RewardsTest < ApplicationSystemTestCase
     within("div##{dom_id(@goal_in_progress)}") do
       assert_text @goal_in_progress.user.name
       assert_text @goal_in_progress.description
-      assert_text @goal_in_progress.progress
+      assert_equal @goal_in_progress.progress.to_s, find('input[name="goal[progress]"]').value
 
       assert_selector 'a', text: '編集'
     end
@@ -89,7 +89,7 @@ class RewardsTest < ApplicationSystemTestCase
 
     within("div##{dom_id(goal)}") do
       assert_text '毎日早寝早起きする'
-      assert_text '20'
+      assert_equal '20', find('input[name="goal[progress]"]').value
     end
 
     within("div#likings_#{dom_id(goal)}") { assert_text 0 }
@@ -136,7 +136,7 @@ class RewardsTest < ApplicationSystemTestCase
 
     within("div##{dom_id(@goal_in_progress)}") do
       assert_text 'ランニングする'
-      assert_text '99'
+      assert_equal '99', find('input[name="goal[progress]"]').value
     end
   end
 
@@ -190,7 +190,7 @@ class RewardsTest < ApplicationSystemTestCase
     within("div##{dom_id(initial_goal_by_invited)}") do
       assert_text 'Bob'
       assert_text '招待されました！Bobさんの目標を登録しましょう！'
-      assert_text 0
+      assert_equal '0', find('input[name="goal[progress]"]').value
       assert_selector 'a', text: '編集'
     end
 
