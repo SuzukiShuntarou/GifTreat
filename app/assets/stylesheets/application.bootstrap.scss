@@ -36,8 +36,11 @@ header {
   width: 100%;
 }
 
-a:hover {
-  opacity: 0.5;
+a {
+  color: $link-color;
+  &:hover {
+    opacity: 0.5;
+  }
 }
 
 .btn-primary {
@@ -78,6 +81,22 @@ a:hover {
     border-color: $warning-color !important;
     opacity: 1;
   }
+}
+
+.page-link {
+  color: $link-color;
+}
+
+.page-item.active .page-link {
+  color: $base-color;
+  border-color: $link-color;
+  background-color: $link-color;
+}
+
+.page-item:hover .page-link {
+  color: $base-color;
+  border-color: $link-color;
+  background-color: $link-color;
 }
 
 .goal-description {
