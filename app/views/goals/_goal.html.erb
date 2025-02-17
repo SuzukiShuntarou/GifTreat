@@ -16,15 +16,39 @@
       <% end %>
     </div>
     <div class="d-flex align-items-center fs-4 gap-2">
-      進捗率
-      <div class="flex-grow-1 text-center border border-primary-secondary bg-white  rounded p-1">
-        <%= goal.progress %>
-      </div>%
-      <div>
-        <% if goal.owned_by?(current_user) && goal.reward.in_progress? %>
-          <%= link_to "編集", edit_goal_path(goal), class: "btn btn-sm btn-outline-primary me-2", data: { turbo_frame: "modal"} %>
-        <% end %>
-      </div>
+      <% if goal.owned_by?(current_user) && goal.reward.in_progress? %>
+        <div class="row gap-2">
+          <%= form_with(model: goal, data: { controller: "slider", action: "submit->slider#close" }) do |form| %>
+            <div class="col">
+              <%= form.label :progress %>
+            </div>
+            <div class="col d-flex gap-2">
+              <%= form.number_field :progress, class: "text-center border border-primary-secondary rounded", style: "max-width: 50%; outline: none;", readonly: true, id: "hidden_input_progress" %>%
+              <div class="gap-3 mx-2" style="display: none" id="update_buttons">
+                <%= form.submit "更新" , class: "btn btn-outline-primary" %>
+                <%= link_to "キャンセル", reward_path(goal.reward), class: "btn btn-outline-danger" %>
+              </div>
+            </div>
+          <% end %>
+          <div class="col">
+            <input type="range"
+                   class="form-range" 
+                   value="<%= goal.progress %>" 
+                   min="0" max="100" step="1"
+                   data-controller="slider"
+                   data-action="change->slider#inputChange"
+            >
+          </div>
+          <div class="col">
+            <%= link_to "編集", edit_goal_path(goal), class: "btn btn-outline-primary me-2", data: { turbo_frame: "modal"} %>
+          </div>
+        </div>
+      <% else %>
+        進捗率
+        <div class="flex-grow-1 text-center border border-primary-secondary bg-white rounded p-1" style="max-width: 45%">
+          <%= goal.progress %>
+        </div>%
+      <% end %>
     </div>
   </div>
 <% end %>
