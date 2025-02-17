@@ -21,7 +21,6 @@ class RewardsTest < ApplicationSystemTestCase
       assert_text @reward_in_progress.description
 
       assert_selector 'a', text: '編集'
-      assert_selector 'a', text: '削除'
       assert_selector 'button', text: '招待用URL：最大4人'
     end
 
@@ -35,6 +34,7 @@ class RewardsTest < ApplicationSystemTestCase
 
     within("div#likings_#{dom_id(@goal_in_progress)}") { assert_text @goal_in_progress.likings_count }
     within("div#cheerings_#{dom_id(@goal_in_progress)}") { assert_text @goal_in_progress.cheerings_count }
+    assert_selector 'a', text: '削除'
   end
 
   test 'should show details of Reward and Goal, without edit and delete and invite buttons, on completed' do
@@ -143,11 +143,9 @@ class RewardsTest < ApplicationSystemTestCase
   test 'should delete reward and goal in progress' do
     visit reward_path(@reward_in_progress)
 
-    within('#reward') do
-      assert_selector 'a', text: '削除'
-      click_link_or_button '削除'
-      page.accept_alert
-    end
+    assert_selector 'a', text: '削除'
+    click_link_or_button '削除'
+    page.accept_alert
 
     assert_current_path goals_path
     assert_text 'ご褒美の削除に成功！'
