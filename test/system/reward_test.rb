@@ -75,7 +75,7 @@ class RewardsTest < ApplicationSystemTestCase
       click_link_or_button 'ご褒美と目標を登録する'
     end
 
-    assert_text 'ご褒美と目標の登録に成功！'
+    assert_text 'ご褒美の追加に成功！'
 
     reward = Reward.last
     goal = Goal.last
