@@ -3,7 +3,7 @@
   <h1 class="text-center"><%= image_tag('logo-top-page', class: 'w-50 h-25', alt: 'GifTreatのロゴ') %></h1>
   <h2>努力できた自分を褒めよう！</h2>
 
-  <div class="fs-5 w-50">
+  <div class="fs-5" style="min-width: 25rem;">
     <%= bootstrap_form_with(model: @user, label_errors: true, url: session_path(resource_name), html: { method: :post }) do |f| %>
       <div class="field">
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -13,23 +13,24 @@
         <%= f.password_field :password, autocomplete: "current-password" %>
       </div>
 
-      <div class="d-flex">
-        <% if devise_mapping.rememberable? %>
-          <div class="field flex-grow-1">
-            <%= f.check_box :remember_me %>
-          </div>
-        <% end %>
-        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-          <%= link_to t(".forgot_your_password"), new_password_path(resource_name), class: 'link-opacity-50-hover' %>
-        <% end %>
-      </div>
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+        </div>
+      <% end %>
 
       <div class="actions d-flex justify-content-center">
         <%= f.submit t('.sign_in'), class: 'btn btn-outline-primary btn-lg' %>
       </div>
     <% end %>
-    <div class="d-flex justify-content-center m-3">
-      <%= render "devise/shared/links" %>
+
+    <div class="d-flex flex-column justify-content-center align-items-center m-3 gap-3">
+      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <%= link_to t(".sign_up"), new_registration_path(resource_name) %>
+      <% end %>
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <%= link_to t(".forgot_your_password"), new_password_path(resource_name) %>
+      <% end %>
     </div>
   </div>
 </div>
