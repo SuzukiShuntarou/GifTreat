@@ -63,6 +63,7 @@ class GoalsTest < ApplicationSystemTestCase
   end
 
   test 'should display message on goals screen when no rewards and goals registered' do
+    find('.navbar-toggler').click
     click_link_or_button 'ログアウト'
     assert_text 'ログアウトしました。'
 
