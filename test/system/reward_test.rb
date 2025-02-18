@@ -21,20 +21,20 @@ class RewardsTest < ApplicationSystemTestCase
       assert_text @reward_in_progress.description
 
       assert_selector 'a', text: '編集'
-      assert_selector 'a', text: '削除'
       assert_selector 'button', text: '招待用URL：最大4人'
     end
 
     within("div##{dom_id(@goal_in_progress)}") do
       assert_text @goal_in_progress.user.name
       assert_text @goal_in_progress.description
-      assert_text @goal_in_progress.progress
+      assert_equal @goal_in_progress.progress.to_s, find('input[name="goal[progress]"]').value
 
       assert_selector 'a', text: '編集'
     end
 
     within("div#likings_#{dom_id(@goal_in_progress)}") { assert_text @goal_in_progress.likings_count }
     within("div#cheerings_#{dom_id(@goal_in_progress)}") { assert_text @goal_in_progress.cheerings_count }
+    assert_selector 'a', text: '削除'
   end
 
   test 'should show details of Reward and Goal, without edit and delete and invite buttons, on completed' do
@@ -75,7 +75,7 @@ class RewardsTest < ApplicationSystemTestCase
       click_link_or_button 'ご褒美と目標を登録する'
     end
 
-    assert_text 'ご褒美と目標の登録に成功！'
+    assert_text 'ご褒美の追加に成功！'
 
     reward = Reward.last
     goal = Goal.last
@@ -89,7 +89,7 @@ class RewardsTest < ApplicationSystemTestCase
 
     within("div##{dom_id(goal)}") do
       assert_text '毎日早寝早起きする'
-      assert_text '20'
+      assert_equal '20', find('input[name="goal[progress]"]').value
     end
 
     within("div#likings_#{dom_id(goal)}") { assert_text 0 }
@@ -136,18 +136,16 @@ class RewardsTest < ApplicationSystemTestCase
 
     within("div##{dom_id(@goal_in_progress)}") do
       assert_text 'ランニングする'
-      assert_text '99'
+      assert_equal '99', find('input[name="goal[progress]"]').value
     end
   end
 
   test 'should delete reward and goal in progress' do
     visit reward_path(@reward_in_progress)
 
-    within('#reward') do
-      assert_selector 'a', text: '削除'
-      click_link_or_button '削除'
-      page.accept_alert
-    end
+    assert_selector 'a', text: '削除'
+    click_link_or_button '削除'
+    page.accept_alert
 
     assert_current_path goals_path
     assert_text 'ご褒美の削除に成功！'
@@ -190,7 +188,7 @@ class RewardsTest < ApplicationSystemTestCase
     within("div##{dom_id(initial_goal_by_invited)}") do
       assert_text 'Bob'
       assert_text '招待されました！Bobさんの目標を登録しましょう！'
-      assert_text 0
+      assert_equal '0', find('input[name="goal[progress]"]').value
       assert_selector 'a', text: '編集'
     end
 

@@ -26,6 +26,7 @@ class UsersTest < ApplicationSystemTestCase
   test 'should logout' do
     sign_in @current_user
     visit root_path
+    find('.navbar-toggler').click
     click_link_or_button 'ログアウト'
     assert_text 'ログアウトしました。'
   end
@@ -33,7 +34,8 @@ class UsersTest < ApplicationSystemTestCase
   test 'should show own user edit page' do
     sign_in @current_user
     visit root_path
-    click_link_or_button 'デフォルトのユーザアイコン'
+    find('.navbar-toggler').click
+    click_link_or_button '登録情報'
 
     assert_text '登録情報変更'
     assert_equal @current_user.name, find('input[name="user[name]"]').value
@@ -43,7 +45,8 @@ class UsersTest < ApplicationSystemTestCase
   test 'should editable registration' do
     sign_in @current_user
     visit root_path
-    click_link_or_button 'デフォルトのユーザアイコン'
+    find('.navbar-toggler').click
+    click_link_or_button '登録情報'
 
     fill_in 'ユーザ名', with: 'new-alice'
     fill_in 'メールアドレス', with: 'new-alice@example.com'
@@ -61,7 +64,8 @@ class UsersTest < ApplicationSystemTestCase
   test 'should be able to delete own account from user edit page' do
     sign_in @current_user
     visit root_path
-    click_link_or_button 'デフォルトのユーザアイコン'
+    find('.navbar-toggler').click
+    click_link_or_button '登録情報'
 
     click_link_or_button 'アカウント削除'
     page.accept_alert
@@ -83,8 +87,9 @@ class UsersTest < ApplicationSystemTestCase
     click_link_or_button 'アカウント登録'
 
     assert_text 'アカウント登録が完了しました。'
-    assert_text 'まだ自分へのご褒美と目標が１つも登録されていません。'
-    click_link_or_button 'デフォルトのユーザアイコン'
+    assert_text 'ご褒美と目標が登録されていません。'
+    find('.navbar-toggler').click
+    click_link_or_button '登録情報'
 
     assert_text '登録情報変更'
     assert_equal '東京 太郎', find('input[name="user[name]"]').value
@@ -117,6 +122,7 @@ class UsersTest < ApplicationSystemTestCase
     click_link_or_button 'パスワード再設定'
 
     assert_text 'パスワードが正しく変更されました。'
+    find('.navbar-toggler').click
     click_link_or_button 'ログアウト'
     assert_text 'ログアウトしました。'
 

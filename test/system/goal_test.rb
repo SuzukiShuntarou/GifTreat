@@ -63,6 +63,7 @@ class GoalsTest < ApplicationSystemTestCase
   end
 
   test 'should display message on goals screen when no rewards and goals registered' do
+    find('.navbar-toggler').click
     click_link_or_button 'ログアウト'
     assert_text 'ログアウトしました。'
 
@@ -71,7 +72,7 @@ class GoalsTest < ApplicationSystemTestCase
     visit root_path
 
     click_link_or_button '実施中'
-    assert_text 'まだ自分へのご褒美と目標が１つも登録されていません。'
+    assert_text 'ご褒美と目標が登録されていません。'
 
     click_link_or_button '終了'
     assert_text '終了したご褒美と目標がありません。'

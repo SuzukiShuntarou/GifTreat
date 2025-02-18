@@ -19,8 +19,10 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <%= render 'layouts/flash' %>
-    <main><%= yield %></main>
+    <main style="height: 100vh; <%= 'padding-top: 10vh;' if user_signed_in? %>">
+      <%= render 'layouts/flash' %>
+      <%= yield %>
+    </main>
     <%= render 'layouts/footer' %>
     <%= turbo_frame_tag "modal" %>
   </body>
