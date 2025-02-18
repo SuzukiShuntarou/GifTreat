@@ -87,7 +87,7 @@ class UsersTest < ApplicationSystemTestCase
     click_link_or_button 'アカウント登録'
 
     assert_text 'アカウント登録が完了しました。'
-    assert_text 'まだ自分へのご褒美と目標が１つも登録されていません。'
+    assert_text 'ご褒美と目標が登録されていません。'
     find('.navbar-toggler').click
     click_link_or_button '登録情報'
 
