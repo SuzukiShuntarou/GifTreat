@@ -1,4 +1,8 @@
 <span style="display: inline-flex;">
-  <%= image_tag("liking-icon.png", onmouseover: "this.title='#{generate_likings_message(goal.likings)}'", size: '20x20', alt: 'いいねのマーク') %>
+  <%= image_tag("liking-icon.png",
+                onmouseover: "this.title='#{generate_likings_message(goal.likings)}'",
+                alt: 'いいねのマーク',
+                style: 'width: 1.5rem; height: 1.5rem;')
+  %>
   <%= goal.likings_count %>
 </span>

@@ -2,9 +2,17 @@
   <div class="d-flex flex-column gap-2 h-100 p-2">
     <div class="fs-5">
       <% if goal.user.avatar.attached? %>
-        <%= image_tag goal.user.avatar.variant(:profile_icon), class: "border border-primary-secondary rounded-circle bg-white", alt: 'ユーザのアイコン' %>
+        <%= image_tag goal.user.avatar.variant(:profile_icon),
+            class: "border border-primary-secondary rounded-circle bg-white",
+            alt: 'ユーザのアイコン',
+            style: 'width: 4rem; height: 4rem;'
+        %>
       <% else %>
-        <%= image_tag("default-avatar.png", class: "border border-primary-secondary rounded-circle bg-white", size: '75x75', alt: 'デフォルトのユーザアイコン') %>
+        <%= image_tag("default-avatar.png",
+                      class: "border border-primary-secondary rounded-circle bg-white",
+                      alt: 'デフォルトのユーザアイコン',
+                      style: 'width: 4rem; height: 4rem;')
+        %>
       <% end %>
       <%= goal.user.name %>
     </div>
