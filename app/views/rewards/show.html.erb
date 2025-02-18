@@ -1,15 +1,16 @@
 <% content_for(:title, 'ご褒美・目標詳細') %>
 
-<div class="d-flex flex-column justify-content-center align-items-center m-5 gap-2">
-  <div class="border border-secondary-subtle rounded shadow-sm m-2 p-2" style="min-width: 75%;">
+<div class="d-flex flex-column justify-content-center align-items-center m-3 gap-2">
+  <h2>ご褒美</h2>
+  <div class="row border border-secondary-subtle rounded shadow-sm m-2 p-2" style="min-width: 30rem; max-width: 45rem;">
     <div id='reward'>
       <%= render @reward %>
     </div>
   </div>
-
-  <div class="row gap-3 m-2" style="min-height: 30rem; min-width: 75%;">
+  <h2>目標</h2>
+  <div class="row gap-3 m-2">
     <% @goals.each do |goal| %>
-      <div class="col d-flex flex-column border border-secondary-subtle rounded shadow-sm">
+      <div class="col d-flex flex-column border border-secondary-subtle rounded shadow-sm" style="min-height: 30rem; min-width: 20rem; max-width: 45rem;">
         <div id="<%= dom_id(goal) %>" class="flex-grow-1">
           <%= render 'goals/goal', goal: goal %>
         </div>
@@ -24,7 +25,7 @@
       </div>
     <% end %>
   </div>
-  <div class="m-3">
+  <div class="fs-5 m-3">
     <%= link_to "削除", @reward, data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
   </div>
 </div>

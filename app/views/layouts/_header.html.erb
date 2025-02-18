@@ -1,19 +1,36 @@
 <header class="shadow-sm">
   <% if user_signed_in? %>
-    <nav class="d-flex justify-content-around navbar mx-5 gap-5">
-      <div class="flex-grow-1">
-        <%= link_to goals_path do %>
-          <%= image_tag('logo-header.png',style: 'max-height: 5rem;',  alt: 'ヘッダーのGifTreatのロゴ') %>
-        <% end %>
-      </div>
-      <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-outline-secondary btn-lg' %>
-      <%= link_to edit_user_registration_path do %>
-        <% if current_user.avatar.attached? %>
-          <%= image_tag current_user.avatar.variant(:profile_icon), class: 'border border-primary-secondary rounded-circle bg-white',style: 'max-height: 5rem;', alt: 'ユーザのアイコン' %>
-        <% else %>
-          <%= image_tag('default-avatar.png', class: 'border border-primary-secondary bg-white rounded-circle',style: 'max-height: 5rem;', alt: 'デフォルトのユーザアイコン') %>
-        <% end %>
+    <nav class="navbar mx-5" style="height: 5rem;">
+      <%= link_to goals_path do %>
+        <%= image_tag('logo-header.png', style: 'height: 4rem;', alt: 'ヘッダーのGifTreatのロゴ') %>
       <% end %>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" style="max-width: 15rem">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title">メニュー</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body mx-3">
+          <ul class="navbar-nav gap-1">
+            <li class="nav-item">
+              <%= link_to 'トップページ', root_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'ご褒美を追加する', new_reward_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to '登録情報', edit_user_registration_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete } %>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
   <% end %>
 </header>

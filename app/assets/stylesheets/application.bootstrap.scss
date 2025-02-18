@@ -2,6 +2,40 @@
 @import "bootstrap-icons/font/bootstrap-icons";
 @import "color_palette";
 
+@media (max-width: 600px) {
+  html {
+    font-size: 12px;
+  }
+  .modal-dialog {
+    max-width: 100%;
+    margin: 1rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+  .modal-dialog {
+    max-width: 80%;
+    margin: 1rem auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 18px;
+  }
+  .modal-dialog {
+    max-width: 50rem;
+    margin: 2rem auto;
+  }
+}
+
+.d-flex {
+  flex-wrap: wrap;
+}
+
 label.required:after {
   content: " *";
   color: $warning-color;
