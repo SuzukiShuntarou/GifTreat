@@ -59,6 +59,7 @@ class RewardsTest < ApplicationSystemTestCase
       assert_text goal_completed.progress
 
       assert_no_selector 'a', text: '編集'
+      assert_no_selector 'input[type="range"]'
     end
   end
 
