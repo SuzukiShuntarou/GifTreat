@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: "users/registrations"
   }
-  resources :rewards, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :rewards, only: [:show, :new, :create, :edit, :update, :destroy] do
+    member do
+      get 'invite'
+    end
+  end
   resources :goals, only: [:index, :edit, :update] do
     resources :likings, only: [:create]
     resources :cheerings, only: [:create]
