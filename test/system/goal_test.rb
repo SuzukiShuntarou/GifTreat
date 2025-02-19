@@ -99,4 +99,28 @@ class GoalsTest < ApplicationSystemTestCase
       assert_equal '99', find('input[name="goal[progress]"]').value
     end
   end
+
+  test 'should be able to update progress with slider' do
+    visit reward_path(@alice_reward_in_progress)
+
+    within("div##{dom_id(@alice_goal_in_progress)}") do
+      assert_no_selector 'input[type="submit"][value="更新"]'
+      assert_no_selector 'a', text: '取消'
+
+      slider = find('input[type="range"]')
+      slider.send_keys(:end)
+      assert_equal '100', find('input[name="goal[progress]"]').value
+
+      assert_selector 'input[type="submit"][value="更新"]'
+      assert_selector 'a', text: '取消'
+
+      click_link_or_button '更新'
+    end
+
+    assert_text '目標の更新に成功！'
+
+    within("div##{dom_id(@alice_goal_in_progress)}") do
+      assert_equal '100', find('input[name="goal[progress]"]').value
+    end
+  end
 end
