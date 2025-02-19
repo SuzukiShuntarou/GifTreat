@@ -1,13 +1,23 @@
-<%= render "modal", title: "招待" do %>
-  <div class="d-flex gap-3">
-    <%= text_field_tag :invite_url, reward_url(@reward.id, invitation_token: @reward.invitation_token), readonly: true, class: 'flex-grow-1' %>
-    <%= button_tag '招待用URLをコピー', 
-      data: { controller: "clipboard",
-              action: "click->clipboard#copy",
-              clipboard_content_value: reward_url(@reward.id, invitation_token: @reward.invitation_token) },
-      title: "この招待URLでアクセスしたユーザのみが、このご褒美を共有できます。",
-      class: 'btn btn-outline-secondary btn-sm'
-    %>
+<%= render "modal", title: "ご褒美へ友人・家族を招待" do %>
+  <div class="d-flex flex-column">
+    <div class="d-flex flex-column fw-bolder p-3">
+      <p>招待したい人に以下のURLを共有してください。</p>
+      <p>招待用のURLからアクセスした人をご褒美へ招待することができます。</p>
+      <p>最大4人まで共有可能です。みんなでご褒美目指して頑張りましょう！</p>
+    </div>
+    <div class="d-flex gap-3">
+      <%= text_field_tag :invite_url,
+          reward_url(@reward.id, invitation_token: @reward.invitation_token),
+          readonly: true,
+          class: 'flex-grow-1 border border-primary-secondary rounded bg-white text-center'
+      %>
+      <%= button_tag '招待用URLをコピー', 
+        data: { controller: "clipboard",
+                action: "click->clipboard#copy",
+                clipboard_content_value: reward_url(@reward.id, invitation_token: @reward.invitation_token) },
+        class: 'btn btn-primary btn-sm'
+      %>
+    </div>
   </div>
 <% end %>
 
