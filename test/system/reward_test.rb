@@ -118,7 +118,6 @@ class RewardsTest < ApplicationSystemTestCase
     end
   end
 
-
   test 'should delete reward and goal in progress' do
     visit reward_path(@reward_in_progress)
 
