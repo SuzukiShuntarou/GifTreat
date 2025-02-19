@@ -27,13 +27,7 @@
       <%= link_to "編集", edit_reward_path(reward), class: 'btn btn-sm btn-outline-secondary', data: { turbo_frame: "modal"} %>
     <% end %>
     <% if invited?(@reward) %>
-      <%= button_tag '招待用URL：最大4人', 
-        data: { controller: "clipboard",
-                action: "click->clipboard#copy",
-                clipboard_content_value: reward_url(@reward.id, invitation_token: @reward.invitation_token) },
-        title: "この招待URLでアクセスしたユーザのみが、このご褒美を共有できます。",
-        class: 'btn btn-outline-secondary btn-sm'
-      %>
+      <%= link_to '招待', invite_reward_path(@reward), data: { turbo_frame: "modal"} %>
     <% end %>
   </div>
 </div>
