@@ -1,9 +1,9 @@
 <%= render "modal", title: "ご褒美へ友人・家族を招待" do %>
   <div class="d-flex flex-column">
-    <div class="d-flex flex-column fw-bolder p-3">
+    <div class="d-flex flex-column fw-bolder p-2">
       <p>招待したい人に以下のURLを共有してください。</p>
-      <p>招待用のURLからアクセスした人をご褒美へ招待することができます。</p>
-      <p>最大4人まで共有可能です。みんなでご褒美目指して頑張りましょう！</p>
+      <p>招待URLからアクセスしたユーザはご褒美の編集・削除が可能となります。</p>
+      <p>最大4人まで招待可能です。みんなでご褒美目指して頑張りましょう！</p>
     </div>
     <div class="d-flex gap-3">
       <%= text_field_tag :invite_url,
