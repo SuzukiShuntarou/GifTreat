@@ -21,7 +21,7 @@ class RewardsTest < ApplicationSystemTestCase
       assert_text @reward_in_progress.description
 
       assert_selector 'a', text: '編集'
-      assert_selector 'button', text: '招待用URL：最大4人'
+      assert_selector 'a', text: '招待'
     end
 
     within("div##{dom_id(@goal_in_progress)}") do
@@ -50,7 +50,7 @@ class RewardsTest < ApplicationSystemTestCase
 
       assert_no_selector 'a', text: '編集'
       assert_no_selector 'a', text: '削除'
-      assert_no_selector 'button', text: '招待用URL：最大4人'
+      assert_no_selector 'a', text: '招待'
     end
 
     within("div##{dom_id(goal_completed)}") do
@@ -135,8 +135,15 @@ class RewardsTest < ApplicationSystemTestCase
     visit reward_path(@reward_in_progress)
 
     within('#reward') do
-      assert_selector 'button', text: '招待用URL'
-      click_link_or_button '招待用URL'
+      assert_selector 'a', text: '招待'
+      click_link_or_button '招待'
+    end
+
+    within('.modal-body') do
+      assert_text '招待したい人に以下のURLを共有してください。'
+      assert_equal reward_url(@reward_in_progress.id, invitation_token: @reward_in_progress.invitation_token), find('input[name="invite_url"]').value
+      click_link_or_button '招待用URLをコピー'
+      assert_selector 'button', text: 'コピーしました！'
     end
 
     cdp_permission = {
@@ -146,10 +153,6 @@ class RewardsTest < ApplicationSystemTestCase
     }
     page.driver.browser.execute_cdp('Browser.setPermission', **cdp_permission)
     invited_url = page.evaluate_async_script('navigator.clipboard.readText().then(arguments[0])')
-
-    within('#reward') do
-      assert_selector 'button', text: 'コピーしました！'
-    end
 
     other_user = users(:bob)
     sign_in other_user
@@ -179,7 +182,16 @@ class RewardsTest < ApplicationSystemTestCase
     invited_reward = rewards(:reward_with_alice_bob)
     visit reward_path(invited_reward)
 
-    click_link_or_button '招待用URL'
+    within('#reward') do
+      assert_selector 'a', text: '招待'
+      click_link_or_button '招待'
+    end
+
+    within('.modal-body') do
+      click_link_or_button '招待用URLをコピー'
+      assert_selector 'button', text: 'コピーしました！'
+    end
+
     cdp_permission = {
       origin: page.server_url,
       permission: { name: 'clipboard-read' },
@@ -199,7 +211,16 @@ class RewardsTest < ApplicationSystemTestCase
     invited_reward = @reward_in_progress
     visit reward_path(invited_reward)
 
-    click_link_or_button '招待用URL'
+    within('#reward') do
+      assert_selector 'a', text: '招待'
+      click_link_or_button '招待'
+    end
+
+    within('.modal-body') do
+      click_link_or_button '招待用URLをコピー'
+      assert_selector 'button', text: 'コピーしました！'
+    end
+
     cdp_permission = {
       origin: page.server_url,
       permission: { name: 'clipboard-read' },

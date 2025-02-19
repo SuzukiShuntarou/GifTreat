@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RewardsController < ApplicationController
-  before_action :set_reward, only: %i[edit update destroy]
+  before_action :set_reward, only: %i[edit update destroy invite]
 
   def show
     reward_id = params[:id]
@@ -47,6 +47,8 @@ class RewardsController < ApplicationController
     @reward.destroy!
     redirect_to goals_path, notice: 'ご褒美の削除に成功！'
   end
+
+  def invite; end
 
   private
 
