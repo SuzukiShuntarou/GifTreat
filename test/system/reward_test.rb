@@ -118,27 +118,6 @@ class RewardsTest < ApplicationSystemTestCase
     end
   end
 
-  test 'should be editable goal in progress' do
-    visit reward_path(@reward_in_progress)
-
-    within("div##{dom_id(@goal_in_progress)}") do
-      assert_selector 'a', text: '編集'
-      click_link_or_button '編集'
-    end
-
-    within('.modal-body') do
-      fill_in '目標', with: 'ランニングする'
-      fill_in '進捗率', with: '99'
-      click_link_or_button '更新'
-    end
-
-    assert_text '目標の更新に成功！'
-
-    within("div##{dom_id(@goal_in_progress)}") do
-      assert_text 'ランニングする'
-      assert_equal '99', find('input[name="goal[progress]"]').value
-    end
-  end
 
   test 'should delete reward and goal in progress' do
     visit reward_path(@reward_in_progress)

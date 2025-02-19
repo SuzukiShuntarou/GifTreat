@@ -77,4 +77,26 @@ class GoalsTest < ApplicationSystemTestCase
     click_link_or_button '終了'
     assert_text '終了したご褒美と目標がありません。'
   end
+
+  test 'should be editable goal in progress' do
+    visit reward_path(@alice_reward_in_progress)
+
+    within("div##{dom_id(@alice_goal_in_progress)}") do
+      assert_selector 'a', text: '編集'
+      click_link_or_button '編集'
+    end
+
+    within('.modal-body') do
+      fill_in '目標', with: 'ランニングする'
+      fill_in '進捗率', with: '99'
+      click_link_or_button '更新'
+    end
+
+    assert_text '目標の更新に成功！'
+
+    within("div##{dom_id(@alice_goal_in_progress)}") do
+      assert_text 'ランニングする'
+      assert_equal '99', find('input[name="goal[progress]"]').value
+    end
+  end
 end
