@@ -49,7 +49,6 @@ class RewardsTest < ApplicationSystemTestCase
       assert_text reward_completed.description
 
       assert_no_selector 'a', text: '編集'
-      assert_no_selector 'a', text: '削除'
       assert_no_selector 'a', text: '招待'
     end
 
@@ -61,6 +60,7 @@ class RewardsTest < ApplicationSystemTestCase
       assert_no_selector 'a', text: '編集'
       assert_no_selector 'input[type="range"]'
     end
+    assert_no_selector 'a', text: '削除'
   end
 
   test 'should be able to create both Reward and Goal from common form' do
