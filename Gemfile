@@ -44,6 +44,7 @@ gem 'devise-i18n'
 gem 'i18n_generators'
 gem 'image_processing', '~> 1.2'
 gem 'kaminari'
+gem 'meta-tags'
 gem 'mini_magick'
 
 group :development, :test do
