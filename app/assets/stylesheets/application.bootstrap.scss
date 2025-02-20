@@ -80,6 +80,10 @@ header {
   width: 100%;
 }
 
+.main-color {
+  color: $main-color;
+}
+
 a {
   color: $link-color;
   &:hover {
