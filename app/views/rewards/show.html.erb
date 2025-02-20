@@ -26,6 +26,8 @@
     <% end %>
   </div>
   <div class="fs-5 m-3">
-    <%= link_to "削除", @reward, data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
+    <% if @reward.in_progress? %>
+      <%= link_to "削除", @reward, data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
+    <% end %>
   </div>
 </div>
