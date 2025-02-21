@@ -111,7 +111,7 @@ class UsersTest < ApplicationSystemTestCase
     assert_equal 1, ActionMailer::Base.deliveries.size
     mail = ActionMailer::Base.deliveries.last
     assert_equal @current_user.email, mail.to[0]
-    assert_equal 'パスワードの再設定について', mail.subject
+    assert_equal '【GifTreat】パスワードの再設定について', mail.subject
 
     user = User.find_by(email: @current_user.email)
     token = user.send(:set_reset_password_token)
