@@ -105,7 +105,7 @@ class UsersTest < ApplicationSystemTestCase
     fill_in 'メールアドレス', with: 'alice@example.com'
     click_link_or_button '送信'
 
-    assert_text 'パスワードの再設定について数分以内にメールでご連絡いたします。'
+    assert_text 'パスワードの再設定について、メールでご連絡いたします。'
     assert_current_path new_user_session_path
 
     assert_equal 1, ActionMailer::Base.deliveries.size
@@ -121,7 +121,7 @@ class UsersTest < ApplicationSystemTestCase
     fill_in 'パスワード（確認用）', with: 'newpassword'
     click_link_or_button 'パスワード再設定'
 
-    assert_text 'パスワードが正しく変更されました。'
+    assert_text 'パスワードが変更されました。'
     find('.navbar-toggler').click
     click_link_or_button 'ログアウト'
     assert_text 'ログアウトしました。'
