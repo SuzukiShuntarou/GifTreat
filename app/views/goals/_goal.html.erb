@@ -30,7 +30,7 @@
             <div class="col">
               <%= form.label :progress %>
             </div>
-            <div class="col d-flex gap-2">
+            <div class="col d-flex align-items-center gap-2 my-2">
               <%= form.number_field :progress, class: "text-center border border-primary-secondary rounded", style: "max-width: 10rem; outline: none;", readonly: true, id: "hidden_input_progress" %>%
               <div class="gap-3 mx-2" style="max-width: 15rem; display: none" id="update_buttons">
                 <%= form.submit "更新" , class: "btn btn-outline-primary" %>
