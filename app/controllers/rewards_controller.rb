@@ -4,17 +4,14 @@ class RewardsController < ApplicationController
   before_action :set_reward, only: %i[edit update destroy invite]
 
   def show
-    reward_id = params[:id]
     invitation_token = params[:invitation_token]
     if invitation_token
-      @reward = Reward.find(reward_id)
+      @reward = Reward.find(params[:id])
       return redirect_to goals_path, alert: '無効な招待URLです。' unless @reward.valid_invitation_token?(invitation_token)
 
       invite_to_reward(@reward, current_user)
     else
-      # 有効なinvitation_tokenがparamsにない場合、他人のRewardにアクセスできない
-      groups = RewardParticipant.includes(:reward).where(user: current_user)
-      @reward = groups.find_by!(reward_id:).reward
+      set_reward
     end
     @goals = @reward.goals.includes(user: :avatar_attachment).order(:id)
   end
