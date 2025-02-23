@@ -14,9 +14,9 @@ class Goal < ApplicationRecord
   validate :validate_reward_related_goals_limit, on: :create
   validate :validate_in_progress, on: :update
 
-  def self.search_rewards_completed_or_in_progress(display, current_user)
+  def self.search_rewards_completed_or_in_progress(completed_or_in_progress, current_user)
     goals = Goal.includes(:reward).where(user: current_user)
-    if display == 'completed'
+    if completed_or_in_progress == 'completed'
       goals.where(rewards: { completion_date: ...Date.current }).order(rewards: { completion_date: :desc, id: :asc })
     else
       goals.where(rewards: { completion_date: Date.current.. }).order(rewards: { completion_date: :asc, id: :asc })
