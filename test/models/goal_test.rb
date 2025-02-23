@@ -45,7 +45,9 @@ class GoalTest < ActiveSupport::TestCase
     another_user = users(:eve)
     assert_not RewardParticipant.find_by(user: another_user, reward: reward_related_max_count_goals).present?
 
-    Reward.bulk_create_by_invited(reward_related_max_count_goals, another_user)
+    assert_raises(ActiveRecord::RecordInvalid) do
+      Reward.bulk_create_by_invited(reward_related_max_count_goals, another_user)
+    end
     assert_not RewardParticipant.find_by(user: another_user, reward: reward_related_max_count_goals).present?
     assert_predicate reward_related_max_count_goals, :invalid?
   end
