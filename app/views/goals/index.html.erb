@@ -2,7 +2,7 @@
 
 <div class="d-flex flex-column justify-content-center align-items-center text-center m-4">
   <h2 class="d-flex justify-content-center m-2">目標一覧</h2>
-  <div class="btn-group m-3 w-50">
+  <div class="btn-group m-3" style="min-width: 30rem; max-width: 45rem;">
     <%= link_to '実施中', goals_path(display: 'inprogress'), class: "#{current_page_button_primary('inprogress')} #{current_page_button_or_not('inprogress')}" %>
     <%= link_to '終了', goals_path(display: 'completed'), class: "#{current_page_button_primary('completed')} #{current_page_button_or_not('completed')}" %>
   </div>
