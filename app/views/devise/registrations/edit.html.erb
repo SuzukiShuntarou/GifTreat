@@ -1,9 +1,8 @@
 <% content_for(:title, '登録情報変更') %>
-<div class="d-flex flex-column justify-content-center align-items-center gap-3 m-3">
+<section class="d-flex flex-column justify-content-center align-items-center gap-3 m-3">
   <h2>
     <%= t('.title', resource: devise_i18n_fix_model_name_case(resource.model_name.human, i18n_key: 'registrations.edit.title')) %>
   </h2>
-
   <div class="fs-5" style="min-width: 25rem;">
     <%= bootstrap_form_with(model: @user, label_errors: true, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <div class="field">
@@ -60,4 +59,4 @@
       data: { turbo_method: :delete, turbo_confirm: t('.are_you_sure')  },
       class: "m-4"
   %>
-</div>
+</section>
