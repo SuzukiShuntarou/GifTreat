@@ -1,12 +1,13 @@
 <% content_for(:title, '利用規約') %>
 
 <div class="d-flex flex-column justify-content-center align-items-center gap-3 m-3">
-  <h1 class="text-center">
-    <% path = user_signed_in? ? goals_path : user_session_path %>
-    <%= link_to path do %>
-      <%= image_tag('logo-top-page', class: 'w-50 h-25', alt: 'GifTreatのロゴ') %>
-    <% end %>
-  </h1>
+  <% unless user_signed_in? %>
+    <h1 class="text-center">
+      <%= link_to user_session_path do %>
+        <%= image_tag('logo-top-page', class: 'w-50 h-25', alt: 'GifTreatのロゴ') %>
+      <% end %>
+    </h1>
+  <% end %>
   <h2 class="border-bottom border-5 border-primary-subtle">利用規約</h2>
   <div class="fs-5 w-75" style="max-width: 65rem;">
     <p>この利用規約（以下，「本規約」といいます。）は，このウェブサイト上で提供するサービス（以下，「本サービス」といいます。）の利用条件を定めるものです。登録ユーザーの皆さま（以下，「ユーザー」といいます。）には，本規約に従って，本サービスをご利用いただきます。</p>
