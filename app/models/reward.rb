@@ -35,7 +35,6 @@ class Reward < ApplicationRecord
   end
 
   def self.bulk_create_by_invited(reward, current_user)
-    all_valid = true
     Reward.transaction do
       reward_participant = reward.reward_participants.build(user: current_user)
       initial_goal = reward.goals.build(
@@ -44,10 +43,8 @@ class Reward < ApplicationRecord
         progress: MIN_PROGRESS
       )
 
-      all_valid &= reward_participant.save && initial_goal.save
-      raise ActiveRecord::Rollback unless all_valid
+      reward_participant.save! && initial_goal.save!
     end
-    all_valid
   end
 
   def valid_invitation_token?(token)
