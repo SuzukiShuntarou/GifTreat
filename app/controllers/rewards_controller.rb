@@ -12,9 +12,7 @@ class RewardsController < ApplicationController
 
       invite_to_reward(@reward, current_user)
     else
-      # 有効なinvitation_tokenがparamsにない場合、他人のRewardにアクセスできない
-      groups = RewardParticipant.includes(:reward).where(user: current_user)
-      @reward = groups.find_by!(reward_id:).reward
+      set_reward
     end
     @goals = @reward.goals.includes(user: :avatar_attachment).order(:id)
   end
