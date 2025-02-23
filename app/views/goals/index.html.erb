@@ -9,7 +9,7 @@
 
   <% if @goals.empty? %>
     <div class="m-3 fs-2">
-      <%= render 'no_goals_message', selected_display: @selected_display %>
+      <%= render 'no_goals_message', completed_or_in_progress: @completed_or_in_progress %>
     </div>
   <% else %>
     <div class="border rounded mt-3 goals-index">
