@@ -21,9 +21,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Show full error reports.
-  # 動作確認用に変更。
-  config.consider_all_requests_local = false
-  # config.consider_all_requests_local = true
+  config.consider_all_requests_local = true
 
   # Enable server timing.
   config.server_timing = true
