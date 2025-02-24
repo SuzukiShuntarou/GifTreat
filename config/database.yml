@@ -79,6 +79,6 @@ test:
 #
 production:
   <<: *default
-  database: gif_treat_production
-  username: gif_treat
-  password: <%= ENV["GIF_TREAT_DATABASE_PASSWORD"] %>
+  host: <%= ENV["APP_DATABASE_HOST"] %>
+  username: <%= ENV["APP_DATABASE_USER"] %>
+  password: <%= ENV["APP_DATABASE_PASSWORD"] %>

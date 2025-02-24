@@ -39,3 +39,5 @@
 
 /node_modules
 /prod-ca-2021.crt
+
+app/.env
