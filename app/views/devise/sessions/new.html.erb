@@ -1,6 +1,6 @@
 <% content_for(:title, 'ログイン') %>
 <section class="d-flex flex-column justify-content-center align-items-center gap-3 m-3">
-  <h1 class="text-center"><%= image_tag('logo-top-page', class: 'w-50 h-25', alt: 'GifTreatのロゴ') %></h1>
+  <h1 class="text-center"><%= image_tag('logo-top-page.png', class: 'w-50 h-25', alt: 'GifTreatのロゴ') %></h1>
   <h2 class="main-color">努力できた自分を褒めよう！</h2>
   <div class="fs-5" style="min-width: 25rem;">
     <%= bootstrap_form_with(model: @user, label_errors: true, url: session_path(resource_name), html: { method: :post }) do |f| %>
@@ -38,18 +38,18 @@
     <p class="fw-bold fs-4">STEP1</p>
     <p>ご褒美と目標を登録しよう！</p>
     <p>ご褒美は大きく！目標は小さな事から！</p>
-    <%= image_tag('example-step1-login-page', alt: 'ご褒美の登録例の実施中バージョン', style: 'max-height: 30rem;') %>
+    <%= image_tag('example-step1-login-page.png', alt: 'ご褒美の登録例の実施中バージョン', style: 'max-height: 30rem;') %>
   </div>
   <div class="d-flex flex-column align-items-center border border-primary-secondary rounded shadow-sm p-2 my-3" style="min-width: 25rem">
     <p class="fw-bold fs-4">STEP2</p>
     <p>忘れずに自分にご褒美をあげよう！</p>
     <p>努力できた自分を褒めてあげよう！</p>
-    <%= image_tag('example-step2-login-page', alt: 'ご褒美の登録例の完了後バージョン', style: 'max-height: 30rem;') %>
+    <%= image_tag('example-step2-login-page.png', alt: 'ご褒美の登録例の完了後バージョン', style: 'max-height: 30rem;') %>
   </div>
   <div class="d-flex flex-column align-items-center border border-primary-secondary rounded shadow-sm p-2 my-3" style="min-width: 25rem">
     <p class="fw-bold fs-4">STEP3</p>
     <p>友人や家族を招待することもできるよ！</p>
     <p>ご褒美を目指して一緒に頑張ろう！</p>
-    <%= image_tag('example-step3-login-page', alt: 'ご褒美の登録例の複数人バージョン', style: 'max-height: 30rem;') %>
+    <%= image_tag('example-step3-login-page.png', alt: 'ご褒美の登録例の複数人バージョン', style: 'max-height: 30rem;') %>
   </div>
 </section>
