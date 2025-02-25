@@ -8,13 +8,12 @@ module ApplicationHelper
 
   def default_meta_tags
     {
-      site: 'GifTreat',
       reverse: true,
       charset: 'utf-8',
       description: 'GifTreatは自分にご褒美をあげたい人向けのご褒美設定サービスです。',
       keywords: 'GifTreat,ご褒美,ご褒美の共有',
       og: {
-        site_name: :site,
+        site_name: 'GifTreat',
         title: :title,
         description: :description,
         type: 'website',
