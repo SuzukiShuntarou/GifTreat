@@ -23,6 +23,6 @@ export default class extends Controller {
   }
 
   close() {
-    this.updateButton.style.display = "none";
+    this.updateButtons.style.display = "none";
   }
 }
