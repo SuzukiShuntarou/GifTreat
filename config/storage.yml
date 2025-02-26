@@ -39,3 +39,4 @@ supabase:
   bucket: <%= ENV['DATABASE_BUCKET_NAME'] %>
   access_key_id: <%= ENV['DATABASE_ACCESS_KEY'] %>
   secret_access_key: <%= ENV['DATABASE_SECRET_KEY'] %>
+  force_path_style: true
