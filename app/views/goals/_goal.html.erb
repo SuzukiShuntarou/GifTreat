@@ -7,6 +7,7 @@
             alt: 'ユーザのアイコン',
             style: 'width: 4rem; height: 4rem;'
         %>
+        <%= image_tag rails_blob_url(goal.user.avatar, only_path: true, disposition: "inline"), style: 'width: 4rem; height: 4rem;'%>
       <% else %>
         <%= image_tag("default-avatar.png",
                       class: "border border-primary-secondary rounded-circle bg-white",
