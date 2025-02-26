@@ -82,6 +82,6 @@ production:
   host: <%= ENV["APP_DATABASE_HOST"] %>
   database: postgres
   port: 6543
-  username: <%= ENV["APP_DATABASE_USER"] %>
+  name: <%= ENV["APP_DATABASE_USER"] %>
   password: <%= ENV["APP_DATABASE_PASSWORD"] %>
   prepared_statements: false
