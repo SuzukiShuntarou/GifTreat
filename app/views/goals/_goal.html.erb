@@ -2,12 +2,7 @@
   <div class="d-flex flex-column gap-2 h-100 p-2">
     <div class="fs-5">
       <% if goal.user.avatar.attached? %>
-        <%= image_tag url_for(goal.user.avatar), 
-            class: "border border-primary-secondary rounded-circle bg-white",
-            alt: 'ユーザのアイコン',
-            style: 'width: 4rem; height: 4rem;'
-        %>
-        <%= image_tag goal.user.avatar.url, 
+        <%= image_tag avatar_url(goal.user.avatar), 
             class: "border border-primary-secondary rounded-circle bg-white",
             alt: 'ユーザのアイコン',
             style: 'width: 4rem; height: 4rem;'
