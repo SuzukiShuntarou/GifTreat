@@ -37,6 +37,7 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 gem 'active_storage_validations'
+gem 'aws-sdk-s3', require: false
 gem 'bootstrap5-kaminari-views'
 gem 'bootstrap_form', '~> 5.4'
 gem 'devise'
