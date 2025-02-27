@@ -3,8 +3,7 @@
 module AvatarsHelper
   def avatar_path(avatar)
     if Rails.env.production?
-      key = avatar.variant(:profile_icon).key || avatar.key
-      ENV.fetch('PUBLIC_URL', nil) + key
+      ENV.fetch('PUBLIC_URL', nil) + avatar.key
     else
       avatar
     end
