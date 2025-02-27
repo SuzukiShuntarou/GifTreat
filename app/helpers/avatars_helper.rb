@@ -5,7 +5,7 @@ module AvatarsHelper
     if Rails.env.production?
       ENV.fetch('PUBLIC_URL', nil) + avatar.variant(:profile_icon).key
     else
-      avatar
+      avatar.variant(:profile_icon)
     end
   end
 end
