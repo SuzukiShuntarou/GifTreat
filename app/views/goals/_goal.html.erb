@@ -2,7 +2,7 @@
   <div class="d-flex flex-column gap-2 h-100 p-2">
     <div class="fs-5">
       <% if goal.user.avatar.attached? %>
-        <%= image_tag goal.user.avatar.variant(:profile_icon),
+        <%= image_tag avatar_path(goal.user.avatar), 
             class: "border border-primary-secondary rounded-circle bg-white",
             alt: 'ユーザのアイコン',
             style: 'width: 4rem; height: 4rem;'
