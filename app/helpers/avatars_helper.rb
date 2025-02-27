@@ -6,7 +6,7 @@ module AvatarsHelper
       key = avatar.variant(:profile_icon).key || avatar.key
       ENV.fetch('PUBLIC_URL', nil) + key
     else
-      avatar.variant(:profile_icon)
+      avatar
     end
   end
 end
