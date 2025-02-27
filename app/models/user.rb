@@ -4,6 +4,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   ACCEPTED_CONTENT_TYPES = ['image/png', 'image/jpeg', 'image/gif'].freeze
+  MAX_AVATAR_SIZE = 500
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -16,5 +17,6 @@ class User < ApplicationRecord
     attachable.variant :profile_icon, resize_to_limit: [75, 75]
   end
   validates :name, presence: true, length: { maximum: 10 }
-  validates :avatar, content_type: { in: ACCEPTED_CONTENT_TYPES, message: :content_type }
+  validates :avatar, content_type: { in: ACCEPTED_CONTENT_TYPES, message: :content_type },
+                     size: { less_than: MAX_AVATAR_SIZE.kilobytes, message: "ファイルサイズは#{MAX_AVATAR_SIZE}KB以下にしてください" }
 end
