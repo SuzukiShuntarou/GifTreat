@@ -32,8 +32,8 @@ GifTreat は自分にご褒美をあげたい人向けの、ご褒美設定サ�
   <img width="40%" alt="ご褒美と目標の詳細画面-完了" src="https://github.com/user-attachments/assets/a4004bfc-c04e-48cc-bec5-2c0dd35ec934">
 
 5. 友人や家族を招待してご褒美を共有する。
-   - 招待URLを共有することで友人や家族を同じご褒美に招待することができます。
-   - 各々の目標を設定し、同じご褒美に向けて頑張りましょう！
+   - 招待URLを共有することで友人や家族を共通のご褒美に招待することができます。
+   - 各々の目標を設定し、共通のご褒美に向けて頑張りましょう！
    <img width="40%" alt="ご褒美と目標の詳細画面-招待後" src="https://github.com/user-attachments/assets/050eb7a8-e9fa-4596-814c-ba6aadce6330">
    <img width="40%" alt="ご褒美と目標の詳細画面-招待用画面" src="https://github.com/user-attachments/assets/50bbef80-8b46-440d-95a8-15ad4d2dd46d">
 
