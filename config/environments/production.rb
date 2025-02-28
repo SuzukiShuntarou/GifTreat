@@ -102,6 +102,7 @@ Rails.application.configure do
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
   config.action_mailer.default_url_options = { host: 'giftreat.onrender.com'}
+  action_mailer.default_options = { from: 'no-reply@giftreat.jp' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
