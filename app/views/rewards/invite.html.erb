@@ -7,14 +7,14 @@
     </div>
     <div class="d-flex gap-3">
       <%= text_field_tag :invite_url,
-          reward_url(@reward.id, invitation_token: @reward.invitation_token),
+          @invite_url,
           readonly: true,
           class: 'flex-grow-1 border border-primary-secondary rounded bg-white text-center'
       %>
       <%= button_tag '招待用URLをコピー', 
         data: { controller: "clipboard",
                 action: "click->clipboard#copy",
-                clipboard_content_value: reward_url(@reward.id, invitation_token: @reward.invitation_token) },
+                clipboard_content_value: @invite_url },
         class: 'btn btn-primary btn-sm'
       %>
     </div>

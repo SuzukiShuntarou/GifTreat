@@ -26,8 +26,8 @@
     <% if reward.in_progress? %>
       <%= link_to "編集", edit_reward_path(reward), class: 'btn btn-outline-secondary', data: { turbo_frame: "modal"} %>
     <% end %>
-    <% if invited?(@reward) %>
-      <%= link_to '招待', invite_reward_path(@reward), class: 'btn btn-outline-secondary', data: { turbo_frame: "modal"} %>
+    <% if invited?(reward) %>
+      <%= link_to '招待', invite_reward_path(reward), class: 'btn btn-outline-secondary', data: { turbo_frame: "modal"} %>
     <% end %>
   </div>
 </div>
