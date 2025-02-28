@@ -1,4 +1,6 @@
 <% content_for(:title, '登録情報変更') %>
+<% set_meta_tags description: '登録情報の変更ページです。' %>
+
 <section class="d-flex flex-column justify-content-center align-items-center gap-3 m-3">
   <h2>
     <%= t('.title', resource: devise_i18n_fix_model_name_case(resource.model_name.human, i18n_key: 'registrations.edit.title')) %>
