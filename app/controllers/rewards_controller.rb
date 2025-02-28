@@ -45,7 +45,9 @@ class RewardsController < ApplicationController
     redirect_to goals_path, notice: 'ご褒美の削除に成功！'
   end
 
-  def invite; end
+  def invite
+    @invite_url = reward_url(params[:id], invitation_token: @reward.invitation_token)
+  end
 
   private
 
