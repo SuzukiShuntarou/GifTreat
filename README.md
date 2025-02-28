@@ -25,11 +25,11 @@ GifTreat は自分にご褒美をあげたい人向けの、ご褒美設定サ�
 
 3. 進捗率の更新をする。
    - 必要に応じてご褒美や目標の設定を変更することが可能です。
-  <img width="40%" alt="ご褒美と目標の詳細画面" src="https://github.com/user-attachments/assets/327ca408-3f1d-4de9-9f50-71093e3344ae">
+  <img width="40%" alt="ご褒美と目標の詳細画面" src="https://github.com/user-attachments/assets/97dadd39-b744-4032-bc7d-fbd203a875b0">
 
 4. 期日になったら忘れずに自分にご褒美をあげる。
    - 目標の達成・未達成に関わらず自分を褒めてあげましょう！
-  <img width="40%" alt="ご褒美と目標の詳細画面-完了" src="https://github.com/user-attachments/assets/97dadd39-b744-4032-bc7d-fbd203a875b0">
+  <img width="40%" alt="ご褒美と目標の詳細画面-完了" src="https://github.com/user-attachments/assets/a4004bfc-c04e-48cc-bec5-2c0dd35ec934">
 
 5. 友人や家族を招待してご褒美を共有する。
    - 招待URLを共有することで友人や家族を同じご褒美に招待することができます。
