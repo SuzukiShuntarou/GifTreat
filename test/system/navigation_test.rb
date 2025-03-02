@@ -37,4 +37,11 @@ class NavigationBarTest < ApplicationSystemTestCase
     assert_current_path new_reward_path
     assert_text '自分にご褒美をあげたい日までに達成したい目標を書いてください。どんな些細なことでも構いません！'
   end
+
+  test 'should display edit_user_registration_path when clicked registration-information' do
+    find("[aria-label='ナビゲーションバーの表示ボタン']").click
+    within('#offcanvasNavbar') { click_link_or_button '登録情報' }
+    assert_current_path edit_user_registration_path
+    assert_text '登録情報変更'
+  end
 end
