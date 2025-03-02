@@ -9,5 +9,6 @@ class CheeringTest < ActiveSupport::TestCase
     cheering = goal.cheerings.build(user: current_user)
     cheering.save
     assert_predicate cheering, :invalid?
+    assert_includes cheering.errors[:cheering], 'は1つの目標に対して最大100です'
   end
 end

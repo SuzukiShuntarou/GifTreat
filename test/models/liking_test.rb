@@ -9,5 +9,6 @@ class LikingTest < ActiveSupport::TestCase
     liking = goal.likings.build(user: current_user)
     liking.save
     assert_predicate liking, :invalid?
+    assert_includes liking.errors[:liking], 'は1つの目標に対して最大100です'
   end
 end
