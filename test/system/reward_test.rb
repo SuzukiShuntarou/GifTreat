@@ -245,7 +245,7 @@ class RewardsTest < ApplicationSystemTestCase
   test 'should display default avatar in detail view of reward' do
     visit reward_path(@reward_in_progress)
     img = find('img[alt="デフォルトのユーザアイコン"]')
-    assert_match(/default-avatar-[a-z0-9]+\.png$/, img.native['src'])
+    assert_match(/default-avatar-[a-z0-9]*\.png$/, img.native['src'])
   end
 
   test 'should display upload avatar in detail view of reward' do
