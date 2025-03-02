@@ -51,4 +51,16 @@ class NavigationBarTest < ApplicationSystemTestCase
     assert_current_path new_user_session_path
     assert_text 'ログアウトしました。'
   end
+
+  test 'should hide offcanvas when clicked close button' do
+    find("[aria-label='ナビゲーションバーの表示ボタン']").click
+    within('#offcanvasNavbar') { find("[aria-label='ナビゲーションバーの非表示ボタン']").click }
+
+    assert_current_path goals_path
+    assert_text '目標一覧'
+    assert_no_selector 'a', text: 'トップページ'
+    assert_selector 'a', { text: 'ご褒美を追加する', count: 1 }
+    assert_no_selector 'a', text: '登録情報'
+    assert_no_selector 'a', text: 'ログアウト'
+  end
 end
