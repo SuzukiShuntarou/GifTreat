@@ -32,7 +32,7 @@ class GoalsTest < ApplicationSystemTestCase
     click_link_or_button '実施中'
 
     assert_text @alice_reward_in_progress.completion_date
-    assert_text @alice_goal_in_progress.description
+    assert_selector 'a', text: @alice_goal_in_progress.description
     assert_text @alice_goal_in_progress.progress
   end
 
@@ -41,7 +41,7 @@ class GoalsTest < ApplicationSystemTestCase
     click_link_or_button '終了'
 
     assert_text @alice_reward_completed.completion_date
-    assert_text @alice_goal_completed.description
+    assert_selector 'a', text: @alice_goal_completed.description
     assert_text @alice_goal_completed.progress
   end
 
@@ -85,6 +85,8 @@ class GoalsTest < ApplicationSystemTestCase
       assert_selector 'a', text: '編集'
       click_link_or_button '編集'
     end
+
+    within('.modal-title') { assert_text '目標の編集' }
 
     within('.modal-body') do
       fill_in '目標', with: 'ランニングする'
@@ -150,6 +152,26 @@ class GoalsTest < ApplicationSystemTestCase
       assert_no_selector 'input[type="submit"][value="更新"]'
       assert_no_selector 'a', text: '取消'
       assert_equal progress_before_slider_operation.to_s, find('input[name="goal[progress]"]').value
+    end
+  end
+
+  test 'should display grade-very-good-stamp when goal was achieved' do
+    visit reward_path(@alice_reward_completed)
+
+    within("div##{dom_id(@alice_goal_completed)}") do
+      assert_text '100'
+      assert_selector 'img[alt="たいへんよくできました！スタンプ"]'
+    end
+  end
+
+  test 'should display grade-good-stamp when goal was unachieved' do
+    unachieved_reward = rewards(:alice_reward_completed_unachieved)
+    unachieved_goal = goals(:alice_goal_completed_unachieved)
+    visit reward_path(unachieved_reward)
+
+    within("div##{dom_id(unachieved_goal)}") do
+      assert_text '99'
+      assert_selector 'img[alt="がんばりました！スタンプ"]'
     end
   end
 end

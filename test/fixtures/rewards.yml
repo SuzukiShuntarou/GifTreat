@@ -27,3 +27,9 @@ reward_with_alice_bob:
   location: 沖縄
   description: スキューバダイビング
   invitation_token: <%= SecureRandom.urlsafe_base64 %>
+
+alice_reward_completed_unachieved:
+  completion_date: <%= Date.current.last_month %>
+  location: 海外
+  description: 初旅行
+  invitation_token: <%= SecureRandom.urlsafe_base64 %>

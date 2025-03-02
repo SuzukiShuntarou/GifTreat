@@ -29,3 +29,7 @@ alice_bob_in_progress_1:
 alice_bob_in_progress_2:
   user: bob
   reward: reward_with_alice_bob
+
+alice_unachieved_completed:
+  user: alice
+  reward: alice_reward_completed_unachieved

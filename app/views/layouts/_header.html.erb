@@ -5,7 +5,7 @@
         <h1><%= image_tag('logo-header.png', style: 'height: 4rem; width: auto;', alt: 'ヘッダーのGifTreatのロゴ') %></h1>
       <% end %>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="ナビゲーションバーの表示 | 非表示ボタン">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="ナビゲーションバーの表示ボタン">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -14,7 +14,7 @@
           <div class="offcanvas-title">
             <%= image_tag('logo-header.png', style: 'height: 4rem;', alt: 'ナビゲーションバーのGifTreatのロゴ') %>
           </div>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="ナビゲーションバーの非表示ボタン"/></button>
         </div>
         <div class="offcanvas-body mx-3">
           <ul class="navbar-nav gap-4 fs-5 mt-3">

@@ -138,4 +138,16 @@ class UsersTest < ApplicationSystemTestCase
     click_link_or_button 'ログイン'
     assert_text 'ログインしました。'
   end
+
+  test 'should upload image as user avatar' do
+    sign_in @current_user
+    visit edit_user_registration_path
+    attach_file 'user[avatar]', 'test/fixtures/files/avatar-sample.png'
+    fill_in '現在のパスワード', with: 'password'
+    click_link_or_button '更新'
+
+    assert_text 'アカウント情報を変更しました。'
+    img = find('img[alt="ユーザのアイコン"]')
+    assert_match(/avatar-sample\.png$/, img.native['src'])
+  end
 end
