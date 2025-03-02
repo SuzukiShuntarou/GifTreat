@@ -44,4 +44,11 @@ class NavigationBarTest < ApplicationSystemTestCase
     assert_current_path edit_user_registration_path
     assert_text '登録情報変更'
   end
+
+  test 'should display sign_in_path when clicked logout' do
+    find("[aria-label='ナビゲーションバーの表示ボタン']").click
+    within('#offcanvasNavbar') { click_link_or_button 'ログアウト' }
+    assert_current_path new_user_session_path
+    assert_text 'ログアウトしました。'
+  end
 end
