@@ -32,7 +32,7 @@ class GoalsTest < ApplicationSystemTestCase
     click_link_or_button '実施中'
 
     assert_text @alice_reward_in_progress.completion_date
-    assert_text @alice_goal_in_progress.description
+    assert_selector 'a', text: @alice_goal_in_progress.description
     assert_text @alice_goal_in_progress.progress
   end
 
@@ -41,7 +41,7 @@ class GoalsTest < ApplicationSystemTestCase
     click_link_or_button '終了'
 
     assert_text @alice_reward_completed.completion_date
-    assert_text @alice_goal_completed.description
+    assert_selector 'a', text: @alice_goal_completed.description
     assert_text @alice_goal_completed.progress
   end
 
