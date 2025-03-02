@@ -61,6 +61,7 @@ class RewardTest < ActiveSupport::TestCase
     )
     Reward.bulk_create(reward, @current_user)
     assert_predicate reward, :invalid?
+    assert reward.errors[:completion_date], 'は今日以降の日付を選択してください'
   end
 
   test 'should not be editable after completion date' do
@@ -69,6 +70,7 @@ class RewardTest < ActiveSupport::TestCase
       description: '旅行'
     )
     assert_predicate @reward_completed, :invalid?
+    assert @reward_completed.errors[:completion_date], 'は今日以降の日付を選択してください'
   end
 
   test 'should be valid invitation_token' do
