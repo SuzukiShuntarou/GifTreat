@@ -18,9 +18,9 @@ class LikingsTest < ApplicationSystemTestCase
     within("div#likings_#{dom_id(goal_in_progress)}") do
       current_likings_count = goal_in_progress.likings_count
       assert_text current_likings_count
-      click_link_or_button
+      click_link_or_button 'いいねのマーク'
       assert_text (current_likings_count + 1).to_s
-      click_link_or_button
+      click_link_or_button 'いいねのマーク'
       assert_text (current_likings_count + 2).to_s
     end
   end
