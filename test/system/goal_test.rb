@@ -152,4 +152,24 @@ class GoalsTest < ApplicationSystemTestCase
       assert_equal progress_before_slider_operation.to_s, find('input[name="goal[progress]"]').value
     end
   end
+
+  test 'should display grade-very-good-stamp when goal was achieved' do
+    visit reward_path(@alice_reward_completed)
+
+    within("div##{dom_id(@alice_goal_completed)}") do
+      assert_text '100'
+      assert_selector 'img[alt="たいへんよくできました！スタンプ"]'
+    end
+  end
+
+  test 'should display grade-good-stamp when goal was achieved' do
+    unachieved_reward = rewards(:alice_reward_completed_unachieved)
+    unachieved_goal = goals(:alice_goal_completed_unachieved)
+    visit reward_path(unachieved_reward)
+
+    within("div##{dom_id(unachieved_goal)}") do
+      assert_text '99'
+      assert_selector 'img[alt="がんばりました！スタンプ"]'
+    end
+  end
 end

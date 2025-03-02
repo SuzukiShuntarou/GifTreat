@@ -69,3 +69,11 @@ alice_bob_goal_2:
   progress: 1
   cheerings_count: 2
   likings_count: 3
+
+alice_goal_completed_unachieved:
+  user: alice
+  reward: alice_reward_completed_unachieved
+  description: よく噛んで食べる
+  progress: 99
+  cheerings_count: 0
+  likings_count: 0
