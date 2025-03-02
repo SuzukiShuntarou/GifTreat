@@ -19,7 +19,7 @@
     <div class="flex-grow-1 border border-primary-secondary bg-white rounded fs-4 p-3 position-relative">
       <div class="goal-description"><%= goal.description %></div>
       <% unless goal.reward.in_progress? %>
-        <%= image_stamp(goal) %>
+        <%= image_praise_stamp(goal) %>
       <% end %>
     </div>
     <div class="d-flex align-items-center fs-4 gap-2">
