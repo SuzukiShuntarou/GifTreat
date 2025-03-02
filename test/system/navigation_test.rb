@@ -30,4 +30,11 @@ class NavigationBarTest < ApplicationSystemTestCase
     assert_current_path goals_path
     assert_text '目標一覧'
   end
+
+  test 'should display new_reward_path when clicked add-reward' do
+    find("[aria-label='ナビゲーションバーの表示ボタン']").click
+    within('#offcanvasNavbar') { click_link_or_button 'ご褒美を追加する' }
+    assert_current_path new_reward_path
+    assert_text '自分にご褒美をあげたい日までに達成したい目標を書いてください。どんな些細なことでも構いません！'
+  end
 end
