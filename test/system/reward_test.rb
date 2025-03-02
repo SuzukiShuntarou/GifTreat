@@ -247,4 +247,15 @@ class RewardsTest < ApplicationSystemTestCase
     img = find('img[alt="デフォルトのユーザアイコン"]')
     assert_match(/default-avatar-[a-z0-9]+\.png$/, img.native['src'])
   end
+
+  test 'should display upload avatar in detail view of reward' do
+    visit edit_user_registration_path
+    attach_file 'user[avatar]', 'test/fixtures/files/avatar-sample.png'
+    fill_in '現在のパスワード', with: 'password'
+    click_link_or_button '更新'
+
+    visit reward_path(@reward_in_progress)
+    img = find('img[alt="ユーザのアイコン"]')
+    assert_match(/avatar-sample\.png$/, img.native['src'])
+  end
 end
