@@ -45,6 +45,9 @@ class RewardTest < ActiveSupport::TestCase
     assert_not Goal.find_by(user: @other_user, reward: @reward_in_progress).present?
     Reward.bulk_create_by_invited(@reward_in_progress, @other_user)
     assert_predicate(Goal.find_by(user: @other_user, reward: @reward_in_progress), :present?)
+    initial_goal = Goal.last
+    assert_equal "招待されました！#{@other_user.name}さんの目標を登録しましょう！", initial_goal.description
+    assert_equal 0, initial_goal.progress
   end
 
   test 'should not be able to create after completion date' do
