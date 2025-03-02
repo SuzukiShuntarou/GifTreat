@@ -18,7 +18,7 @@ class RewardTest < ActiveSupport::TestCase
     assert_not @reward_completed.in_progress?
   end
 
-  test 'should be created associated with User and Reward, RewardParticipant' do
+  test 'should be created RewardParticipant associated with User and Reward' do
     reward = Reward.new(
       completion_date: Date.current,
       location: '北海道',
@@ -35,7 +35,7 @@ class RewardTest < ActiveSupport::TestCase
     assert_predicate RewardParticipant.find_by(user: @current_user, reward: reward), :present?
   end
 
-  test 'should be created associated with other_user and reward when invited, RewardParticipant' do
+  test 'should be created RewardParticipant associated with other_user and reward when invited' do
     assert_not RewardParticipant.find_by(user: @other_user, reward: @reward_in_progress).present?
     Reward.bulk_create_by_invited(@reward_in_progress, @other_user)
     assert_predicate RewardParticipant.find_by(user: @other_user, reward: @reward_in_progress), :present?
