@@ -23,4 +23,11 @@ class NavigationBarTest < ApplicationSystemTestCase
     assert_selector 'a', text: '登録情報'
     assert_selector 'a', text: 'ログアウト'
   end
+
+  test 'should display goals_path when clicked top-page' do
+    find("[aria-label='ナビゲーションバーの表示ボタン']").click
+    within('#offcanvasNavbar') { click_link_or_button 'トップページ' }
+    assert_current_path goals_path
+    assert_text '目標一覧'
+  end
 end
