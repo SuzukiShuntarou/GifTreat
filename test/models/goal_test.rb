@@ -58,6 +58,8 @@ class GoalTest < ActiveSupport::TestCase
       progress: '100'
     )
     assert_predicate @goal_completed, :invalid?
+    assert_includes @goal_completed.errors[:description], 'は終了後の変更はできません'
+    assert_includes @goal_completed.errors[:progress], 'は終了後の変更はできません'
   end
 
   test 'should be achieved' do
