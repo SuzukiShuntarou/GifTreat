@@ -71,6 +71,8 @@ class RewardTest < ActiveSupport::TestCase
     )
     assert_predicate @reward_completed, :invalid?
     assert_includes @reward_completed.errors[:completion_date], 'は今日以降の日付を選択してください'
+    assert_includes @reward_completed.errors[:description], 'は終了後の変更はできません'
+    assert_includes @reward_completed.errors[:location], 'は終了後の変更はできません'
   end
 
   test 'should be valid invitation_token' do
