@@ -15,6 +15,7 @@ class Reward < ApplicationRecord
     validates :completion_date
   end
   validate :validate_in_progress
+  validate :validate_in_progress_for_updating, on: :update
   before_destroy { throw :abort unless in_progress? }
 
   def in_progress?
@@ -55,5 +56,12 @@ class Reward < ApplicationRecord
 
   def validate_in_progress
     errors.add(:completion_date, 'は今日以降の日付を選択してください') unless in_progress?
+  end
+
+  def validate_in_progress_for_updating
+    return if in_progress?
+
+    errors.add(:location, 'は終了後の変更はできません')
+    errors.add(:description, 'は終了後の変更はできません')
   end
 end

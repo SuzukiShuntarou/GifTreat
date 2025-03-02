@@ -45,11 +45,12 @@ class GoalTest < ActiveSupport::TestCase
     another_user = users(:eve)
     assert_not RewardParticipant.find_by(user: another_user, reward: reward_related_max_count_goals).present?
 
-    assert_raises(ActiveRecord::RecordInvalid) do
+    excption = assert_raises(ActiveRecord::RecordInvalid) do
       Reward.bulk_create_by_invited(reward_related_max_count_goals, another_user)
     end
     assert_not RewardParticipant.find_by(user: another_user, reward: reward_related_max_count_goals).present?
     assert_predicate reward_related_max_count_goals, :invalid?
+    assert_includes excption.message, 'は1つのご褒美に4つまでしか関連付けできません'
   end
 
   test 'should not be editable after completion date' do
@@ -58,6 +59,8 @@ class GoalTest < ActiveSupport::TestCase
       progress: '100'
     )
     assert_predicate @goal_completed, :invalid?
+    assert_includes @goal_completed.errors[:description], 'は終了後の変更はできません'
+    assert_includes @goal_completed.errors[:progress], 'は終了後の変更はできません'
   end
 
   test 'should be achieved' do

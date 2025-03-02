@@ -12,7 +12,7 @@ class Goal < ApplicationRecord
   validates :description, presence: true, length: { maximum: 140 }
   validates :progress, presence: true, numericality: { greater_than_or_equal_to: MIN_PROGRESS, less_than_or_equal_to: MAX_PROGRESS, only_integer: true }
   validate :validate_reward_related_goals_limit, on: :create
-  validate :validate_in_progress, on: :update
+  validate :validate_in_progress_for_updating, on: :update
 
   def self.search_rewards_completed_or_in_progress(completed_or_in_progress, current_user)
     goals = Goal.includes(:reward).where(user: current_user)
@@ -37,7 +37,7 @@ class Goal < ApplicationRecord
     errors.add(:goal, 'は1つのご褒美に4つまでしか関連付けできません') if reward.goals.count >= MAX_REWARD_RELATED_GOALS
   end
 
-  def validate_in_progress
+  def validate_in_progress_for_updating
     return if reward.in_progress?
 
     errors.add(:description, 'は終了後の変更はできません')
