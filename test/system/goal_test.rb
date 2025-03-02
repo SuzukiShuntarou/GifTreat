@@ -86,6 +86,8 @@ class GoalsTest < ApplicationSystemTestCase
       click_link_or_button '編集'
     end
 
+    within('.modal-title') { assert_text '目標の編集' }
+
     within('.modal-body') do
       fill_in '目標', with: 'ランニングする'
       fill_in '進捗率', with: '99'

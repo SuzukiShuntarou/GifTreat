@@ -105,6 +105,8 @@ class RewardsTest < ApplicationSystemTestCase
       click_link_or_button '編集'
     end
 
+    within('.modal-title') { assert_text 'ご褒美の編集' }
+
     within('.modal-body') do
       fill_in '場所', with: '北海道'
       fill_in 'ご褒美', with: '旅行'
@@ -138,6 +140,8 @@ class RewardsTest < ApplicationSystemTestCase
       assert_selector 'a', text: '招待'
       click_link_or_button '招待'
     end
+
+    within('.modal-title') { assert_text 'ご褒美へ友人・家族を招待' }
 
     within('.modal-body') do
       assert_text '招待したい人に以下のURLを共有してください。'
