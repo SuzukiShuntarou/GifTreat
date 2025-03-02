@@ -162,7 +162,7 @@ class GoalsTest < ApplicationSystemTestCase
     end
   end
 
-  test 'should display grade-good-stamp when goal was achieved' do
+  test 'should display grade-good-stamp when goal was unachieved' do
     unachieved_reward = rewards(:alice_reward_completed_unachieved)
     unachieved_goal = goals(:alice_goal_completed_unachieved)
     visit reward_path(unachieved_reward)
