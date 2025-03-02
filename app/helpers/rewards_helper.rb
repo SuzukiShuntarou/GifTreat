@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module RewardsHelper
-  MAX_REWARD_RELATED_GOALS = 4
+  MAX_REWARD_PARTICIPANTS = 4
 
-  def invited?(reward)
-    reward.in_progress? && reward.goals.count < MAX_REWARD_RELATED_GOALS
+  def max_reward_participants?(reward)
+    reward.reward_participants.count >= MAX_REWARD_PARTICIPANTS
   end
 end
