@@ -249,6 +249,7 @@ class RewardsTest < ApplicationSystemTestCase
 
   test 'should display upload avatar in detail view of reward' do
     visit reward_path(@reward_in_progress)
+    assert_selector 'h2', text: 'ご褒美'
     assert_no_selector 'img[alt="ユーザのアイコン"]'
     assert_selector 'img[alt="デフォルトのユーザアイコン"]'
 
@@ -258,6 +259,7 @@ class RewardsTest < ApplicationSystemTestCase
     click_link_or_button '更新'
 
     visit reward_path(@reward_in_progress)
+    assert_selector 'h2', text: 'ご褒美'
     assert_selector 'img[alt="ユーザのアイコン"]'
     assert_no_selector 'img[alt="デフォルトのユーザアイコン"]'
   end
