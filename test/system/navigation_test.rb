@@ -57,7 +57,7 @@ class NavigationBarTest < ApplicationSystemTestCase
     within('#offcanvasNavbar') { find("[aria-label='ナビゲーションバーの非表示ボタン']").click }
 
     assert_current_path goals_path
-    assert_text '目標一覧'
+    assert_selector 'h2', text: '目標一覧'
     assert_no_selector 'a', text: 'トップページ'
     assert_selector 'a', { text: 'ご褒美を追加する', count: 1 }
     assert_no_selector 'a', text: '登録情報'
