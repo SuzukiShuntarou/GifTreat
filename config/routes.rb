@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  authenticated :user do
+    root to: 'goals#index', as: :authenticated_root
+  end
+
   devise_scope :user do
     root to: 'devise/sessions#new'
   end
