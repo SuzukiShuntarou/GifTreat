@@ -58,9 +58,9 @@ class NavigationBarTest < ApplicationSystemTestCase
 
     assert_current_path goals_path
     assert_selector 'h2', text: '目標一覧'
-    assert_no_selector 'a', text: 'トップページ'
-    assert_selector 'a', { text: 'ご褒美を追加する', count: 1 }
-    assert_no_selector 'a', text: '登録情報'
-    assert_no_selector 'a', text: 'ログアウト'
+    assert_no_selector 'a', text: 'トップページ', visible: true
+    assert_selector 'a', { text: 'ご褒美を追加する', count: 1, visible: true }
+    assert_no_selector 'a', text: '登録情報', visible: true
+    assert_no_selector 'a', text: 'ログアウト', visible: true
   end
 end
