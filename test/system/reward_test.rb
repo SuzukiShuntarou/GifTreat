@@ -258,6 +258,8 @@ class RewardsTest < ApplicationSystemTestCase
     click_link_or_button '更新'
 
     visit reward_path(@reward_in_progress)
+    assert_text 'ご褒美'
+    assert_text '目標'
     assert_selector 'img[alt="ユーザのアイコン"]'
     assert_no_selector 'img[alt="デフォルトのユーザアイコン"]'
   end
