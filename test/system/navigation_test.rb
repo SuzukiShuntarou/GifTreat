@@ -6,7 +6,7 @@ class NavigationBarTest < ApplicationSystemTestCase
   setup do
     current_user = users(:alice)
     sign_in current_user
-    visit root_path
+    visit goals_path
   end
 
   test 'should display link in offcanvas when clicked navigation bar button' do

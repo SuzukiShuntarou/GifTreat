@@ -9,7 +9,7 @@ class RewardsTest < ApplicationSystemTestCase
 
     current_user = users(:alice)
     sign_in current_user
-    visit root_path
+    visit goals_path
   end
 
   test 'should show details of Reward and Goal, with edit and delete and invite buttons, in progress' do

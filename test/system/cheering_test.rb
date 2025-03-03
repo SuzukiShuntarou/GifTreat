@@ -6,7 +6,7 @@ class CheeringsTest < ApplicationSystemTestCase
   setup do
     current_user = users(:alice)
     sign_in current_user
-    visit root_path
+    visit goals_path
   end
 
   test 'should increase count when cheering button clicked' do
