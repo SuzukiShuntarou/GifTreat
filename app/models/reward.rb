@@ -2,6 +2,7 @@
 
 class Reward < ApplicationRecord
   MIN_PROGRESS = 0
+  MAX_REWARD_PARTICIPANTS = 4
   has_many :reward_participants, dependent: :destroy
   has_many :users, through: :reward_participants
   has_many :goals, dependent: :destroy
@@ -50,6 +51,10 @@ class Reward < ApplicationRecord
 
   def valid_invitation_token?(token)
     invitation_token == token
+  end
+
+  def max_reward_participants?
+    reward_participants.count >= MAX_REWARD_PARTICIPANTS
   end
 
   private
