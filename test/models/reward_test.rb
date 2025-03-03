@@ -86,4 +86,13 @@ class RewardTest < ActiveSupport::TestCase
   test 'should be invalid invitation_token' do
     assert_not @reward_in_progress.valid_invitation_token?('incorrect_invitation_token')
   end
+
+  test 'should return true when count of reward_participants was maximum' do
+    reward = rewards(:reward_with_alice_bob_charlie_david)
+    assert_predicate reward, :max_reward_participants?
+  end
+
+  test 'should return false when count of reward_participants was not maximum' do
+    assert_not @reward_in_progress.max_reward_participants?
+  end
 end

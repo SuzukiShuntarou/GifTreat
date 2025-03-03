@@ -25,7 +25,7 @@
   <div class="d-flex align-items-center gap-2 ">
     <% if reward.in_progress? %>
       <%= link_to "編集", edit_reward_path(reward), class: 'btn btn-outline-secondary', data: { turbo_frame: "modal"} %>
-      <% unless max_reward_participants?(reward) %>
+      <% unless reward.max_reward_participants? %>
         <%= link_to '招待', invite_reward_path(reward), class: 'btn btn-outline-secondary', data: { turbo_frame: "modal"} %>
       <% end %>
     <% end %>
