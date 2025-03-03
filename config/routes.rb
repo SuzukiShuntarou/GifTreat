@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  root to: redirect('/goals')
+  authenticated :user do
+    root to: 'goals#index', as: :authenticated_root
+  end
+
+  devise_scope :user do
+    root to: 'devise/sessions#new'
+  end
 
   devise_for :users, controllers: {
     registrations: "users/registrations"

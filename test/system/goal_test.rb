@@ -12,7 +12,7 @@ class GoalsTest < ApplicationSystemTestCase
 
     current_user = users(:alice)
     sign_in current_user
-    visit root_path
+    visit goals_path
   end
 
   test 'should display goals list screen when nav-logo clicked' do
@@ -69,7 +69,7 @@ class GoalsTest < ApplicationSystemTestCase
 
     user_without_rewards_and_goals = users(:user_without_rewards_goals)
     sign_in user_without_rewards_and_goals
-    visit root_path
+    visit goals_path
 
     click_link_or_button '実施中'
     assert_text 'ご褒美と目標が登録されていません。'

@@ -25,7 +25,7 @@ class UsersTest < ApplicationSystemTestCase
 
   test 'should logout' do
     sign_in @current_user
-    visit root_path
+    visit goals_path
     find('.navbar-toggler').click
     click_link_or_button 'ログアウト'
     assert_text 'ログアウトしました。'
@@ -33,7 +33,7 @@ class UsersTest < ApplicationSystemTestCase
 
   test 'should show own user edit page' do
     sign_in @current_user
-    visit root_path
+    visit goals_path
     find('.navbar-toggler').click
     click_link_or_button '登録情報'
 
@@ -44,7 +44,7 @@ class UsersTest < ApplicationSystemTestCase
 
   test 'should editable registration' do
     sign_in @current_user
-    visit root_path
+    visit goals_path
     find('.navbar-toggler').click
     click_link_or_button '登録情報'
 
@@ -63,7 +63,7 @@ class UsersTest < ApplicationSystemTestCase
 
   test 'should be able to delete own account from user edit page' do
     sign_in @current_user
-    visit root_path
+    visit goals_path
     find('.navbar-toggler').click
     click_link_or_button '登録情報'
 
