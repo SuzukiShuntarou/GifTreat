@@ -55,6 +55,7 @@ class NavigationBarTest < ApplicationSystemTestCase
   test 'should hide offcanvas when clicked close button' do
     find("[aria-label='ナビゲーションバーの表示ボタン']").click
     within('#offcanvasNavbar') { find("[aria-label='ナビゲーションバーの非表示ボタン']").click }
+    sleep 5
 
     assert_current_path goals_path
     assert_text '目標一覧'
