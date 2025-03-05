@@ -13,11 +13,18 @@
 
   .goals-index table td:nth-child(1),
   .goals-index table th:nth-child(1) {
+    font-size: 1.2rem;
     width: 35%;
+  }
+
+  .goals-index table td:nth-child(2),
+  .goals-index table th:nth-child(2) {
+    font-size: 1.2rem;
   }
 
   .goals-index table td:nth-child(3),
   .goals-index table th:nth-child(3) {
+    font-size: 1.2rem;
     width: 25%;
   }
 }
