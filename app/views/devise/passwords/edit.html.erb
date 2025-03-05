@@ -3,13 +3,13 @@
 
 <div class="d-flex flex-column justify-content-center align-items-center gap-3 m-3">
   <h1 class="text-center">
-    <%= link_to user_session_path do %>
-      <%= image_tag('logo-horizontal.png', class: 'w-50 h-25', alt: 'GifTreatのロゴ') %>
+    <%= link_to top_page_path do %>
+      <%= image_tag('logo-vertical.png', alt: 'GifTreatのロゴ', style: 'max-width: 15rem;') %>
     <% end %>
   </h1>
-  <h2><%= t('.change_your_password') %></h2>
+  <h2 class="main-color"><%= t('.change_your_password') %></h2>
 
-  <div class="fs-4" style="min-width: 25rem;">
+  <div class="fs-4" style="min-width: 15rem;">
     <%= bootstrap_form_with(model: @user, label_errors: true, url: password_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.hidden_field :reset_password_token %>
 
@@ -26,7 +26,7 @@
       </div>
 
       <div class="actions d-flex justify-content-center">
-        <%= f.submit t('.change_my_password'), class: 'btn btn-outline-primary btn-lg' %>
+        <%= f.submit t('.change_my_password'), class: 'btn btn-outline-primary fs-5 mt-3', style: 'width: 10rem; height: 3rem;' %>
       </div>
     <% end %>
   </div>
