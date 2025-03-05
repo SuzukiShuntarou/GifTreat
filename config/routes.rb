@@ -3,10 +3,6 @@ Rails.application.routes.draw do
     root to: 'goals#index', as: :authenticated_root
   end
 
-  devise_scope :user do
-    root to: 'devise/sessions#new'
-  end
-
   devise_for :users, controllers: {
     registrations: "users/registrations"
   }
@@ -19,6 +15,8 @@ Rails.application.routes.draw do
     resources :likings, only: [:create]
     resources :cheerings, only: [:create]
   end
+
+  root 'welcome#index'
   get 'terms_service', to: 'welcome#terms_service'
   get 'privacy_policy', to: 'welcome#privacy_policy'
 
