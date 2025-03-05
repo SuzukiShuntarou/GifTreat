@@ -2,7 +2,7 @@
 <% set_meta_tags description: 'ログインページです。' %>
 
 <section class="d-flex flex-column justify-content-center align-items-center gap-3 m-3">
-  <h1 class="text-center"><%= image_tag('logo-top-page.png', class: 'w-50 h-25', alt: 'GifTreatのロゴ') %></h1>
+  <h1 class="text-center"><%= image_tag('logo-horizontal.png', class: 'w-50 h-25', alt: 'GifTreatのロゴ') %></h1>
   <h2 class="main-color">努力できた自分を褒めよう！</h2>
   <div class="fs-5" style="min-width: 25rem;">
     <%= bootstrap_form_with(model: @user, label_errors: true, url: session_path(resource_name), html: { method: :post }) do |f| %>
