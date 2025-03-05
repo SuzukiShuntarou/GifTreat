@@ -1,19 +1,21 @@
-<% content_for(:title, '目標・ご褒美管理ツール') %>
-<div class="d-flex flex-column justify-content-center align-items-center gap-3 m-3">
+<% content_for(:title, '目標・ご褒美設定ツール') %>
+<div class="d-flex flex-column justify-content-center align-items-center text-center gap-4 m-3">
   <h1 class="text-center"><%= image_tag('welcome/logo-vertical.png', alt: 'GifTreatのロゴ', style: 'max-width: 20rem;') %></h1>
   <section class="d-flex flex-column justify-content-center align-items-center gap-2">
     <h2 class="main-color">努力できた自分を褒めよう！</h2>
     <div class="character-color">
-      目標と達成後のご褒美を管理するツール
+      GifTreatは<br>
+      努力できた自分を褒めてあげたい人向けの<br>
+      目標とご褒美の設定ツールです。
     </div>
-    <%= link_to "無料でアカウント登録", new_user_registration_path, class: 'btn btn-danger' %>
-    <%= link_to "登録済の方はこちらから", user_session_path, class: 'main-color' %>
+    <%= link_to "無料でアカウント登録", new_user_registration_path, class: 'text-center btn btn-danger fs-5 my-2', style: 'width: 18rem; height: 3rem;' %>
+    <%= link_to "登録済の方はこちらから", user_session_path, class: 'btn btn-outline-primary fs-5', style: 'width: 18rem; height: 3rem;' %>
   </section>
   <section class="d-flex flex-column justify-content-center align-items-center gap-2">
-    <h3 class="main-color">目標 + ご褒美</h2>
+    <h3 class="main-color">目標+ご褒美</h2>
     <div class="character-color">
-      GifTreatはただの目標管理ツールではなく、目標と同時に、<br>
-      達成後に得られるご褒美も登録する管理ツールです。
+      ただの目標管理ツールではなく、<br>
+      目標と同時に達成後のご褒美も登録します。
     </div>
     <div class="d-flex">
       <%= image_tag('welcome/goal-setting.png', alt: '目標を設定するイラスト', style: 'max-width: 10rem;') %>
@@ -23,8 +25,8 @@
   <section class="d-flex flex-column justify-content-center align-items-center gap-2">
     <h3 class="main-color">グループで共通のご褒美</h2>
     <div class="character-color">
-      さらに、個人利用だけでなく、グループで共通のご褒美を設定でき、<br>
-      各々が設定した目標の達成後に皆でお祝いすることもできます。
+      個人利用だけでなく、グループで共通のご褒美を設定でき、<br>
+      各々の目標の達成後に、皆でお祝いすることもできます。
     </div>
     <%= image_tag('welcome/reward-group.png', alt: '個人でお祝いするイラスト', style: 'max-width: 20rem;') %>
   </section>

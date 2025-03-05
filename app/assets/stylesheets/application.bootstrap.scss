@@ -95,6 +95,20 @@ a {
   }
 }
 
+h2 {
+  font-size: 2rem !important;
+}
+
+h3 {
+  font-size: 1.75rem !important;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .btn-primary {
   background-color: $main-color !important;
   border-color: $main-color !important;
