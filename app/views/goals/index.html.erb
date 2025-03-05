@@ -2,14 +2,14 @@
 <% set_meta_tags description: '登録した目標の一覧ページです。' %>
 
 <section class="d-flex flex-column justify-content-center align-items-center text-center my-2 mx-3">
-  <h2>目標一覧</h2>
-  <div class="btn-group my-2" style="width: 20rem; height: 3rem;">
+  <h2 class="main-color">目標一覧</h2>
+  <div class="btn-group" style="width: 20rem; height: 3rem;">
     <%= link_to '実施中', goals_path(rewards: 'inprogress'), class: "#{button_primary_or_not('inprogress')} #{active_or_not('inprogress')} fs-5" %>
     <%= link_to '終了', goals_path(rewards: 'completed'), class: "#{button_primary_or_not('completed')} #{active_or_not('completed')} fs-5" %>
   </div>
 
   <% if @goals.empty? %>
-    <div class="m-3 fs-2">
+    <div class="my-3 fs-5">
       <%= render 'no_goals_message', completed_or_in_progress: @completed_or_in_progress %>
     </div>
   <% else %>
@@ -41,7 +41,5 @@
     </div>
   <% end %>
   <%= paginate @goals, theme: 'bootstrap-5' %>
-  <div class="mx-3">
-    <%= link_to 'ご褒美を追加する', new_reward_path, class: 'btn btn-outline-primary fs-5', style: 'width: 18rem; height: 3rem;' %>
-  </div>
+  <%= link_to 'ご褒美を追加する', new_reward_path, class: 'btn btn-outline-primary fs-5', style: 'width: 18rem; height: 3rem;' %>
 </section>
