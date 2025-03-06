@@ -1,5 +1,5 @@
 <%= turbo_frame_tag goal do %>
-  <div class="d-flex flex-column gap-2 h-100 p-2">
+  <div class="d-flex flex-column gap-2 h-100 py-2">
     <div class="fs-5">
       <% if goal.user.avatar.attached? %>
         <%= image_tag avatar_path(goal.user.avatar), 
@@ -16,8 +16,8 @@
       <% end %>
       <%= goal.user.name %>
     </div>
-    <div class="flex-grow-1 border border-primary-secondary bg-white rounded fs-4 p-3 position-relative">
-      <div class="goal-description"><%= goal.description %></div>
+    <div class="flex-grow-1 border border-primary-secondary bg-white rounded fs-4 position-relative">
+      <div class="goal-description py-2 px-3"><%= goal.description %></div>
       <% unless goal.reward.in_progress? %>
         <% if goal.achieved? %>
           <%= image_tag('grade-very-good.png', class: 'position-absolute bottom-0 end-0 h-25', alt: 'たいへんよくできました！スタンプ') %>
@@ -28,16 +28,16 @@
     </div>
     <div class="d-flex align-items-center fs-4 gap-2">
       <% if goal.owned_by?(current_user) && goal.reward.in_progress? %>
-        <div class="row gap-2" style="max-width: 40rem;">
+        <div class="row gap-2" style="max-width: 35rem;">
           <%= form_with(model: goal, data: { controller: "slider", action: "submit->slider#close" }) do |form| %>
-            <div class="col">
+            <div class="col fs-5">
               <%= form.label :progress %>
             </div>
-            <div class="col d-flex align-items-center gap-2 my-2">
-              <%= form.number_field :progress, class: "text-center border border-primary-secondary rounded", style: "max-width: 10rem; outline: none;", readonly: true, id: "hidden_input_progress" %>%
-              <div class="gap-3 mx-2" style="max-width: 15rem; display: none" id="update_buttons">
-                <%= form.submit "更新" , class: "btn btn-outline-primary" %>
-                <%= link_to "取消", reward_path(goal.reward), class: "btn btn-outline-danger" %>
+            <div class="col d-flex align-items-center gap-1 my-2">
+              <%= form.number_field :progress, class: "text-center border border-primary-secondary rounded", style: "max-width: 8rem; outline: none;", readonly: true, id: "hidden_input_progress" %>%
+              <div class="gap-2 mx-2" style="max-width: 15rem; display: none" id="update_buttons">
+                <%= form.submit "更新" , class: "btn btn-outline-primary fs-5", style: "width: 4.5rem" %>
+                <%= link_to "取消", reward_path(goal.reward), class: "btn btn-outline-danger fs-5", style: "width: 4.5rem" %>
               </div>
             </div>
           <% end %>
@@ -52,14 +52,15 @@
             >
           </div>
           <div class="col">
-            <%= link_to "編集", edit_goal_path(goal), class: "btn btn-outline-secondary me-2", data: { turbo_frame: "modal"} %>
+            <%= link_to "編集", edit_goal_path(goal), class: "btn btn-outline-secondary me-2 fs-5", style: "width: 4.5rem", data: { turbo_frame: "modal"} %>
           </div>
         </div>
       <% else %>
-        進捗率
-        <div class="flex-grow-1 text-center border border-primary-secondary bg-white rounded p-1" style="max-width: 10rem">
+        <div class="fs-5">進捗率</div>
+        <div class="flex-grow-1 text-center border border-primary-secondary bg-white rounded p-1" style="max-width: 8rem">
           <%= goal.progress %>
-        </div>%
+        </div>
+        <div class="fs-5">%</div>
       <% end %>
     </div>
   </div>
