@@ -34,10 +34,10 @@
               <%= form.label :progress %>
             </div>
             <div class="col d-flex align-items-center gap-1 my-2">
-              <%= form.number_field :progress, class: "text-center border border-primary-secondary rounded", style: "max-width: 8rem; outline: none;", readonly: true, id: "hidden_input_progress" %>%
-              <div class="gap-2 mx-2" style="max-width: 15rem; display: none" id="update_buttons">
-                <%= form.submit "更新" , class: "btn btn-outline-primary fs-5", style: "width: 4.5rem" %>
-                <%= link_to "取消", reward_path(goal.reward), class: "btn btn-outline-danger fs-5", style: "width: 4.5rem" %>
+              <%= form.number_field :progress, class: "text-center border border-primary-secondary rounded", style: "max-width: 5rem; outline: none;", readonly: true, id: "hidden_input_progress" %>%
+              <div class="gap-3 mx-2" style="display: none" id="update_buttons">
+                <%= form.submit "更新" , class: "btn btn-outline-primary fs-5", style: "width: 5rem" %>
+                <%= link_to "取消", reward_path(goal.reward), class: "btn btn-outline-danger fs-5", style: "width: 5rem" %>
               </div>
             </div>
           <% end %>
@@ -52,12 +52,12 @@
             >
           </div>
           <div class="col">
-            <%= link_to "編集", edit_goal_path(goal), class: "btn btn-outline-secondary me-2 fs-5", style: "width: 4.5rem", data: { turbo_frame: "modal"} %>
+            <%= link_to "編集", edit_goal_path(goal), class: "btn btn-outline-secondary me-2 fs-5", style: "width: 8rem", data: { turbo_frame: "modal"} %>
           </div>
         </div>
       <% else %>
         <div class="fs-5">進捗率</div>
-        <div class="flex-grow-1 text-center border border-primary-secondary bg-white rounded p-1" style="max-width: 8rem">
+        <div class="flex-grow-1 text-center border border-primary-secondary bg-white rounded p-1" style="max-width: 5rem">
           <%= goal.progress %>
         </div>
         <div class="fs-5">%</div>
