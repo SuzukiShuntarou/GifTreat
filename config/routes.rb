@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :cheerings, only: [:create]
   end
 
-  root 'welcome#index'
+  root 'welcome#index', as: :top_page
   get 'terms_service', to: 'welcome#terms_service'
   get 'privacy_policy', to: 'welcome#privacy_policy'
 

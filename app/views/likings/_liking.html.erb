@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "likings_goal_#{goal.id}" do %>
   <% if goal.likings_count < 100 %>
-    <%= button_to goal_likings_path(goal_id: goal.id), class: "btn btn-link" do %>
+    <%= button_to goal_likings_path(goal_id: goal.id), class: "btn" do %>
       <%= render 'likings/image', goal: goal %>
     <% end %>
   <% else %>
