@@ -185,3 +185,12 @@ h3 {
 .title-bg-color {
   background-color: #f8e0e6;
 }
+
+textarea::placeholder {
+  opacity: 0.5 !important;
+}
+
+.input-group-text {
+  background-color: $base-color;
+  border: none;
+}
