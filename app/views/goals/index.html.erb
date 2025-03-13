@@ -1,8 +1,8 @@
 <% content_for(:title, '目標一覧') %>
 <% set_meta_tags description: '登録した目標の一覧ページです。' %>
+<h2 class="main-color text-center w-100 title-bg-color py-3">目標一覧</h2>
 
-<section class="d-flex flex-column justify-content-center align-items-center text-center my-2 mx-3">
-  <h2 class="main-color mt-1">目標一覧</h2>
+<section class="d-flex flex-column justify-content-center align-items-center text-center my-2 mx-1">
   <div class="btn-group mt-2" style="width: 20rem; height: 3rem;">
     <%= link_to '実施中', goals_path(rewards: 'inprogress'), class: "#{button_primary_or_not('inprogress')} #{active_or_not('inprogress')} fs-5" %>
     <%= link_to '終了', goals_path(rewards: 'completed'), class: "#{button_primary_or_not('completed')} #{active_or_not('completed')} fs-5" %>

@@ -1,11 +1,12 @@
 <% content_for(:title, 'ご褒美・目標新規登録') %>
 <% set_meta_tags description: 'ご褒美と目標の新規登録ページです。' %>
+<h2 class="main-color text-center w-100 title-bg-color py-3">ご褒美・目標登録</h2>
 
-<div class="d-flex flex-column justify-content-center align-items-center fw-bold m-2">
+<div class="d-flex flex-column justify-content-center align-items-center fw-bold my-2 mx-1">
   <%= bootstrap_form_with(model: @reward, label_errors: true) do |form| %>
     <section>
-      <h2 class="d-flex justify-content-center main-color mt-1">ご褒美</h2>
-      <div class="d-flex flex-column border border-secondary-subtle rounded shadow-sm my-2 p-3" >
+      <h3 class="border border-secondary-subtle rounded-top text-center main-color py-2 mt-1 mb-0">ご褒美</h3>
+      <div class="d-flex flex-column border border-secondary-subtle border-top-0 rounded-bottom shadow-sm mb-3 p-3" >
         <div class="d-flex">
           <div class="d-flex align-items-center">
             <%= form.date_field :completion_date, class: 'form-control text-center fs-4', help: 'ご褒美を『いつ』' %>
@@ -35,8 +36,8 @@
       </div>
     </section>
     <section>
-      <h2 class="d-flex justify-content-center main-color">目標</h2>
-      <div class="d-flex flex-column border border-secondary-subtle rounded shadow-sm my-2 p-3">
+      <h3 class="border border-secondary-subtle rounded-top text-center main-color py-2 mt-1 mb-0">目標</h3>
+      <div class="border border-secondary-subtle border-top-0 rounded-bottom shadow-sm mb-2 p-3">
         <div class="d-flex flex-column flex-grow-1">
           <%= form.fields_for :goals do |goal_form| %>
             <div class="flex-grow-1">

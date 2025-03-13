@@ -103,11 +103,11 @@ a {
 }
 
 h2 {
-  font-size: 1.75rem !important;
+  font-size: 1.5rem !important;
 }
 
 h3 {
-  font-size: 1.5rem !important;
+  font-size: 1.25rem !important;
 }
 
 .btn {
@@ -187,4 +187,8 @@ h3 {
 .offcanvas {
   color: $main-color;
   background-color: $base-color;
+}
+
+.title-bg-color {
+  background-color: #f8e0e6;
 }

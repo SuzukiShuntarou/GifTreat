@@ -9,7 +9,7 @@ Rails.application.configure do
     Bullet.rails_logger  = true
     Bullet.add_footer    = true
   end
-config.hosts << "108a-130-62-86-8.ngrok-free.app"
+ config.hosts << "a6cb-130-62-86-8.ngrok-free.app"
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
