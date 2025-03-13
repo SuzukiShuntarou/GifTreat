@@ -2,36 +2,34 @@
 <% set_meta_tags description: 'ご褒美と目標の新規登録ページです。' %>
 <h2 class="main-color text-center w-100 title-bg-color py-3">ご褒美・目標登録</h2>
 
-<div class="d-flex flex-column justify-content-center align-items-center fw-bold my-2 mx-1">
+<div class="d-flex flex-column justify-content-center align-items-center my-2 mx-1">
   <%= bootstrap_form_with(model: @reward, label_errors: true) do |form| %>
     <section>
       <h3 class="border border-secondary-subtle rounded-top text-center main-color py-2 mt-1 mb-0">ご褒美</h3>
       <div class="d-flex flex-column border border-secondary-subtle border-top-0 rounded-bottom shadow-sm mb-3 p-3" >
         <div class="d-flex">
           <div class="d-flex align-items-center">
-            <%= form.date_field :completion_date, class: 'form-control text-center fs-4', help: 'ご褒美を『いつ』' %>
-            <div class="mx-2 fs-5">に</div>
+            <%= form.date_field :completion_date, class: 'form-control text-center', help: 'ご褒美を『いつ』' %>
+            <div class="mx-2">に</div>
           </div>
           <div class="d-flex flex-grow-1 align-items-center">
             <div class="flex-grow-1 pe-2">
               <%= form.text_area :location,
-                  class: 'form-control text-center fs-4',
+                  class: 'form-control text-center',
                   placeholder: '叙々苑',
                   help: 'ご褒美を『どこ』'
               %>
-            </div>
-            <div class="fs-5">で</div>
+            </div>で
           </div>
         </div>
         <div class="d-flex align-items-center">
           <div class="flex-grow-1 pe-2">
             <%= form.text_area :description,
-                class: 'form-control text-center fs-4',
+                class: 'form-control text-center',
                 placeholder: '友人を誘って皆で食事',
                 help: '『欲しいご褒美』や『共有したいご褒美』を登録'
             %>
-          </div>
-          <div class="fs-5">する</div>
+          </div>する
         </div>
       </div>
     </section>
@@ -42,14 +40,14 @@
           <%= form.fields_for :goals do |goal_form| %>
             <div class="flex-grow-1">
               <%= goal_form.text_area :description,
-                    class: 'flex-grow-1 form-control p-3 fs-4',
+                    class: 'flex-grow-1 form-control p-3',
                     style: 'min-height: 10rem;',
                     placeholder: '毎日10分ランニングする！',
                     help: '期日までに達成したい目標を書いてください。'
               %>
             </div>
             <div class="form-group col-md-4">
-              <%= goal_form.number_field :progress, class: 'text-center fs-4' %>
+              <%= goal_form.number_field :progress, class: 'text-center' %>
             </div>
           <% end %>
         </div>

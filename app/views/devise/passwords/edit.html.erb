@@ -9,7 +9,7 @@
   </h1>
   <h2 class="main-color"><%= t('.change_your_password') %></h2>
 
-  <div class="fs-4" style="min-width: 15rem;">
+  <div style="min-width: 15rem;">
     <%= bootstrap_form_with(model: @user, label_errors: true, url: password_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.hidden_field :reset_password_token %>
 

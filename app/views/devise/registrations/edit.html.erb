@@ -4,8 +4,8 @@
   <%= t('.title', resource: devise_i18n_fix_model_name_case(resource.model_name.human, i18n_key: 'registrations.edit.title')) %>
 </h2>
 
-<section class="d-flex flex-column justify-content-center align-items-center gap-3 mx-1 my-2">
-  <div class="fs-5" style="min-width: 20rem;">
+<section class="d-flex flex-column justify-content-center align-items-center gap-3 mx-3 my-2">
+  <div style="min-width: 20rem;">
     <%= bootstrap_form_with(model: @user, label_errors: true, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <div class="field">
         <% if !resource.errors[:avatar].any? && resource.avatar.attached? %>
@@ -13,7 +13,7 @@
             現在のアイコン
             <%= image_tag(avatar_path(resource.avatar),
                           class: 'border border-primary-secondary rounded-circle m-3',
-                          style: 'width: 4rem; height: 4rem; cursor:pointer;',
+                          style: 'width: 3rem; height: 3rem; cursor:pointer;',
                           alt: 'ユーザのアイコン')
             %>
           <% end %>

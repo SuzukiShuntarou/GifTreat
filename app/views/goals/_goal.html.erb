@@ -1,22 +1,22 @@
 <%= turbo_frame_tag goal do %>
   <div class="d-flex flex-column gap-2 h-100 py-2">
-    <div class="fs-5">
+    <div>
       <% if goal.user.avatar.attached? %>
         <%= image_tag avatar_path(goal.user.avatar), 
             class: "border border-primary-secondary rounded-circle bg-white",
             alt: 'ユーザのアイコン',
-            style: 'width: 4rem; height: 4rem;'
+            style: 'width: 3rem; height: 3rem;'
         %>
       <% else %>
         <%= image_tag("default-avatar.png",
                       class: "border border-primary-secondary rounded-circle bg-white",
                       alt: 'デフォルトのユーザアイコン',
-                      style: 'width: 4rem; height: 4rem;')
+                      style: 'width: 3rem; height: 3rem;')
         %>
       <% end %>
       <%= goal.user.name %>
     </div>
-    <div class="flex-grow-1 border border-primary-secondary bg-white rounded fs-4 position-relative">
+    <div class="flex-grow-1 border border-primary-secondary bg-white rounded position-relative">
       <div class="goal-description py-2 px-3"><%= goal.description %></div>
       <% unless goal.reward.in_progress? %>
         <% if goal.achieved? %>
@@ -26,11 +26,11 @@
         <% end %>
       <% end %>
     </div>
-    <div class="d-flex align-items-center fs-4 gap-2">
+    <div class="d-flex align-items-center gap-2">
       <% if goal.owned_by?(current_user) && goal.reward.in_progress? %>
         <div class="row gap-2" style="max-width: 35rem;">
           <%= form_with(model: goal, data: { controller: "slider", action: "submit->slider#close" }) do |form| %>
-            <div class="col fs-5">
+            <div class="col">
               <%= form.label :progress %>
             </div>
             <div class="col d-flex align-items-center gap-1 my-2">
@@ -56,11 +56,9 @@
           </div>
         </div>
       <% else %>
-        <div class="fs-5">進捗率</div>
         <div class="flex-grow-1 text-center border border-primary-secondary bg-white rounded p-1" style="max-width: 5rem">
-          <%= goal.progress %>
+          進捗率<%= goal.progress %>%
         </div>
-        <div class="fs-5">%</div>
       <% end %>
     </div>
   </div>

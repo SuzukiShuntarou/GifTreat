@@ -3,20 +3,20 @@
     <div class="d-flex justify-content-start">
       <div class="d-flex align-items-center me-2">
         <%= form.date_field :completion_date %>
-        <span class="ms-2 fs-5">に</span>
+        <span class="ms-2">に</span>
       </div>
       <div class="d-flex flex-grow-1 align-items-center">
         <div class="flex-grow-1 me-2">
           <%= form.text_area :location %>
         </div>
-        <span class="fs-5">で</span>
+        <span>で</span>
       </div>
     </div>
     <div class="d-flex flex-grow-1 align-items-center">
       <div class="flex-grow-1 me-2">
         <%= form.text_area :description %>
       </div>
-      <span class="fs-5">する</span>
+      <span>する</span>
     </div>
     <div class="d-flex justify-content-center">
       <%= form.submit "更新", class: "btn btn-outline-primary fs-5", style: "width: 10rem" %>

@@ -8,7 +8,7 @@
     <% end %>
   </h1>
   <h2 class="main-color"><%= t('.sign_in') %></h2>
-  <div class="fs-5" style="min-width: 15rem;">
+  <div style="min-width: 15rem;">
     <%= bootstrap_form_with(model: @user, label_errors: true, url: session_path(resource_name), html: { method: :post }) do |f| %>
       <div class="field">
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

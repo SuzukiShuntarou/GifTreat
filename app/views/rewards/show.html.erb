@@ -37,7 +37,7 @@
   </section>
   <% if @reward.in_progress? %>
     <section>
-      <div class="fs-5 my-3">
+      <div class="my-3">
         <%= link_to "削除", @reward, data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
       </div>
     </section>
