@@ -65,7 +65,7 @@ class RewardsTest < ApplicationSystemTestCase
 
   test 'should be able to create both Reward and Goal from common form' do
     visit goals_path
-    click_link_or_button 'ご褒美を追加する'
+    click_link_or_button '目標を追加する'
 
     within("form[action='/rewards']") do
       fill_in 'reward[completion_date]', with: Date.current.tomorrow

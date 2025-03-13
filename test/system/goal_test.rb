@@ -20,7 +20,7 @@ class GoalsTest < ApplicationSystemTestCase
 
     assert_selector 'a', text: '実施中'
     assert_selector 'a', text: '終了'
-    assert_selector 'a', text: 'ご褒美を追加する'
+    assert_selector 'a', text: '目標を追加する'
 
     assert_text '期日'
     assert_text '目標'
@@ -58,7 +58,7 @@ class GoalsTest < ApplicationSystemTestCase
   end
 
   test 'should be able to redirect to new form from goals screen' do
-    click_link_or_button 'ご褒美を追加する'
+    click_link_or_button '目標を追加する'
     assert_current_path new_reward_path
   end
 
