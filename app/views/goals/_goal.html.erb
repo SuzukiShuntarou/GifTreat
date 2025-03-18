@@ -29,7 +29,7 @@
     <div class="d-flex align-items-center gap-2">
       <% if goal.owned_by?(current_user) && goal.reward.in_progress? %>
         <div class="row gap-2">
-          <%= form_with(model: goal, data: { controller: "slider", action: "submit->slider#close" }) do |form| %>
+          <%= form_with(model: goal, data: { controller: "slider" }) do |form| %>
             <div class="col d-flex align-items-center gap-1 my-2", style="height: 2.5rem" >
               <%= form.label :progress %>
               <%= form.number_field :progress, class: "text-center px-2 py-1 border border-primary-secondary rounded", style: "max-width: 5rem; outline: none;", readonly: true, id: "hidden_input_progress" %>%

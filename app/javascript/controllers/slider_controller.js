@@ -21,8 +21,4 @@ export default class extends Controller {
   showUpdateButtons() {
     this.updateButtons.style.display = "flex";
   }
-
-  close() {
-    this.updateButtons.style.display = "none";
-  }
 }
