@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class GoalsController < ApplicationController
+  PAGER_NUMBER = 10
   before_action :set_goal, only: %i[edit update]
 
   def index
     @completed_or_in_progress = params[:rewards]
-    @goals = Goal.search_rewards_completed_or_in_progress(@completed_or_in_progress, current_user).page(params[:page]).per(10)
+    @goals = Goal.search_rewards_completed_or_in_progress(@completed_or_in_progress, current_user).page(params[:page]).per(PAGER_NUMBER)
   end
 
   def edit; end
