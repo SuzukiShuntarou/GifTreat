@@ -12,22 +12,8 @@
       crossorigin="anonymous"
     />
     <style>
-      @media (max-width: 600px) {
-        html {
-          font-size: 10px;
-        }
-      }
-
-      @media (min-width: 601px) and (max-width: 1024px) {
-        html {
-          font-size: 15px;
-        }
-      }
-
-      @media (min-width: 1024px) {
-        html {
-          font-size: 18px;
-        }
+      html {
+        font-size: 16px;
       }
       body {
         background-color: #fcfcfc;
@@ -41,24 +27,21 @@
           opacity: 0.5;
         }
       }
-      p {
-        font-size: 1.25rem;
-      }
     </style>
   </head>
 
   <body>
     <div
-      class="d-flex flex-column justify-content-center align-items-center text-center m-5 gap-3"
+      class="d-flex flex-column justify-content-center align-items-center text-center mt-5 px-1 gap-2"
     >
       <img
         src="/logo-error-page.png"
         alt="GifTreatのロゴ"
-        style="max-width: 25rem"
+        style="max-width: 15rem"
       />
       <h1 class="my-3">406 Not Acceptable</h1>
-      <p>ご利用ブラウザはサポート対象外となります。</p>
-      <p>最新のブラウザにアップデートしてください。</p>
+      ご利用ブラウザはサポート対象外となります。<br />
+      最新のブラウザにアップデートしてください。
       <a href="/">トップページへ戻る</a>
     </div>
   </body>
