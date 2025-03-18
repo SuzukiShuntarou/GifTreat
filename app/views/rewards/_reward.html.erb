@@ -1,33 +1,32 @@
-<%= turbo_frame_tag reward, class: 'd-flex text-center fs-4 m-2 gap-2' do %>
-  <div class="d-flex align-items-center gap-2">
-    <div class="flex-grow-1 border border-primary-secondary bg-white rounded p-2">
+<%= turbo_frame_tag reward, class: 'd-flex text-center' do %>
+  <div class="d-flex align-items-center mb-2">
+    <div class="border border-primary-secondary bg-white rounded px-1 py-2">
       <%= reward.completion_date %>
     </div>
-    に
+    <span class="mx-2">に</span>
   </div>
-  <div class="d-flex flex-grow-1 align-items-center gap-2">
-    <div class="flex-grow-1 border border-primary-secondary bg-white rounded p-2" style="max-width: 90%">
+  <div class="d-flex flex-grow-1 flex-nowrap align-items-center mb-2">
+    <div class="flex-grow-1 border border-primary-secondary bg-white rounded px-1 py-2">
       <%= reward.location %>
     </div>
-    で
+    <span class="ms-2">で</span>
   </div>
 <% end %>
 
-<div class="d-flex text-center fs-4 m-2 gap-2">
-  <%= turbo_frame_tag reward, class: 'flex-grow-1 text-center fs-4 gap-2' do %>
-    <div class="d-flex align-items-center gap-2">
-      <div class="flex-grow-1 text-center border border-primary-secondary bg-white rounded p-2" style="max-width: 90%">
-        <%= reward.description %>
-      </div>
-      する
+<%= turbo_frame_tag reward, class: 'text-center' do %>
+  <div class="d-flex flex-grow-1 flex-nowrap align-items-center">
+    <div class="flex-grow-1 border border-primary-secondary bg-white rounded px-1 py-2">
+      <%= reward.description %>
     </div>
-  <% end %>
-  <div class="d-flex align-items-center gap-2 ">
-    <% if reward.in_progress? %>
-      <%= link_to "編集", edit_reward_path(reward), class: 'btn btn-outline-secondary', data: { turbo_frame: "modal"} %>
-      <% unless reward.max_reward_participants? %>
-        <%= link_to '招待', invite_reward_path(reward), class: 'btn btn-outline-secondary', data: { turbo_frame: "modal"} %>
-      <% end %>
-    <% end %>
+    <span class="text-nowrap ms-2">する</span>
   </div>
+<% end %>
+
+<div class="d-flex align-items-center justify-content-center mt-2 gap-3">
+  <% if reward.in_progress? %>
+    <%= link_to "編集", edit_reward_path(reward), class: 'btn btn-outline-secondary fs-5', style: 'width: 8rem', data: { turbo_frame: "modal"} %>
+    <% unless reward.max_reward_participants? %>
+      <%= link_to '招待', invite_reward_path(reward), class: 'btn btn-outline-secondary fs-5', style: 'width: 8rem', data: { turbo_frame: "modal"} %>
+    <% end %>
+  <% end %>
 </div>

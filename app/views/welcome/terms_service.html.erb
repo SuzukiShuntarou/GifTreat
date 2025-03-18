@@ -4,13 +4,13 @@
 <div class="d-flex flex-column justify-content-center align-items-center gap-3 m-3">
   <% unless user_signed_in? %>
     <h1 class="text-center">
-      <%= link_to user_session_path do %>
+      <%= link_to top_page_path do %>
         <%= image_tag('logo-horizontal.png', class: 'w-50 h-25', alt: 'GifTreatのロゴ') %>
       <% end %>
     </h1>
   <% end %>
   <h2 class="border-bottom border-5 border-primary-subtle">利用規約</h2>
-  <div class="fs-5 w-75" style="max-width: 65rem;">
+  <div style="max-width: 65rem; width: 95%;">
     <p>この利用規約（以下，「本規約」といいます。）は，このウェブサイト上で提供するサービス（以下，「本サービス」といいます。）の利用条件を定めるものです。登録ユーザーの皆さま（以下，「ユーザー」といいます。）には，本規約に従って，本サービスをご利用いただきます。</p>
 
     <h3>第1条（適用）</h3>

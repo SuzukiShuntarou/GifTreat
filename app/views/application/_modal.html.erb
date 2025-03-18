@@ -1,12 +1,12 @@
 <%= turbo_frame_tag "modal" do %>
   <div class="modal fade" data-controller="modal">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
+      <div class="modal-content modal-bg-color">
         <div class="modal-header">
-          <h3 class="modal-title" style="font-size: 1.25rem;"><%= title%></h3>
+          <h3 class="modal-title"><%= title%></h3>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body px-3 py-2">
           <%= yield %>
         </div>
       </div>

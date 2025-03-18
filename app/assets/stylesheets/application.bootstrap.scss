@@ -4,7 +4,7 @@
 
 @media (max-width: 600px) {
   html {
-    font-size: 10px;
+    font-size: 16px;
   }
   .modal-dialog {
     max-width: 100%;
@@ -24,7 +24,7 @@
 
 @media (min-width: 601px) and (max-width: 1024px) {
   html {
-    font-size: 14px;
+    font-size: 16px;
   }
   .modal-dialog {
     max-width: 80%;
@@ -96,11 +96,11 @@ a {
 }
 
 h2 {
-  font-size: 2rem !important;
+  font-size: 1.5rem !important;
 }
 
 h3 {
-  font-size: 1.75rem !important;
+  font-size: 1.25rem !important;
 }
 
 .btn {
@@ -179,5 +179,22 @@ h3 {
 
 .offcanvas {
   color: $main-color;
+  background-color: $base-color;
+}
+
+.title-bg-color {
+  background-color: #f8e0e6;
+}
+
+textarea::placeholder {
+  opacity: 0.5 !important;
+}
+
+.input-group-text {
+  background-color: $base-color;
+  border: none;
+}
+
+.modal-bg-color {
   background-color: $base-color;
 }

@@ -1,9 +1,9 @@
 <%= turbo_frame_tag goal do %>
-  <%= bootstrap_form_with(model: goal, label_errors: true, class: 'fw-bold', data: { action: "turbo:submit-end->modal#close" }) do |form| %>
+  <%= bootstrap_form_with(model: goal, label_errors: true, data: { action: "turbo:submit-end->modal#close" }) do |form| %>
     <%= form.text_area :description %>
-    <%= form.number_field :progress %>
+    <%= form.number_field :progress, class: 'rounded', append: '%' %>
     <div class="d-flex justify-content-center">
-      <%= form.submit "更新", class: "btn btn-outline-primary" %>
+      <%= form.submit "更新", class: "btn btn-outline-primary", style: "width: 10rem" %>
     </div>
   <% end %>
 <% end %>

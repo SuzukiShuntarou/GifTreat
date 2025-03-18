@@ -1,8 +1,8 @@
-<header class="shadow-sm">
+<header class="border bg-light-subtle">
   <% if user_signed_in? %>
-    <nav class="navbar mx-5" style="height: 5rem;">
+    <nav class="navbar mx-3" style="height: 5rem;">
       <%= link_to goals_path do %>
-        <h1><%= image_tag('logo-header.png', style: 'height: 4rem; width: auto;', alt: 'ヘッダーのGifTreatのロゴ') %></h1>
+        <h1><%= image_tag('logo-header.png', style: 'height: 2.25rem; width: auto;', alt: 'ヘッダーのGifTreatのロゴ') %></h1>
       <% end %>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="ナビゲーションバーの表示ボタン">
@@ -12,7 +12,7 @@
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" style="max-width: 15rem">
         <div class="offcanvas-header border-bottom">
           <div class="offcanvas-title">
-            <%= image_tag('logo-header.png', style: 'height: 4rem;', alt: 'ナビゲーションバーのGifTreatのロゴ') %>
+            <%= image_tag('logo-header.png', style: 'height: 2.25rem;', alt: 'ナビゲーションバーのGifTreatのロゴ') %>
           </div>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="ナビゲーションバーの非表示ボタン"/></button>
         </div>
@@ -22,7 +22,7 @@
               <%= link_to 'トップページ', goals_path %>
             </li>
             <li class="nav-item">
-              <%= link_to 'ご褒美を追加する', new_reward_path %>
+              <%= link_to '目標を追加する', new_reward_path %>
             </li>
             <li class="nav-item">
               <%= link_to '登録情報', edit_user_registration_path %>

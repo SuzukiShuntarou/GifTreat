@@ -1,61 +1,65 @@
 <% content_for(:title, 'ご褒美・目標新規登録') %>
 <% set_meta_tags description: 'ご褒美と目標の新規登録ページです。' %>
+<h2 class="main-color text-center w-100 title-bg-color py-3">ご褒美・目標登録</h2>
 
-<div class="d-flex flex-column justify-content-center align-items-center fw-bold m-5 gap-3">
+<div class="d-flex flex-column justify-content-center align-items-center my-2 mx-1">
   <%= bootstrap_form_with(model: @reward, label_errors: true) do |form| %>
     <section>
-      <h2 class="d-flex justify-content-center m-3">ご褒美</h2>
-      <div class="d-flex flex-column border border-secondary-subtle rounded shadow-sm m-3 p-3" style="max-width: 45rem;">
+      <h3 class="border border-secondary-subtle rounded-top text-center main-color py-2 mt-1 mb-0">ご褒美</h3>
+      <div class="d-flex flex-column border border-secondary-subtle border-top-0 rounded-bottom shadow-sm mb-3 px-3 py-2">
         <div class="d-flex">
-          <div class="d-flex align-items-center ms-3">
-            <%= form.date_field :completion_date, class: 'form-control text-center fs-3', help: 'ご褒美を『いつ』' %>
-            <div class="ms-3 fs-3">に</div>
+          <div class="d-flex align-items-center">
+            <%= form.date_field :completion_date,
+                class: 'form-control rounded',
+                help: 'ご褒美を受け取る日を入力してください。',
+                append: 'に'
+            %>
           </div>
           <div class="d-flex flex-grow-1 align-items-center">
-            <div class="flex-grow-1 mx-3">
+            <div class="flex-grow-1 py-2">
               <%= form.text_area :location,
-                  class: 'form-control text-center fs-3',
+                  class: 'form-control rounded',
                   placeholder: '叙々苑',
-                  help: 'ご褒美を『どこ』'
+                  help: 'ご褒美を受け取る場所を入力してください。（例: 草津）',
+                  append: 'で'
               %>
             </div>
-            <div class="me-3 fs-3">で</div>
           </div>
         </div>
         <div class="d-flex align-items-center">
-          <div class="flex-grow-1 mx-3">
+          <div class="flex-grow-1 py-2">
             <%= form.text_area :description,
-                class: 'form-control text-center fs-3',
+                class: 'form-control rounded',
                 placeholder: '友人を誘って皆で食事',
-                help: '『欲しいご褒美』や『共有したいご褒美』を登録'
+                help: 'ご褒美の内容を入力してください。（例: 友人と温泉旅行）',
+                append: 'する'
             %>
           </div>
-          <div class="me-3 fs-3">する</div>
         </div>
       </div>
     </section>
     <section>
-      <h2 class="d-flex justify-content-center m-3">目標</h2>
-      <div class="d-flex flex-column border border-secondary-subtle rounded shadow-sm gap-3 m-3 p-3" style="min-height:30rem; max-width: 45rem;">
+      <h3 class="border border-secondary-subtle rounded-top text-center main-color py-2 mt-1 mb-0">目標</h3>
+      <div class="border border-secondary-subtle border-top-0 rounded-bottom shadow-sm mb-2 px-3 py-2">
         <div class="d-flex flex-column flex-grow-1">
           <%= form.fields_for :goals do |goal_form| %>
-            <div class="flex-grow-1 mx-3">
+            <div class="flex-grow-1">
               <%= goal_form.text_area :description,
-                    class: 'flex-grow-1 form-control p-3 fs-3',
-                    style: 'min-height: 25rem;',
+                    class: 'flex-grow-1 form-control p-3',
+                    style: 'min-height: 10rem;',
                     placeholder: '毎日10分ランニングする！',
-                    help: '自分にご褒美をあげたい日までに達成したい目標を書いてください。どんな些細なことでも構いません！'
+                    help: '期日までに達成したい目標を入力してください。'
               %>
             </div>
-            <div class="form-group col-md-4 mx-3">
-              <%= goal_form.number_field :progress, class: 'text-center fs-4' %>
+            <div class="form-group col-md-4">
+              <%= goal_form.number_field :progress, class: 'text-center rounded', append: '%' %>
             </div>
           <% end %>
         </div>
       </div>
     </section>
-    <div class="d-flex justify-content-center m-3">
-      <%= form.submit "ご褒美と目標を登録する", class: "btn btn-outline-primary btn-lg" %>
+    <div class="d-flex justify-content-center my-3">
+      <%= form.submit "ご褒美と目標を登録する", class: 'btn btn-outline-primary fs-5', style: 'width: 18rem; height: 3rem;' %>
     </div>
   <% end %>
 </div>

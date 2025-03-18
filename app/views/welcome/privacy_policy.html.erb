@@ -4,13 +4,13 @@
 <div class="d-flex flex-column justify-content-center align-items-center gap-3 m-3">
   <% unless user_signed_in? %>
     <h1 class="text-center">
-      <%= link_to user_session_path do %>
+      <%= link_to top_page_path do %>
         <%= image_tag('logo-horizontal.png', class: 'w-50 h-25', alt: 'GifTreatのロゴ') %>
       <% end %>
     </h1>
   <% end %>
   <h2 class="border-bottom border-5 border-primary-subtle">プライバシーポリシー</h2>
-  <div class="fs-5 w-75" style="max-width: 65rem;">
+  <div style="max-width: 65rem; width: 95%;">
     <p>「GifTreat」（以下，「本サービス」といいます。）は，ユーザーの個人情報の取扱いについて，以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。</p>
 
     <h3>第1条（個人情報）</h3>
