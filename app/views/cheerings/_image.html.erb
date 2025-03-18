@@ -1,8 +1,9 @@
-<span style="display: inline-flex;">
+<span class="main-color" style="display: inline-flex;">
   <%= image_tag("cheering-icon.png",
                 onmouseover: "this.title='#{generate_cheerings_message(goal.cheerings)}'",
                 alt: '応援のマーク',
-                style: 'width: 1.5rem; height: 1.5rem;')
+                style: 'width: 1.4rem; height: 1.4rem;',
+                class: 'align-self-center me-1')
   %>
   <%= goal.cheerings_count %>
 </span>
