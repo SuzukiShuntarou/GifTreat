@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Goal < ApplicationRecord
-  MAX_REWARD_RELATED_GOALS = 4
+  MAX_GOALS_RELATED_REWARD = 4
   MIN_PROGRESS = 0
   MAX_PROGRESS = 100
   belongs_to :user
@@ -34,7 +34,7 @@ class Goal < ApplicationRecord
   private
 
   def validate_reward_related_goals_limit
-    errors.add(:goal, 'は1つのご褒美に4つまでしか関連付けできません') if reward.goals.count >= MAX_REWARD_RELATED_GOALS
+    errors.add(:goal, 'は1つのご褒美に4つまでしか関連付けできません') if reward.goals.count >= MAX_GOALS_RELATED_REWARD
   end
 
   def validate_in_progress_for_updating
