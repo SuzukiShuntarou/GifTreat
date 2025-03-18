@@ -1,5 +1,5 @@
 <%= turbo_frame_tag goal do %>
-  <div class="d-flex flex-column gap-2 h-100 py-2">
+  <div class="d-flex flex-column gap-2 h-100">
     <div>
       <% if goal.user.avatar.attached? %>
         <%= image_tag avatar_path(goal.user.avatar), 
