@@ -19,7 +19,7 @@ GifTreat は自分にご褒美をあげたい人向けの、ご褒美設定サ�
 ## 使い方
 
 1. アカウント登録をする。
-<img width="40%" alt="アカウント登録" src="https://github.com/user-attachments/assets/62431165-973b-4d57-8fce-ec53bb997684">
+<img width="40%" alt="アカウント登録" src="https://github.com/user-attachments/assets/1d69d37d-7a04-4a5c-b9bc-0befc3b7d50f">
 
 2. ご褒美と目標を登録する。
 <img width="40%" alt="ご褒美と目標の新規登録" src="https://github.com/user-attachments/assets/26cfaabd-660d-473c-a36f-8d6952610d9f">
