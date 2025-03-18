@@ -46,7 +46,7 @@ class RewardsController < ApplicationController
   end
 
   def invite
-    @invite_url = reward_url(params[:id], invitation_token: @reward.invitation_token)
+    @invitation_url = reward_url(params[:id], invitation_token: @reward.invitation_token)
   end
 
   private
