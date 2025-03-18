@@ -145,7 +145,7 @@ class RewardsTest < ApplicationSystemTestCase
 
     within('.modal-body') do
       assert_text '招待したい人に以下のURLを共有して下さい。'
-      assert_equal reward_url(@reward_in_progress.id, invitation_token: @reward_in_progress.invitation_token), find('input[name="invite_url"]').value
+      assert_equal reward_url(@reward_in_progress.id, invitation_token: @reward_in_progress.invitation_token), find('input[name="invitation_url"]').value
       click_link_or_button '招待用URLをコピー'
       assert_selector 'button', text: 'コピーしました！'
     end

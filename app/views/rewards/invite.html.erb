@@ -5,8 +5,8 @@
       招待URLからアクセスしたユーザはご褒美の編集・削除が可能です。<br>
       最大4人まで招待可能です。
     </div>
-    <%= text_field_tag :invite_url,
-        @invite_url,
+    <%= text_field_tag :invitation_url,
+        @invitation_url,
         readonly: true,
         class: 'flex-grow-1 border border-primary-secondary rounded bg-white text-center'
     %>
@@ -14,7 +14,7 @@
       <%= button_tag '招待用URLをコピー', 
         data: { controller: "clipboard",
                 action: "click->clipboard#copy",
-                invitation_url: @invite_url },
+                invitation_url: @invitation_url },
         class: 'btn btn-primary mt-2 fs-5', style: 'width: 18rem; height: 2.5rem;'
       %>
     </div>
