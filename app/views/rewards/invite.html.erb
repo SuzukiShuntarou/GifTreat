@@ -14,7 +14,7 @@
       <%= button_tag '招待用URLをコピー', 
         data: { controller: "clipboard",
                 action: "click->clipboard#copy",
-                clipboard_content_value: @invite_url },
+                invitation_url: @invite_url },
         class: 'btn btn-primary mt-2 fs-5', style: 'width: 18rem; height: 2.5rem;'
       %>
     </div>

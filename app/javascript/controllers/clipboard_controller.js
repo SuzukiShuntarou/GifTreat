@@ -6,9 +6,7 @@ export default class extends Controller {
   }
 
   copy() {
-    const invitationUrl = this.element.getAttribute(
-      "data-clipboard-content-value",
-    );
+    const invitationUrl = this.element.getAttribute("data-invitation-url");
     navigator.clipboard.writeText(invitationUrl).then(() => {
       this.element.textContent = "コピーしました！";
       setTimeout(() => {
