@@ -34,7 +34,7 @@
               <%= form.label :progress %>
               <%= form.number_field :progress, class: "text-center px-2 py-1 border border-primary-secondary rounded", style: "max-width: 5rem; outline: none;", readonly: true, id: "hidden_input_progress" %>%
               <div class="align-items-center ms-2 gap-3" style="display: none" id="update_buttons">
-                <%= form.submit "更新", class: "btn btn-outline-primary", style: "width: 6rem" %>
+                <%= form.submit "更新", class: "btn btn-outline-primary", style: "width: 5rem" %>
                 <%= link_to "キャンセル", reward_path(goal.reward), class: "link-offset-1", style: "font-size: 0.8rem" %>
               </div>
             </div>
