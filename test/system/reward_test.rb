@@ -263,4 +263,11 @@ class RewardsTest < ApplicationSystemTestCase
     assert_selector 'img[alt="ユーザのアイコン"]'
     assert_no_selector 'img[alt="デフォルトのユーザアイコン"]'
   end
+
+  test 'should access list of goals' do
+    visit reward_path(@reward_in_progress)
+    assert_selector 'a', text: '目標一覧に戻る'
+    click_link_or_button '目標一覧に戻る'
+    assert_current_path goals_path
+  end
 end

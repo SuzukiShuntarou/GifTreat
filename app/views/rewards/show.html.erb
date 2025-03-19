@@ -34,12 +34,13 @@
         </div>
       <% end %>
     </div>
-  </section>
-  <% if @reward.in_progress? %>
-    <section>
-      <div class="my-3">
-        <%= link_to "削除", @reward, data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
+    <% if @reward.in_progress? %>
+      <div class="d-flex justify-content-end pe-2" style="font-size: 0.85rem;">
+        <%= link_to "削除", @reward, data: { turbo_method: :delete, turbo_confirm: "ご褒美と目標をすべて削除しますか？" } %>
       </div>
-    </section>
-  <% end %>
+    <% end %>
+  </section>
+  <section class="mt-1 mb-3">
+    <%= link_to "目標一覧に戻る", goals_path %>
+  </section>
 </div>
