@@ -33,9 +33,9 @@
             <div class="col d-flex align-items-center gap-1 my-2", style="height: 2.5rem" >
               <%= form.label :progress %>
               <%= form.number_field :progress, class: "text-center px-2 py-1 border border-primary-secondary rounded", style: "max-width: 5rem; outline: none;", readonly: true, id: "hidden_input_progress" %>%
-              <div class="ms-3 gap-3" style="display: none" id="update_buttons">
+              <div class="align-items-center ms-3 gap-3" style="display: none" id="update_buttons">
                 <%= form.submit "更新", class: "btn btn-outline-primary", style: "width: 4rem" %>
-                <%= link_to "取消", reward_path(goal.reward), class: "btn btn-outline-danger", style: "width: 4rem" %>
+                <%= link_to "キャンセル", reward_path(goal.reward), class: "link-offset-1" %>
               </div>
             </div>
           <% end %>

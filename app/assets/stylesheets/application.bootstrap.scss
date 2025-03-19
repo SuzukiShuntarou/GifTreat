@@ -146,17 +146,6 @@ h3 {
   }
 }
 
-.btn-outline-danger {
-  color: $warning-color;
-  border-color: $warning-color;
-  &:hover {
-    color: $base-color !important;
-    background-color: $warning-color !important;
-    border-color: $warning-color !important;
-    opacity: 1;
-  }
-}
-
 .page-link {
   color: $link-color;
 }
