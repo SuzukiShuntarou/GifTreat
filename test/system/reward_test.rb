@@ -21,7 +21,7 @@ class RewardsTest < ApplicationSystemTestCase
       assert_text @reward_in_progress.description
 
       assert_selector 'a', text: '編集'
-      assert_selector 'a', text: 'このご褒美に招待する'
+      assert_selector 'a', text: 'ご褒美に招待する'
     end
 
     within("div##{dom_id(@goal_in_progress)}") do
@@ -49,7 +49,7 @@ class RewardsTest < ApplicationSystemTestCase
       assert_text reward_completed.description
 
       assert_no_selector 'a', text: '編集'
-      assert_no_selector 'a', text: 'このご褒美に招待する'
+      assert_no_selector 'a', text: 'ご褒美に招待する'
     end
 
     within("div##{dom_id(goal_completed)}") do
@@ -137,8 +137,8 @@ class RewardsTest < ApplicationSystemTestCase
     visit reward_path(@reward_in_progress)
 
     within('#reward') do
-      assert_selector 'a', text: 'このご褒美に招待する'
-      click_link_or_button 'このご褒美に招待する'
+      assert_selector 'a', text: 'ご褒美に招待する'
+      click_link_or_button 'ご褒美に招待する'
     end
 
     within('.modal-title') { assert_text 'ご褒美へ友人・家族を招待' }
@@ -187,8 +187,8 @@ class RewardsTest < ApplicationSystemTestCase
     visit reward_path(invited_reward)
 
     within('#reward') do
-      assert_selector 'a', text: 'このご褒美に招待する'
-      click_link_or_button 'このご褒美に招待する'
+      assert_selector 'a', text: 'ご褒美に招待する'
+      click_link_or_button 'ご褒美に招待する'
     end
 
     within('.modal-body') do
@@ -216,8 +216,8 @@ class RewardsTest < ApplicationSystemTestCase
     visit reward_path(invited_reward)
 
     within('#reward') do
-      assert_selector 'a', text: 'このご褒美に招待する'
-      click_link_or_button 'このご褒美に招待する'
+      assert_selector 'a', text: 'ご褒美に招待する'
+      click_link_or_button 'ご褒美に招待する'
     end
 
     within('.modal-body') do

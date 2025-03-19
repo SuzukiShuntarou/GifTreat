@@ -15,7 +15,7 @@ ja:
       reward:
         description: ご褒美
         location: 場所
-        completion_date: 期日
+        completion_date: 開催日
       reward/goals:
         description: 目標
         progress: 進捗率
