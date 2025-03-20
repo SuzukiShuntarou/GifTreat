@@ -6,53 +6,41 @@
   <%= bootstrap_form_with(model: @reward, label_errors: true) do |form| %>
     <section>
       <h3 class="border border-secondary-subtle rounded-top text-center main-color py-2 mt-1 mb-0">ご褒美</h3>
-      <div class="d-flex flex-column border border-secondary-subtle border-top-0 rounded-bottom shadow-sm mb-3 px-3 py-2">
-        <div class="d-flex">
-          <div class="d-flex align-items-center">
-            <%= form.date_field :completion_date,
-                class: 'form-control rounded',
-                help: 'ご褒美を受け取る日を入力してください。',
-                append: 'に'
-            %>
-          </div>
-          <div class="d-flex flex-grow-1 align-items-center">
-            <div class="flex-grow-1 py-2">
-              <%= form.text_area :location,
-                  class: 'form-control rounded',
-                  placeholder: '叙々苑新宿店',
-                  help: 'ご褒美を受け取る場所を入力してください。（例: 草津）',
-                  append: 'で'
-              %>
-            </div>
-          </div>
-        </div>
-        <div class="d-flex align-items-center">
-          <div class="flex-grow-1 py-2">
-            <%= form.text_area :description,
-                class: 'form-control rounded',
-                placeholder: '友人を誘って皆で食事を',
-                help: 'ご褒美の内容を入力してください。（例: 友人と温泉旅行を）',
-                append: 'する'
-            %>
-          </div>
-        </div>
+      <div class="d-flex flex-column border border-secondary-subtle border-top-0 rounded-bottom shadow-sm mb-3 px-2 py-3">
+        <%= form.date_field :completion_date,
+            class: 'form-control rounded w-75',
+            help: 'ご褒美を受け取る日を入力してください。'
+        %>
+        <%= form.text_area :location,
+            class: 'form-control rounded',
+            placeholder: '叙々苑新宿店',
+            help: 'ご褒美を受け取る場所を入力してください。（例: 草津）',
+            append: 'で'
+        %>
+        <%= form.text_area :description,
+            class: 'form-control rounded',
+            placeholder: '友人を誘って皆で食事を',
+            help: 'ご褒美の内容を入力してください。（例: 友人と温泉旅行を）',
+            append: 'する'
+        %>
       </div>
     </section>
     <section>
       <h3 class="border border-secondary-subtle rounded-top text-center main-color py-2 mt-1 mb-0">目標</h3>
-      <div class="border border-secondary-subtle border-top-0 rounded-bottom shadow-sm mb-2 px-3 py-2">
-        <div class="d-flex flex-column flex-grow-1">
+      <div class="border border-secondary-subtle border-top-0 rounded-bottom shadow-sm mb-2 px-2 py-3">
+        <div class="d-flex flex-column">
           <%= form.fields_for :goals do |goal_form| %>
-            <div class="flex-grow-1">
-              <%= goal_form.text_area :description,
-                    class: 'flex-grow-1 form-control p-3',
-                    style: 'min-height: 10rem;',
-                    placeholder: '毎日10分ランニングをする！',
-                    help: '期日までに達成したい目標を入力してください。'
+            <%= goal_form.text_area :description,
+                  class: 'form-control px-3 p-2',
+                  style: 'height: 10rem;',
+                  placeholder: '毎日10分ランニングをする！',
+                  help: '期日までに達成したい目標を入力してください。'
+            %>
+            <div class="w-50">
+              <%= goal_form.number_field :progress,
+                class: 'form-control text-center rounded',
+                append: '%'
               %>
-            </div>
-            <div class="form-group col-md-4">
-              <%= goal_form.number_field :progress, class: 'text-center rounded', append: '%' %>
             </div>
           <% end %>
         </div>
