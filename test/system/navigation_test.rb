@@ -10,23 +10,23 @@ class NavigationBarTest < ApplicationSystemTestCase
   end
 
   test 'should display link in offcanvas when clicked navigation bar button' do
-    assert_no_selector 'a', text: 'トップページ'
+    assert_no_selector 'a', text: '目標一覧'
     assert_selector 'a', { text: '目標を追加する', count: 1 }
-    assert_no_selector 'a', text: '登録情報'
+    assert_no_selector 'a', text: '登録情報変更'
     assert_no_selector 'a', text: 'ログアウト'
 
     assert_selector 'button[aria-label="ナビゲーションバーの表示ボタン"]'
     find("[aria-label='ナビゲーションバーの表示ボタン']").click
 
-    assert_selector 'a', text: 'トップページ'
+    assert_selector 'a', text: '目標一覧'
     assert_selector 'a', { text: '目標を追加する', count: 2 }
-    assert_selector 'a', text: '登録情報'
+    assert_selector 'a', text: '登録情報変更'
     assert_selector 'a', text: 'ログアウト'
   end
 
   test 'should display goals_path when clicked top-page' do
     find("[aria-label='ナビゲーションバーの表示ボタン']").click
-    within('#offcanvasNavbar') { click_link_or_button 'トップページ' }
+    within('#offcanvasNavbar') { click_link_or_button '目標一覧' }
     assert_current_path goals_path
     assert_text '目標一覧'
   end
@@ -40,7 +40,7 @@ class NavigationBarTest < ApplicationSystemTestCase
 
   test 'should display edit_user_registration_path when clicked registration-information' do
     find("[aria-label='ナビゲーションバーの表示ボタン']").click
-    within('#offcanvasNavbar') { click_link_or_button '登録情報' }
+    within('#offcanvasNavbar') { click_link_or_button '登録情報変更' }
     assert_current_path edit_user_registration_path
     assert_text '登録情報変更'
   end
@@ -59,9 +59,9 @@ class NavigationBarTest < ApplicationSystemTestCase
 
     assert_current_path goals_path
     assert_text '目標一覧'
-    assert_no_selector 'a', text: 'トップページ'
+    assert_no_selector 'a', text: '目標一覧'
     assert_selector 'a', { text: '目標を追加する', count: 1 }
-    assert_no_selector 'a', text: '登録情報'
+    assert_no_selector 'a', text: '登録情報変更'
     assert_no_selector 'a', text: 'ログアウト'
   end
 end
