@@ -1,21 +1,11 @@
 <%= turbo_frame_tag reward do %>
   <%= bootstrap_form_with(model: reward, label_errors: true, data: { action: "turbo:submit-end->modal#close" }) do |form| %>
-    <div class="d-flex justify-content-start">
-      <div class="d-flex align-items-center me-2">
-        <%= form.date_field :completion_date, class: 'rounded', append: 'に' %>
-      </div>
-      <div class="d-flex flex-grow-1 align-items-center">
-        <div class="flex-grow-1 me-2">
-          <%= form.text_area :location, class: 'rounded', append: 'で' %>
-        </div>
-      </div>
-    </div>
-    <div class="d-flex flex-grow-1 align-items-center">
-      <div class="flex-grow-1 me-2">
+    <div class="d-flex flex-column align-items-center">
+      <div class="w-100">
+        <%= form.date_field :completion_date, class: 'rounded'%>
+        <%= form.text_area :location, class: 'rounded', append: 'で' %>
         <%= form.text_area :description, class: 'rounded', append: 'する' %>
       </div>
-    </div>
-    <div class="d-flex justify-content-center">
       <%= form.submit "更新", class: "btn btn-outline-primary fs-5", style: "width: 10rem" %>
     </div>
   <% end %>
