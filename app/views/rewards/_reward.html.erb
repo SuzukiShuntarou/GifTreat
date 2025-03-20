@@ -1,32 +1,23 @@
-<%= turbo_frame_tag reward, class: 'd-flex text-center' do %>
-  <div class="d-flex align-items-center mb-2">
-    <div class="border border-primary-secondary bg-white rounded px-1 py-2">
-      <%= reward.completion_date %>
+<%= turbo_frame_tag reward do %>
+  <div class="d-flex flex-column align-items-center">
+    <div class="fw-medium px-2 pb-3" style="font-size: 1.1rem;">
+      <%= reward.location %>で
+      <%= reward.description %>する
     </div>
-    <span class="mx-2">に</span>
-  </div>
-  <div class="d-flex flex-grow-1 flex-nowrap align-items-center mb-2">
-    <div class="flex-grow-1 border border-primary-secondary bg-white rounded px-1 py-2">
-      <%= reward.location %>
+    <div class="d-flex flex-nowrap border-top w-100 pt-3 px-2">
+      <span class="ps-3" style="font-size: 0.8rem;">開催日</span>
+      <span class="flex-grow-1 text-center fw-semibold pe-4" style="font-size: 1.25rem;">
+        <%= l reward.completion_date, format: :long %>
+      </span>
     </div>
-    <span class="ms-2">で</span>
-  </div>
-<% end %>
-
-<%= turbo_frame_tag reward, class: 'text-center' do %>
-  <div class="d-flex flex-grow-1 flex-nowrap align-items-center">
-    <div class="flex-grow-1 border border-primary-secondary bg-white rounded px-1 py-2">
-      <%= reward.description %>
-    </div>
-    <span class="text-nowrap ms-2">する</span>
   </div>
 <% end %>
 
-<div class="d-flex align-items-center justify-content-center mt-2 gap-3">
-  <% if reward.in_progress? %>
-    <%= link_to "編集", edit_reward_path(reward), class: 'btn btn-outline-secondary fs-5', style: 'width: 8rem', data: { turbo_frame: "modal"} %>
+<% if reward.in_progress? %>
+  <div class="d-flex border-top justify-content-center px-2 mt-3 pt-3 gap-3">
     <% unless reward.max_reward_participants? %>
-      <%= link_to '招待', invite_reward_path(reward), class: 'btn btn-outline-secondary fs-5', style: 'width: 8rem', data: { turbo_frame: "modal"} %>
+      <%= link_to 'ご褒美に招待する', invite_reward_path(reward), class: 'btn btn-outline-secondary w-75 fs-5', data: { turbo_frame: "modal"} %>
     <% end %>
-  <% end %>
-</div>
+    <%= link_to "編集", edit_reward_path(reward), class: 'btn btn-outline-secondary flex-grow-1 fs-5', style: "max-width: 6rem", data: { turbo_frame: "modal"} %>
+  </div>
+<% end %>

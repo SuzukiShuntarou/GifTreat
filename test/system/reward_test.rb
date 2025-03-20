@@ -16,12 +16,12 @@ class RewardsTest < ApplicationSystemTestCase
     visit reward_path(@reward_in_progress)
 
     within('#reward') do
-      assert_text @reward_in_progress.completion_date
+      assert_text I18n.l(@reward_in_progress.completion_date, format: :long)
       assert_text @reward_in_progress.location
       assert_text @reward_in_progress.description
 
       assert_selector 'a', text: '編集'
-      assert_selector 'a', text: '招待'
+      assert_selector 'a', text: 'ご褒美に招待する'
     end
 
     within("div##{dom_id(@goal_in_progress)}") do
@@ -44,12 +44,12 @@ class RewardsTest < ApplicationSystemTestCase
     visit reward_path(reward_completed)
 
     within('#reward') do
-      assert_text reward_completed.completion_date
+      assert_text I18n.l(reward_completed.completion_date, format: :long)
       assert_text reward_completed.location
       assert_text reward_completed.description
 
       assert_no_selector 'a', text: '編集'
-      assert_no_selector 'a', text: '招待'
+      assert_no_selector 'a', text: 'ご褒美に招待する'
     end
 
     within("div##{dom_id(goal_completed)}") do
@@ -83,7 +83,7 @@ class RewardsTest < ApplicationSystemTestCase
     assert_current_path "/rewards/#{reward.id}"
 
     within('#reward') do
-      assert_text Date.current.tomorrow
+      assert_text I18n.l(Date.current.tomorrow, format: :long)
       assert_text '叙々苑'
       assert_text '焼肉'
     end
@@ -137,8 +137,8 @@ class RewardsTest < ApplicationSystemTestCase
     visit reward_path(@reward_in_progress)
 
     within('#reward') do
-      assert_selector 'a', text: '招待'
-      click_link_or_button '招待'
+      assert_selector 'a', text: 'ご褒美に招待する'
+      click_link_or_button 'ご褒美に招待する'
     end
 
     within('.modal-title') { assert_text 'ご褒美へ友人・家族を招待' }
@@ -164,7 +164,7 @@ class RewardsTest < ApplicationSystemTestCase
 
     assert_text 'ご褒美に招待されました！'
     within('#reward') do
-      assert_text @reward_in_progress.completion_date
+      assert_text I18n.l(@reward_in_progress.completion_date, format: :long)
       assert_text @reward_in_progress.location
       assert_text @reward_in_progress.description
     end
@@ -187,8 +187,8 @@ class RewardsTest < ApplicationSystemTestCase
     visit reward_path(invited_reward)
 
     within('#reward') do
-      assert_selector 'a', text: '招待'
-      click_link_or_button '招待'
+      assert_selector 'a', text: 'ご褒美に招待する'
+      click_link_or_button 'ご褒美に招待する'
     end
 
     within('.modal-body') do
@@ -216,8 +216,8 @@ class RewardsTest < ApplicationSystemTestCase
     visit reward_path(invited_reward)
 
     within('#reward') do
-      assert_selector 'a', text: '招待'
-      click_link_or_button '招待'
+      assert_selector 'a', text: 'ご褒美に招待する'
+      click_link_or_button 'ご褒美に招待する'
     end
 
     within('.modal-body') do
@@ -262,5 +262,12 @@ class RewardsTest < ApplicationSystemTestCase
     assert_text '目標'
     assert_selector 'img[alt="ユーザのアイコン"]'
     assert_no_selector 'img[alt="デフォルトのユーザアイコン"]'
+  end
+
+  test 'should access list of goals' do
+    visit reward_path(@reward_in_progress)
+    assert_selector 'a', text: '目標一覧に戻る'
+    click_link_or_button '目標一覧に戻る'
+    assert_current_path goals_path
   end
 end

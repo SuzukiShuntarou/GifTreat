@@ -3,9 +3,9 @@
 <h2 class="main-color text-center w-100 title-bg-color py-3">ご褒美・目標詳細</h2>
 
 <div class="d-flex flex-column align-items-center my-2 px-2">
-  <section style="min-width: 22rem; max-width: 45rem;">
+  <section style="width: 22rem;">
     <h3 class="border border-secondary-subtle rounded-top text-center main-color py-2 mt-1 mb-0">ご褒美</h3>
-    <div class="d-flex flex-column border border-secondary-subtle border-top-0 rounded-bottom shadow-sm mb-3 px-2 py-3">
+    <div class="flex-column border border-secondary-subtle border-top-0 rounded-bottom shadow-sm mb-3 py-3">
       <div id='reward'>
         <%= render @reward %>
       </div>
@@ -14,7 +14,7 @@
   <section>
     <div class="d-flex gap-2 justify-content-center">
       <% @goals.each do |goal| %>
-        <div class="d-flex flex-column justify-content-center" style="min-width: 22rem; max-width: 30rem;">
+        <div class="d-flex flex-column justify-content-center" style="width: 22rem;">
           <h3 class="border border-secondary-subtle rounded-top text-center main-color py-2 mt-1 mb-0">
             <%= "#{goal.user.name}の目標" %>
           </h3>
@@ -34,12 +34,13 @@
         </div>
       <% end %>
     </div>
-  </section>
-  <% if @reward.in_progress? %>
-    <section>
-      <div class="my-3">
-        <%= link_to "削除", @reward, data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
+    <% if @reward.in_progress? %>
+      <div class="d-flex justify-content-end pe-2" style="font-size: 0.85rem;">
+        <%= link_to "削除", @reward, data: { turbo_method: :delete, turbo_confirm: "ご褒美と目標をすべて削除しますか？" } %>
       </div>
-    </section>
-  <% end %>
+    <% end %>
+  </section>
+  <section class="mt-1 mb-3">
+    <%= link_to "目標一覧に戻る", goals_path %>
+  </section>
 </div>
