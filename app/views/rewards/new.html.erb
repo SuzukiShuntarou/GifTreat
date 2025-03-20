@@ -9,18 +9,18 @@
       <div class="d-flex flex-column border border-secondary-subtle border-top-0 rounded-bottom shadow-sm mb-3 px-2 py-3">
         <%= form.date_field :completion_date,
             class: 'form-control rounded w-75',
-            help: 'ご褒美を受け取る日を入力してください。'
+            help: 'ご褒美を受け取る日を入力して下さい。'
         %>
         <%= form.text_area :location,
             class: 'form-control rounded',
             placeholder: '叙々苑新宿店',
-            help: 'ご褒美を受け取る場所を入力してください。（例: 草津）',
+            help: 'ご褒美を受け取る場所を入力して下さい。（例：草津の湯畑）',
             append: 'で'
         %>
         <%= form.text_area :description,
             class: 'form-control rounded',
             placeholder: '友人を誘って皆で食事を',
-            help: 'ご褒美の内容を入力してください。（例: 友人と温泉旅行を）',
+            help: 'ご褒美の内容を入力して下さい。（例：友人と温泉旅行を）',
             append: 'する'
         %>
       </div>
@@ -34,7 +34,7 @@
                   class: 'form-control px-3 p-2',
                   style: 'height: 10rem;',
                   placeholder: '毎日10分ランニングをする！',
-                  help: '期日までに達成したい目標を入力してください。'
+                  help: '開催日までに達成したい目標を入力して下さい。（例：資格試験の勉強をする。）'
             %>
             <div class="w-50">
               <%= goal_form.number_field :progress,
