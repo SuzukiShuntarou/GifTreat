@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   }
   resources :rewards, only: [:show, :new, :create, :edit, :update, :destroy] do
     member do
-      get 'invite'
+      get 'invitation'
     end
   end
   resources :goals, only: [:index, :edit, :update] do
