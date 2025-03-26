@@ -7,9 +7,7 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
   resources :rewards, only: [:show, :new, :create, :edit, :update, :destroy] do
-    member do
-      get 'invitation'
-    end
+    resources :invitations, only:[:index]
   end
   resources :goals, only: [:index, :edit, :update] do
     resources :likings, only: [:create]
