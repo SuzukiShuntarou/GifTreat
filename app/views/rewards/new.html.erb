@@ -6,7 +6,7 @@
   <%= bootstrap_form_with(model: @reward, label_errors: true) do |form| %>
     <section>
       <h3 class="border border-secondary-subtle rounded-top text-center main-color py-2 mt-1 mb-0">ご褒美</h3>
-      <div class="d-flex flex-column border border-secondary-subtle border-top-0 rounded-bottom shadow-sm mb-3 px-2 py-3">
+      <div class="d-flex flex-column border border-secondary-subtle border-top-0 rounded-bottom mb-3 px-2 py-3">
         <%= form.date_field :completion_date,
             class: 'form-control rounded w-75',
             help: 'ご褒美を受け取る日を入力して下さい。'
@@ -27,7 +27,7 @@
     </section>
     <section>
       <h3 class="border border-secondary-subtle rounded-top text-center main-color py-2 mt-1 mb-0">目標</h3>
-      <div class="border border-secondary-subtle border-top-0 rounded-bottom shadow-sm mb-2 px-2 py-3">
+      <div class="border border-secondary-subtle border-top-0 rounded-bottom mb-2 px-2 py-3">
         <div class="d-flex flex-column">
           <%= form.fields_for :goals do |goal_form| %>
             <%= goal_form.text_area :description,
