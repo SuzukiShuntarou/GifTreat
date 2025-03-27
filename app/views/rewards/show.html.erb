@@ -5,7 +5,7 @@
 <div class="d-flex flex-column align-items-center my-2 px-2">
   <section style="width: 22rem;">
     <h3 class="border border-secondary-subtle rounded-top text-center main-color py-2 mt-1 mb-0">ご褒美</h3>
-    <div class="flex-column border border-secondary-subtle border-top-0 rounded-bottom shadow-sm mb-3 py-3">
+    <div class="flex-column border border-secondary-subtle border-top-0 rounded-bottom mb-3 py-3">
       <div id='reward'>
         <%= render @reward %>
       </div>
@@ -18,7 +18,7 @@
           <h3 class="border border-secondary-subtle rounded-top text-center main-color py-2 mt-1 mb-0">
             <%= "#{goal.user.name}の目標" %>
           </h3>
-          <div class="d-flex flex-column border border-secondary-subtle border-top-0 rounded-bottom shadow-sm mb-2 px-2 py-3" style="min-height: 30rem;">
+          <div class="d-flex flex-column border border-secondary-subtle border-top-0 rounded-bottom mb-2 px-2 py-3" style="min-height: 30rem;">
             <div id="<%= dom_id(goal) %>" class="flex-grow-1">
               <%= render 'goals/goal', goal: goal %>
             </div>
