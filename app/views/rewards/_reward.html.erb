@@ -16,7 +16,7 @@
 <% if reward.in_progress? %>
   <div class="d-flex border-top justify-content-center px-2 mt-3 pt-3 gap-3">
     <% unless reward.max_reward_participants? %>
-      <%= link_to 'ご褒美に招待する', invite_reward_path(reward), class: 'btn btn-outline-secondary w-75 fs-5', data: { turbo_frame: "modal"} %>
+      <%= link_to 'ご褒美に招待する', reward_invitation_path(reward), class: 'btn btn-outline-secondary w-75 fs-5', data: { turbo_frame: "modal"} %>
     <% end %>
     <%= link_to "編集", edit_reward_path(reward), class: 'btn btn-outline-secondary flex-grow-1 fs-5', style: "max-width: 6rem", data: { turbo_frame: "modal"} %>
   </div>
